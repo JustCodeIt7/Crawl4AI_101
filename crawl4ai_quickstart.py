@@ -38,7 +38,6 @@ asyncio.run(simple_crawl())
 
 #%% #### 3. **Dynamic Content Handling**
 async def crawl_dynamic_content():
-    # You can use wait_for to wait for a condition to be met before returning the result
     # wait_for = """() => {
     #     return Array.from(document.querySelectorAll('article.tease-card')).length > 10;
     # }"""
@@ -322,7 +321,7 @@ await extract()
 # structured data from a pricing page on OpenAI’s site.
 
 from crawl4ai.extraction_strategy import LLMExtractionStrategy
-from crawl4ai.llm_config import LLMConfig
+from crawl4ai import LLMConfig  # Corrected import path
 from pydantic import BaseModel, Field
 import os, json
 
