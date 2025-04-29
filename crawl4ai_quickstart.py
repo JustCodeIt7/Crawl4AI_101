@@ -358,7 +358,7 @@ async def extract_structured_data_using_llm(provider: str, api_token: str = None
         )
         print(json.loads(result.extracted_content)[:5])
 
-await extract_structured_data_using_llm("openai/gpt-4o-mini", os.getenv("OPENAI_API_KEY"))
+await extract_structured_data_using_llm("llama3.2")
 
 #%% **Cosine Similarity Strategy**
 
