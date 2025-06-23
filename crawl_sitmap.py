@@ -3,12 +3,12 @@ import argparse
 import os
 from pathlib import Path
 from urllib.parse import urlparse, unquote
-from crawl4ai import Crawl4ai
+from crawl4ai import CrawlerHub
 
 #%% Sitemap Crawler Function
 def crawl_and_save_sitemap(sitemap_url: str, output_dir: str):
     # Initialize the crawler
-    crawler = Crawl4ai()
+    crawler = CrawlerHub()
 
     # Create the base output directory if it doesn't exist
     Path(output_dir).mkdir(parents=True, exist_ok=True)

@@ -1,0 +1,5 @@
+crawl4ai
+nest_asyncio
+torch
+transformers
+sentence-transformers

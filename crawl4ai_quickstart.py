@@ -311,10 +311,10 @@ async def extract():
         courses = json.loads(result.extracted_content)
         print(result.extracted_content)
         print(f"Successfully extracted {len(courses)} courses")
-        print(len(result.markdown))
+        print(len(result.markdown.raw_markdown))
         # print(json.dumps(courses[0], indent=2))
 
-await extract()
+asyncio.run(extract())
 
 #%% #####  LLM Extraction
 # This example demonstrates how to use language model-based extraction to retrieve
@@ -358,7 +358,7 @@ async def extract_structured_data_using_llm(provider: str, api_token: str = None
         )
         print(json.loads(result.extracted_content)[:5])
 
-await extract_structured_data_using_llm("llama3.2")
+asyncio.run(extract_structured_data_using_llm("llama3.2"))
 
 #%% **Cosine Similarity Strategy**
 
