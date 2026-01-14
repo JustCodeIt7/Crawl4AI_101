@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import scrapy
 from scrapy.crawler import CrawlerProcess
 from crawl4ai import AsyncWebCrawler
+from rich import print
 
 # Comparison configuration
 TARGET_URL = "https://news.ycombinator.com/"
