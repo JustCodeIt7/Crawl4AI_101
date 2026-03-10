@@ -20,12 +20,34 @@ This repository contains practical examples and comparisons of different web scr
 ├── 01-Intro/                          # Introduction and beginner examples
 │   ├── 01-app.py                      # Basic Crawl4AI application
 │   └── web_scraper_comparison.py      # Library comparison demo
+├── src/c4a_series/videos/             # 20 short YouTube tutorial scripts
 ├── crawl4ai_quickstart.py             # Quick start guide script
 ├── crawl4ai_quickstart.ipynb          # Interactive quickstart notebook
 ├── crawl_sitmap.py                    # Sitemap crawling example
 ├── web_scraper_comparison.ipynb       # Comprehensive library comparison
 └── Scraper_Comparison_codex_*.ipynb   # Various scraper comparison notebooks
 ```
+
+## 🎬 YouTube Tutorial Series Scripts
+
+The full 20-video tutorial outline in `Crawl4AI_Outline.md` now has runnable scripts under `src/c4a_series/videos/`.
+Each episode stays under 200 lines and focuses on one Crawl4AI concept.
+
+Examples:
+
+```bash
+conda activate py312
+python src/c4a_series/videos/v01_hello_arun.py
+python src/c4a_series/videos/v08_css_extraction.py
+python src/c4a_series/videos/v17_arun_many_dispatchers.py
+```
+
+LLM-based episodes:
+
+- `v11_generate_schema_tokenusage.py`
+- `v12_llm_extraction_chunking.py`
+
+These read `OPENAI_API_KEY` from `.env` if present.
 
 ## 🚀 Getting Started
 
