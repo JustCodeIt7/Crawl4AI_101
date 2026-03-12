@@ -55,6 +55,10 @@ async def main() -> None:
     # print html and cleaned_html lengths for reference
     print("html length:", len(result.html or ""))
     print("cleaned_html length:", len(result.cleaned_html or ""))
+    internal = result.links.get("internal", [])
+    external = result.links.get("external", [])
+    print(f"Internal links: {len(internal)}")
+    print(f"External links: {len(external)}")
 
 
 ################################# Entry Point ################################

@@ -1,4 +1,4 @@
-"""Video 03: Tuning each crawl with CrawlerRunConfig.
+"""Video 02.1: Tuning each crawl with CrawlerRunConfig.
 
 Demonstrates:
 - word_count_threshold and excluded_tags for content filtering
@@ -20,20 +20,16 @@ import time
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from rich import print
 
-############################# Constants & Setup ################################
+####################### Constants & Setup #####################
 
-URL = "https://docs.crawl4ai.com/core/quickstart/"
-
-
-############################# Helper Functions #################################
+URL = "https://docs.crawl4ai.com/"
 
 
-def summarise(label: str, result, elapsed: float) -> None:
+################### Helper Functions ########################
+
+
+def summarize(label: str, result, elapsed: float) -> None:
     """Print a compact summary of a CrawlResult."""
-    # Handle failed crawls early
-    if not result.success:
-        print(f"[red]✗ {label}: {result.error_message}[/red]")
-        return
 
     internal = result.links.get("internal", [])
     external = result.links.get("external", [])
@@ -49,7 +45,7 @@ def summarise(label: str, result, elapsed: float) -> None:
     print(f"  External links: {len(external)}")
 
 
-########################### Main Crawl Logic ###################################
+##################### Main Crawl Logic ##########################
 
 
 async def main() -> None:
@@ -59,22 +55,22 @@ async def main() -> None:
     # Define a reusable configuration with filtering, interaction, and cache settings
     base_config = CrawlerRunConfig(
         # Content filtering
-        word_count_threshold=20,  # Skip blocks < 20 words
+        word_count_threshold=30,  # Skip blocks < 30 words long like navbars
         excluded_tags=["nav", "footer", "header"],  # Strip boilerplate sections
         # Link filtering
-        exclude_external_links=True,
-        exclude_social_media_links=True,
+        exclude_external_links=False,
+        exclude_social_media_links=False,
         # Page interaction
-        remove_overlay_elements=True,  # Dismiss modals/popups
+        # remove_overlay_elements=True,  # Dismiss modals/popups
         wait_for="css:main",  # Wait for <main> in DOM
-        page_timeout=30_000,  # 30s load timeout
+        # page_timeout=30_000,  # 30s load timeout
         # Caching & verbosity
         cache_mode=CacheMode.ENABLED,
         verbose=False,
     )
 
-    # Clone the base config but override cache mode to force a fresh network request
-    bypass_config = base_config.clone(cache_mode=CacheMode.BYPASS)
+    # Clone the base config and modify only the cache mode for bypassing
+    bypass_config = base_config.clone(cache_mode=CacheMode.WRITE_ONLY)
 
     async with AsyncWebCrawler() as crawler:
         # ── First crawl: bypass cache (populates it) ──
@@ -82,16 +78,16 @@ async def main() -> None:
         t0 = time.perf_counter()
         result_bypass = await crawler.arun(URL, config=bypass_config)
         elapsed_bypass = time.perf_counter() - t0
-        summarise("BYPASS (fresh fetch)", result_bypass, elapsed_bypass)
+        summarize("BYPASS (fresh fetch) Write Only", result_bypass, elapsed_bypass)
 
         # ── Second crawl: read from cache ──
         # Re-crawl the same URL using the default ENABLED cache mode
         t0 = time.perf_counter()
         result_cached = await crawler.arun(URL, config=base_config)
         elapsed_cached = time.perf_counter() - t0
-        summarise("ENABLED (from cache)", result_cached, elapsed_cached)
+        summarize("ENABLED (from cache)", result_cached, elapsed_cached)
 
-    ######################### Compare Results ##################################
+    ################### Compare Results ######################
 
     # Calculate and display the performance gain from caching
     if result_bypass.success and result_cached.success:
