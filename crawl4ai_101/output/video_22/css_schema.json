@@ -1,0 +1,17 @@
+{
+  "name": "HNStories",
+  "baseSelector": "tr.athing",
+  "fields": [
+    {
+      "name": "title",
+      "selector": "span.titleline > a",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "selector": "span.titleline > a",
+      "type": "attribute",
+      "attribute": "href"
+    }
+  ]
+}
