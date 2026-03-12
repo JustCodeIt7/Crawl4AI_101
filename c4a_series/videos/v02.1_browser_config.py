@@ -15,9 +15,8 @@ Run:
 
 import asyncio
 import time
-
 from crawl4ai import AsyncWebCrawler, BrowserConfig
-
+from rich import print
 ########################### Constants & Defaults ############################
 
 URL = "https://www.python.org/"
@@ -35,14 +34,12 @@ async def crawl_once(label: str, config: BrowserConfig) -> None:
     async with AsyncWebCrawler(config=config) as crawler:
         result = await crawler.arun(URL)
     elapsed = time.perf_counter() - started
-    # Extract raw markdown, falling back to string representation
-    markdown = getattr(result.markdown, "raw_markdown", str(result.markdown))
     print(
-        f"{label}: success={result.success} "
-        f"browser={config.browser_type} "
-        f"viewport={config.viewport_width}x{config.viewport_height} "
-        f"chars={len(markdown or '')} "
-        f"time={elapsed:.2f}s"
+        f"\n{label}:\nsuccess={result.success}"
+        f"\nbrowser={config.browser_type} "
+        f"\nviewport={config.viewport_width}x{config.viewport_height} "
+        f"\nchars={len(result.markdown)} "
+        f"\ntime={elapsed:.2f}s\n"
     )
 
 
