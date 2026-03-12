@@ -29,7 +29,7 @@ async def main() -> None:
     # Build the crawler run configuration:
     # - BYPASS cache so we always hit the live page instead of returning stale data
     # - Disable verbose logging to keep the console output clean
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, verbose=False)
+    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, verbose=True)
 
     # Launch an async crawler session using a context
     # manager, which handles browser startup and teardown

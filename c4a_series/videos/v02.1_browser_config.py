@@ -18,17 +18,24 @@ import time
 
 from crawl4ai import AsyncWebCrawler, BrowserConfig
 
+########################### Constants & Defaults ############################
+
 URL = "https://www.python.org/"
 PRIMARY_BROWSER = "firefox"
 LARGE_VIEWPORT = (1440, 900)
 MOBILE_VIEWPORT = (430, 932)
 
 
+############################# Helper Functions #############################
+
 async def crawl_once(label: str, config: BrowserConfig) -> None:
+    """Crawl a single URL and print timing and result summary."""
     started = time.perf_counter()
+    # Open a browser instance, crawl, then auto-close via async context manager
     async with AsyncWebCrawler(config=config) as crawler:
         result = await crawler.arun(URL)
     elapsed = time.perf_counter() - started
+    # Extract raw markdown, falling back to string representation
     markdown = getattr(result.markdown, "raw_markdown", str(result.markdown))
     print(
         f"{label}: success={result.success} "
@@ -39,23 +46,31 @@ async def crawl_once(label: str, config: BrowserConfig) -> None:
     )
 
 
+############################### Main Workflow ###############################
+
 async def main() -> None:
+    """Configure multiple browser profiles and run crawls to compare results."""
+    # Set up the base desktop browser config with randomized user agent
     base_browser = BrowserConfig(
         browser_type=PRIMARY_BROWSER,
         headless=True,
         viewport_width=LARGE_VIEWPORT[0],
         viewport_height=LARGE_VIEWPORT[1],
-        user_agent_mode="random",
+        user_agent_mode="random",              # Rotate user agents to avoid fingerprinting
         verbose=False,
     )
+    # Derive a mobile variant by cloning and overriding only the viewport
     mobile_browser = base_browser.clone(
         viewport_width=MOBILE_VIEWPORT[0],
         viewport_height=MOBILE_VIEWPORT[1],
     )
+    # Enable text_mode and light_mode to skip images/JS for faster crawls
     text_browser = base_browser.clone(text_mode=True, light_mode=True)
+    # Create a visible, verbose config useful for interactive debugging
     debug_browser = base_browser.clone(headless=False, verbose=True)
 
     print("Running headless large viewport crawl...")
+    # Attempt crawls with the primary browser, falling back to chromium on failure
     try:
         await crawl_once("desktop", base_browser)
         await crawl_once("mobile", mobile_browser)
