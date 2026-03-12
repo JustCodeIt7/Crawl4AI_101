@@ -4,16 +4,13 @@ from pathlib import Path
 
 ############################# Path Configuration #############################
 
-# When running this script directly (e.g., `python crawl_basic.py`), __package__
 # will be None or empty. In that case, add the project root (two levels up) to
 # sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
+# if __package__ in {None, ""}:
+#     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
-
-from c4a_series.common.io import preview, raw_markdown
-
+from rich import print
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
 
@@ -50,7 +47,7 @@ async def main() -> None:
 
     # Extract the raw markdown from the result and show only the first 300
     # characters so the output stays readable in a terminal
-    print("markdown:", preview(raw_markdown(result.markdown), 300))  # Truncate to 300 chars
+    print("markdown:\n", result.markdown)
 
 
 ################################# Entry Point ################################
