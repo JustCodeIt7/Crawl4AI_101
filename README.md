@@ -19,13 +19,14 @@ This repository contains practical examples and comparisons of different web scr
 ```
 ├── 01-Intro/                          # Introduction and beginner examples
 │   ├── 01-app.py                      # Basic Crawl4AI application
-│   └── web_scraper_comparison.py      # Library comparison demo
+│   └── 01-app_v3.py                   # Verbose comparison with rich output
 ├── src/c4a_series/videos/             # 20 short YouTube tutorial scripts
+├── use-browser_101/                   # Browser sanity checks and intro
 ├── crawl4ai_quickstart.py             # Quick start guide script
 ├── crawl4ai_quickstart.ipynb          # Interactive quickstart notebook
 ├── crawl_sitmap.py                    # Sitemap crawling example
 ├── web_scraper_comparison.ipynb       # Comprehensive library comparison
-└── Scraper_Comparison_codex_*.ipynb   # Various scraper comparison notebooks
+└── archive/                           # Older scraper comparison notebooks
 ```
 
 ## 🎬 YouTube Tutorial Series Scripts
