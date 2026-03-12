@@ -1,22 +1,24 @@
+"""Video 01: Your hello crawl to Crawl4AI docs.
+
+Demonstrates:
+- AsyncWebCrawler and arun()
+- CrawlResult success, markdown, html, cleaned_html, status_code
+- Minimal error handling
+
+Prerequisites:
+- `pip install crawl4ai playwright`
+- `playwright install`
+"""
+
 import asyncio
-import sys
-from pathlib import Path
-
-############################# Path Configuration #############################
-
-# will be None or empty. In that case, add the project root (two levels up) to
-# sys.path so that sibling package imports resolve correctly.
-# if __package__ in {None, ""}:
-#     sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from rich import print
+
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
 
+
 ############################ Main Crawl Routine ##############################
-
-
 async def main() -> None:
     """Crawl a single URL using Crawl4AI and print a truncated markdown preview.
 
@@ -29,8 +31,8 @@ async def main() -> None:
     # - Disable verbose logging to keep the console output clean
     config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, verbose=False)
 
-    # Launch an async crawler session using a context manager, which handles
-    # browser startup and teardown (Crawl4AI uses a headless browser under the hood)
+    # Launch an async crawler session using a context
+    # manager, which handles browser startup and teardown
     async with AsyncWebCrawler() as crawler:
         # Perform the actual crawl — arun() fetches the page, renders any
         # JavaScript, and converts the visible content into markdown
@@ -43,16 +45,19 @@ async def main() -> None:
         return
 
     # Display the final resolved URL (may differ from the input if redirects occurred)
+    print("result:", result)
     print("url:", result.url)
-
-    # Extract the raw markdown from the result and show only the first 300
-    # characters so the output stays readable in a terminal
-    print("markdown:\n", result.markdown)
+    # print result object for reference without links
+    print("result:", result.metadata)
+    # Extract the raw markdown from the result and show only the first 500 chars
+    print("Markdown:\n", result.markdown[:500])
+    print("HTML: \n", result.cleaned_html[:500])
+    # print html and cleaned_html lengths for reference
+    print("html length:", len(result.html or ""))
+    print("cleaned_html length:", len(result.cleaned_html or ""))
 
 
 ################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to execute the
 # async main() coroutine from a synchronous context
 if __name__ == "__main__":
     asyncio.run(main())
