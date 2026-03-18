@@ -1,4 +1,4 @@
-"""Video 02: BrowserConfig controls your browser session.
+"""Video 02.2: BrowserConfig controls your browser session.
 
 Demonstrates:
 - BrowserConfig browser type, viewport, user agent, headless mode
@@ -8,18 +8,14 @@ Demonstrates:
 Prerequisites:
 - `pip install crawl4ai playwright`
 -  `crawl4ai-setup `
-- Install the browsers you plan to use, for example `playwright install firefox`
-
-Run:
-- `python crawl4ai_101/video_02_browser_config.py`
 """
 
 import asyncio
 import time
 from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
 from rich import print
-########################### Constants & Defaults ############################
 
+########################### Constants & Defaults ##########################
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 PRIMARY_BROWSER = "chromium"
 LARGE_VIEWPORT = (1440, 900)
@@ -27,8 +23,6 @@ MOBILE_VIEWPORT = (430, 932)
 
 
 ############################# Helper Functions #############################
-
-
 async def crawl_once(label: str, config: BrowserConfig) -> None:
     """Crawl a single URL and print timing and result summary."""
     started = time.perf_counter()
@@ -50,17 +44,18 @@ async def crawl_once(label: str, config: BrowserConfig) -> None:
 
 
 ############################### Main Workflow ###############################
-
-
 async def main() -> None:
     """Configure multiple browser profiles and run crawls to compare results."""
     # Set up the base desktop browser config with randomized user agent
     base_browser = BrowserConfig(
         browser_type=PRIMARY_BROWSER,
-        headless=True,
+        headless=True,  # Run headless mode for faster performance avoid opening windows
         viewport_width=LARGE_VIEWPORT[0],
         viewport_height=LARGE_VIEWPORT[1],
-        user_agent_mode="random",  # Rotate user agents to avoid fingerprinting
+        # User agent is what websites identify your browser type/version
+        # e.g "AppleWebKit/537.36 Chrome/91.0.4472.124 Safari/537.36"
+        # Rotate to avoid fingerprinting detection, get more realistic results
+        user_agent_mode="random",
         verbose=False,
     )
     # Derive a mobile variant by cloning and overriding only the viewport
