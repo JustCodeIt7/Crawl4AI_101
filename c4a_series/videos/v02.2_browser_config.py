@@ -16,12 +16,12 @@ Run:
 
 import asyncio
 import time
-from crawl4ai import AsyncWebCrawler, BrowserConfig
+from crawl4ai import AsyncWebCrawler, BrowserConfig, CrawlerRunConfig
 from rich import print
 ########################### Constants & Defaults ############################
 
-URL = "https://www.python.org/"
-PRIMARY_BROWSER = "firefox"
+URL = "https://docs.crawl4ai.com/core/quickstart/"
+PRIMARY_BROWSER = "chrome"
 LARGE_VIEWPORT = (1440, 900)
 MOBILE_VIEWPORT = (430, 932)
 
@@ -32,17 +32,21 @@ MOBILE_VIEWPORT = (430, 932)
 async def crawl_once(label: str, config: BrowserConfig) -> None:
     """Crawl a single URL and print timing and result summary."""
     started = time.perf_counter()
+    # Define a simple config with the provided browser settings and some content filtering
+    crawler_config = CrawlerRunConfig(excluded_tags=["form", "header", "sidebar"])
     # Open a browser instance, crawl, then auto-close via async context manager
     async with AsyncWebCrawler(config=config) as crawler:
-        result = await crawler.arun(URL)
+        result = await crawler.arun(URL, config=crawler_config)
     elapsed = time.perf_counter() - started
     print(
+        f"'\n\n'{'=' * 40}\nCrawl Result for {label}\n{'=' * 40}"
         f"\n{label}:\nsuccess={result.success}"
         f"\nbrowser={config.browser_type} "
         f"\nviewport={config.viewport_width}x{config.viewport_height} "
-        f"\nchars={len(result.markdown)} "
+        f"\nchars={len(result.markdown.fit_markdown)} "
         f"\ntime={elapsed:.2f}s\n"
     )
+    print(result.markdown[:500] + "...\n")  # Print a snippet of the result
 
 
 ############################### Main Workflow ###############################
@@ -71,15 +75,10 @@ async def main() -> None:
 
     print("Running headless large viewport crawl...")
     # Attempt crawls with the primary browser, falling back to chromium on failure
-    try:
-        await crawl_once("desktop", base_browser)
-        await crawl_once("mobile", mobile_browser)
-        await crawl_once("text-mode", text_browser)
-    except Exception as exc:
-        print(f"Primary browser '{PRIMARY_BROWSER}' failed: {exc}")
-        fallback = base_browser.clone(browser_type="chromium")
-        print("Retrying with chromium for compatibility...")
-        await crawl_once("desktop-fallback", fallback)
+
+    await crawl_once("desktop", base_browser)
+    await crawl_once("mobile", mobile_browser)
+    await crawl_once("text-mode", text_browser)
 
     print(
         "Debug config ready: "
