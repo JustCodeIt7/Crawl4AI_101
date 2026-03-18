@@ -7,6 +7,7 @@ Demonstrates:
 
 Prerequisites:
 - `pip install crawl4ai playwright`
+-  `crawl4ai-setup `
 - Install the browsers you plan to use, for example `playwright install firefox`
 
 Run:
@@ -27,6 +28,7 @@ MOBILE_VIEWPORT = (430, 932)
 
 ############################# Helper Functions #############################
 
+
 async def crawl_once(label: str, config: BrowserConfig) -> None:
     """Crawl a single URL and print timing and result summary."""
     started = time.perf_counter()
@@ -45,6 +47,7 @@ async def crawl_once(label: str, config: BrowserConfig) -> None:
 
 ############################### Main Workflow ###############################
 
+
 async def main() -> None:
     """Configure multiple browser profiles and run crawls to compare results."""
     # Set up the base desktop browser config with randomized user agent
@@ -53,7 +56,7 @@ async def main() -> None:
         headless=True,
         viewport_width=LARGE_VIEWPORT[0],
         viewport_height=LARGE_VIEWPORT[1],
-        user_agent_mode="random",              # Rotate user agents to avoid fingerprinting
+        user_agent_mode="random",  # Rotate user agents to avoid fingerprinting
         verbose=False,
     )
     # Derive a mobile variant by cloning and overriding only the viewport
