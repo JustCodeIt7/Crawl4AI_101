@@ -39,7 +39,7 @@ def summarize(label: str, result, elapsed: float) -> None:
     print(f"\n[bold cyan]── {label} ──[/bold cyan]")
     print(f"  URL          : {result.url}")
     print(f"  Status       : {result.status_code}")
-    print(f"  Elapsed      : {elapsed:.2f}s")
+    print(f"  Elapsed      : {elapsed:.4f}s")
     print(f"  Markdown len : {raw_len:,} chars")
     print(f"  Internal links: {len(internal)}")
     print(f"  External links: {len(external)}")
@@ -63,7 +63,7 @@ async def main() -> None:
         # Page interaction
         # remove_overlay_elements=True,  # Dismiss modals/popups
         wait_for="css:main",  # Wait for <main> in DOM
-        # page_timeout=30_000,  # 30s load timeout
+        page_timeout=30_000,  # 30s load timeout
         # Caching & verbosity
         cache_mode=CacheMode.ENABLED,
         verbose=False,
