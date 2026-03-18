@@ -21,7 +21,7 @@ from rich import print
 ########################### Constants & Defaults ############################
 
 URL = "https://docs.crawl4ai.com/core/quickstart/"
-PRIMARY_BROWSER = "chrome"
+PRIMARY_BROWSER = "chromium"
 LARGE_VIEWPORT = (1440, 900)
 MOBILE_VIEWPORT = (430, 932)
 
