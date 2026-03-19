@@ -74,6 +74,7 @@ async def main() -> None:
     await crawl_once("desktop", base_browser)
     await crawl_once("mobile", mobile_browser)
     await crawl_once("text-mode", text_browser)
+    # await crawl_once("debug", debug_browser)
 
     print(
         "Debug config ready: "
