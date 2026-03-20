@@ -1,24 +1,24 @@
+"""
+Title: Cache Modes Comparison
+
+Description:
+This script demonstrates the three primary cache modes in Crawl4AI by timing how long it takes to
+crawl the same URL under each mode. The modes are:
+- ENABLED: Uses the cache if available, otherwise fetches live and updates the cache.
+- READ_ONLY: Only reads from the cache; never writes back. Fast if the cache is populated, but may return stale data.
+- BYPASS: Ignores the cache entirely; always fetches live from the network and does not store results. Useful for development when you need fresh content every time.
+"""
+
 import asyncio
-import sys
 import time
-from pathlib import Path
-
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v03_cache_modes.py`), __package__
-# will be None or empty. In that case, add the project root (two levels up) to
-# sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
+from rich import print
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
-URL = "https://docs.crawl4ai.com/"
-
-############################ Timed Crawl Helper ##############################
+URL = "https://docs.crawl4ai.com/marketplace/"
 
 
+###################### Timed Crawl Helper ######################
 async def timed_crawl(crawler: AsyncWebCrawler, label: str, mode: CacheMode) -> None:
     """Crawl the target URL under a given CacheMode and print how long it took.
 
@@ -39,7 +39,9 @@ async def timed_crawl(crawler: AsyncWebCrawler, label: str, mode: CacheMode) -> 
 
     # Execute the crawl with the requested cache mode. verbose=False suppresses
     # Crawl4AI's internal progress logs so only our own print() output is shown.
-    result = await crawler.arun(url=URL, config=CrawlerRunConfig(cache_mode=mode, verbose=False))
+    result = await crawler.arun(
+        url=URL, config=CrawlerRunConfig(cache_mode=mode, verbose=False)
+    )
 
     # Compute elapsed time immediately after the crawl completes so we capture
     # only the crawl latency, not any later processing overhead.
@@ -50,9 +52,7 @@ async def timed_crawl(crawler: AsyncWebCrawler, label: str, mode: CacheMode) -> 
     print(label, "success=", result.success, "seconds=", f"{elapsed:.2f}")
 
 
-################################# Main Demo ##################################
-
-
+############################ Main Demo ############################
 async def main() -> None:
     """Compare Crawl4AI's three primary cache modes by timing the same URL.
 
@@ -78,7 +78,6 @@ async def main() -> None:
     # Sharing the session avoids the overhead of launching a new headless
     # browser for each call, keeping the timing comparison fair.
     async with AsyncWebCrawler() as crawler:
-
         # First crawl: ENABLED mode — this will hit the network because the
         # cache is cold (or stale), then store the result for future reads.
         await timed_crawl(crawler, "enabled-first", CacheMode.ENABLED)
@@ -94,9 +93,6 @@ async def main() -> None:
         await timed_crawl(crawler, "bypass", CacheMode.BYPASS)
 
 
-################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to execute the
-# async main() coroutine from a synchronous context.
+############################ Entry Point ########################
 if __name__ == "__main__":
     asyncio.run(main())

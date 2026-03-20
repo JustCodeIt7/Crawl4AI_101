@@ -37,10 +37,10 @@ async def crawl_once(label: str, config: BrowserConfig) -> None:
         f"\n{label}:\nsuccess={result.success}"
         f"\nbrowser={config.browser_type} "
         f"\nviewport={config.viewport_width}x{config.viewport_height} "
-        f"\nchars={len(result.markdown.fit_markdown)} "
+        f"\nchars={len(result.markdown)} "
         f"\ntime={elapsed:.2f}s\n"
     )
-    print(result.markdown[:500] + "...\n")  # Print a snippet of the result
+    # print(result.markdown[:1000] + "...\n")  # Print a snippet of the result
 
 
 ############################### Main Workflow ###############################
@@ -56,7 +56,7 @@ async def main() -> None:
         # e.g "AppleWebKit/537.36 Chrome/91.0.4472.124 Safari/537.36"
         # Rotate to avoid fingerprinting detection, get more realistic results
         user_agent_mode="random",
-        verbose=False,
+        verbose=True,
     )
     # Derive a mobile variant by cloning and overriding only the viewport
     mobile_browser = base_browser.clone(
