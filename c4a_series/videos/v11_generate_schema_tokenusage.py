@@ -20,7 +20,7 @@ from crawl4ai import (
     LLMConfig,
 )
 
-from c4a_series.common.io import SCHEMA_CACHE_DIR, load_env, write_json
+from c4a_series.videos.common.io import SCHEMA_CACHE_DIR, load_env, write_json
 
 # Target URL — the Crawl4AI quickstart documentation page we want to extract
 # structured data from
@@ -115,7 +115,9 @@ async def main() -> None:
     strategy = JsonCssExtractionStrategy(schema, verbose=False)
 
     # Combine the extraction strategy with a fresh (non-cached) crawl config
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False
+    )
 
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=URL, config=config)

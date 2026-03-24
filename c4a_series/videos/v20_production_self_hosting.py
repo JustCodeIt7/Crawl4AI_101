@@ -21,7 +21,7 @@ from crawl4ai import (
     RoundRobinProxyStrategy,
 )
 
-from c4a_series.common.io import load_env
+from c4a_series.videos.common.io import load_env
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -53,7 +53,9 @@ async def local_sdk_demo() -> None:
         proxy_config=proxies[0] if len(proxies) == 1 else None,
         # RoundRobinProxyStrategy rotates through the proxy list in order,
         # distributing requests evenly to avoid hitting per-IP rate limits
-        proxy_rotation_strategy=RoundRobinProxyStrategy(proxies) if len(proxies) > 1 else None,
+        proxy_rotation_strategy=RoundRobinProxyStrategy(proxies)
+        if len(proxies) > 1
+        else None,
         # fetch_ssl_certificate=True retrieves the TLS certificate presented by
         # the server, enabling downstream validation or certificate pinning checks
         fetch_ssl_certificate=True,
@@ -77,7 +79,9 @@ async def local_sdk_demo() -> None:
     # enable_stealth=True activates a collection of bot-detection evasion
     # techniques (e.g., masking navigator.webdriver, spoofing browser
     # fingerprints) to make the headless browser appear more like a real user
-    async with AsyncWebCrawler(config=BrowserConfig(headless=True, enable_stealth=True, verbose=False)) as crawler:
+    async with AsyncWebCrawler(
+        config=BrowserConfig(headless=True, enable_stealth=True, verbose=False)
+    ) as crawler:
         result = await crawler.arun(url=URL, config=run_config)
 
     # Safely extract the optional production-feature fields from the result
@@ -127,7 +131,9 @@ async def self_host_demo() -> None:
             result = await client.crawl(
                 [URL],
                 browser_config=BrowserConfig(headless=True, verbose=False),
-                crawler_config=CrawlerRunConfig(cache_mode=CacheMode.BYPASS, verbose=False),
+                crawler_config=CrawlerRunConfig(
+                    cache_mode=CacheMode.BYPASS, verbose=False
+                ),
             )
 
         # client.crawl() returns either a list of results (one per URL) or a

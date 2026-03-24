@@ -14,7 +14,7 @@ from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import BM25ContentFilter, PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 
-from c4a_series.common.io import fit_markdown, preview, raw_markdown
+from c4a_series.videos.common.io import fit_markdown, preview, raw_markdown
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -40,7 +40,9 @@ async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> Non
     """
     # Attach the generator to the run config so Crawl4AI uses the chosen
     # filter strategy when converting the crawled HTML to markdown
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False
+    )
 
     # Launch an async crawler session — the context manager handles headless
     # browser startup and teardown automatically
@@ -64,7 +66,15 @@ async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> Non
 
     # Print a one-line summary: label, raw size, fit size, and a short preview
     # of the fit output so we can visually verify what was kept
-    print(label, "raw=", len(raw_text), "fit=", len(fit_text), "preview=", preview(fit_text, 160))
+    print(
+        label,
+        "raw=",
+        len(raw_text),
+        "fit=",
+        len(fit_text),
+        "preview=",
+        preview(fit_text, 160),
+    )
 
 
 ################################# Main Routine ###############################
@@ -98,13 +108,17 @@ async def main() -> None:
     # Configure a pruning-based generator — no query required; the filter
     # decides relevance purely from the page's own statistical distribution
     pruning = DefaultMarkdownGenerator(
-        content_filter=PruningContentFilter(threshold=0.45, threshold_type="dynamic", min_word_threshold=5)
+        content_filter=PruningContentFilter(
+            threshold=0.45, threshold_type="dynamic", min_word_threshold=5
+        )
     )
 
     # Configure a BM25-based generator — the query string steers which blocks
     # are considered relevant to the topic we care about
     bm25 = DefaultMarkdownGenerator(
-        content_filter=BM25ContentFilter(user_query="installation quickstart browser config", bm25_threshold=1.0)
+        content_filter=BM25ContentFilter(
+            user_query="installation quickstart browser config", bm25_threshold=1.0
+        )
     )
 
     # Run both filters against the same URL so the size and content differences

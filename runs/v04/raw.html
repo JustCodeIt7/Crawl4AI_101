@@ -1,0 +1,1713 @@
+<!DOCTYPE html><html lang="en" data-theme="dark" class="hydrated" style="scroll-padding-top: 0px;"><head>
+    
+    <meta charset="UTF-8"><style data-styles="">feedback-button,feedback-modal,canvas-editor{visibility:hidden}.hydrated{visibility:inherit}</style>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="generator" content="mkdocs-1.6.1, mkdocs-terminal-4.7.0">
+    
+    <meta name="description" content="🚀🤖 Crawl4AI, Open-source LLM-Friendly Web Crawler &amp; Scraper"> 
+     
+    
+    <link rel="canonical" href="https://docs.crawl4ai.com/"><link rel="icon" type="image/png" sizes="192x192" href="img/android-chrome-192x192.png">
+<link rel="icon" type="image/png" sizes="512x512" href="img/android-chrome-512x512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+<link rel="shortcut icon" type="image/png" sizes="48x48" href="img/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+
+
+    
+ 
+<title>Home - Crawl4AI Documentation (v0.8.x)</title>
+
+
+<link href="css/fontawesome/css/fontawesome.min.css" rel="stylesheet">
+<link href="css/fontawesome/css/solid.min.css" rel="stylesheet">
+<link href="css/normalize.css" rel="stylesheet">
+<link href="css/terminal.css" rel="stylesheet">
+<link href="css/theme.css" rel="stylesheet">
+<link href="css/theme.tile_grid.css" rel="stylesheet">
+<link href="css/theme.footer.css" rel="stylesheet">
+<!-- dark color palette -->
+<link href="css/palettes/dark.css" rel="stylesheet">
+
+<!-- page layout -->
+<style>
+/* initially set page layout to a one column grid */
+.terminal-mkdocs-main-grid {
+    display: grid;
+    grid-column-gap: 1.4em;
+    grid-template-columns: auto;
+    grid-template-rows: auto;
+}
+
+/*  
+*   when side navigation is not hidden, use a two column grid.  
+*   if the screen is too narrow, fall back to the initial one column grid layout.
+*   in this case the main content will be placed under the navigation panel. 
+*/
+@media only screen and (min-width: 70em) {
+    .terminal-mkdocs-main-grid {
+        grid-template-columns: 4fr 9fr;
+    }
+}</style>
+
+
+
+    
+    <link href="assets/layout.css" rel="stylesheet"> 
+    <link href="assets/styles.css" rel="stylesheet"> 
+    <link href="assets/highlight.css" rel="stylesheet"> 
+    <link href="assets/dmvendor.css" rel="stylesheet"> 
+    <link href="assets/feedback-overrides.css" rel="stylesheet"> 
+    <link href="assets/page_actions.css" rel="stylesheet">  
+    
+    
+
+<script>
+    document.documentElement.setAttribute("data-theme", "dark");
+</script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/pushfeedback/dist/pushfeedback/pushfeedback.css">
+
+<style>
+    :root {
+        /* brand */
+        --feedback-primary-color: #09b5a5;
+        --feedback-highlight-color: #fed500;
+
+
+        /* align with the value you really use in :root */
+        --header-height: 65px;
+
+        /* Push modal content down */
+        --feedback-modal-content-position-top: var(--header-height);
+
+        --feedback-modal-modal-wrapper-z-index: 1100;
+        /*  >  header’s 1000 */
+        --feedback-modal-content-z-index: 1101;
+    }
+
+    feedback-modal::part(overlay) {
+        top: var(--header-height);
+        /* start below header */
+        height: calc(100vh - var(--header-height));
+        /* fill the rest */
+
+
+    }
+</style>
+<script type="module" src="https://cdn.jsdelivr.net/npm/pushfeedback@latest/dist/pushfeedback/pushfeedback.esm.js"></script>
+
+
+    
+    <!-- search css support -->
+<link href="css/search/bootstrap-modal.css" rel="stylesheet">
+<!-- search scripts -->
+<script>
+    var base_url = ".",
+    shortcuts = "{}";
+</script>
+<script src="js/jquery/jquery-1.10.1.min.js" defer=""></script>
+<script src="js/bootstrap/bootstrap.min.js" defer=""></script>
+<script src="js/mkdocs/base.js" defer=""></script>
+    
+    
+    
+    
+    <script src="https://www.googletagmanager.com/gtag/js?id=G-58W0K2ZQ25"></script>
+    
+    <script src="assets/gtag.js"></script>
+    
+    <script src="assets/highlight.min.js"></script>
+    
+    <script src="assets/highlight_init.js"></script>
+    
+    <script src="https://buttons.github.io/buttons.js"></script>
+    
+    <script src="assets/toc.js"></script>
+    
+    <script src="assets/github_stats.js"></script>
+    
+    <script src="assets/selection_ask_ai.js"></script>
+    
+    <script src="assets/copy_code.js"></script>
+    
+    <script src="assets/floating_ask_ai_button.js"></script>
+    
+    <script src="assets/mobile_menu.js"></script>
+    
+    <script src="assets/page_actions.js?v=20251006"></script>
+    
+    <script src="search/main.js"></script>
+    
+
+    
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500&amp;display=swap" rel="stylesheet"></head>
+
+<body class="terminal" style=""><div class="container"><button class="mobile-menu-toggle" aria-label="Toggle navigation menu">
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+        <span class="hamburger-line"></span>
+    </button>
+    <div class="terminal-nav">
+        <header class="terminal-logo">
+            <div id="mkdocs-terminal-site-name" class="logo terminal-prompt"><a href="https://docs.crawl4ai.com/" class="no-style">Crawl4AI Documentation (v0.8.x)</a></div>
+        </header>
+        
+        <nav class="terminal-menu">
+            
+            <ul vocab="https://schema.org/" typeof="BreadcrumbList">
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="." class="menu-item active" property="item" typeof="WebPage">
+                        <span property="name">Home</span>
+                    </a>
+                    <meta property="position" content="0">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="stats/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Growth</span>
+                    </a>
+                    <meta property="position" content="1">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="core/ask-ai/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Ask AI</span>
+                    </a>
+                    <meta property="position" content="2">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="core/quickstart/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Quick Start</span>
+                    </a>
+                    <meta property="position" content="3">
+                </li>
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="core/examples/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Code Examples</span>
+                    </a>
+                    <meta property="position" content="4">
+                </li>
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                
+                <li property="itemListElement" typeof="ListItem">
+                    <a href="branding/" class="menu-item " property="item" typeof="WebPage">
+                        <span property="name">Brand Book</span>
+                    </a>
+                    <meta property="position" content="5">
+                </li>
+                
+                
+                
+                    
+                    
+
+
+<li property="itemListElement" typeof="ListItem">
+    <a href="#" class="menu-item" data-toggle="modal" data-target="#mkdocs_search_modal" property="item" typeof="SearchAction">
+        <i aria-hidden="true" class="fa fa-search"></i> <span property="name">Search</span>
+    </a>
+    <meta property="position" content="6">
+</li>
+                    
+            </ul>
+            
+        </nav>
+    </div>
+</div>
+        
+    <div class="container">
+        <div class="terminal-mkdocs-main-grid"><aside id="terminal-mkdocs-side-panel"><button class="mobile-menu-close" aria-label="Close navigation menu">×</button><nav>
+  
+    <ul class="terminal-mkdocs-side-nav-items">
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        <span class="
+
+    terminal-mkdocs-side-nav-item--active">Home</span>
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="stats/">Growth</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/ask-ai/">Ask AI</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/quickstart/">Quick Start</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/examples/">Code Examples</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Apps</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="apps/">Demo Apps</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="apps/c4a-script/">C4A-Script Editor</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="apps/llmtxt/">LLM Context Builder</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="marketplace/">Marketplace</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="marketplace/admin/">Marketplace Admin</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Setup &amp; Installation</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/installation/">Installation</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/self-hosting/">Self-Hosting Guide</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Blog &amp; Changelog</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="blog/">Blog Home</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="https://github.com/unclecode/crawl4ai/blob/main/CHANGELOG.md">Changelog</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Core</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/cli/">Command Line Interface</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/simple-crawling/">Simple Crawling</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/deep-crawling/">Deep Crawling</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/adaptive-crawling/">Adaptive Crawling</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/url-seeding/">URL Seeding</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/c4a-script/">C4A-Script</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/crawler-result/">Crawler Result</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/browser-crawler-config/">Browser, Crawler &amp; LLM Config</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/markdown-generation/">Markdown Generation</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/fit-markdown/">Fit Markdown</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/page-interaction/">Page Interaction</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/content-selection/">Content Selection</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/cache-modes/">Cache Modes</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/local-files/">Local Files &amp; Raw HTML</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="core/link-media/">Link &amp; Media</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Advanced</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/advanced-features/">Overview</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/adaptive-strategies/">Adaptive Strategies</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/virtual-scroll/">Virtual Scroll</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/file-downloading/">File Downloading</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/lazy-loading/">Lazy Loading</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/hooks-auth/">Hooks &amp; Auth</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/proxy-security/">Proxy &amp; Security</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/anti-bot-and-fallback/">Anti-Bot &amp; Fallback</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/undetected-browser/">Undetected Browser</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/session-management/">Session Management</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/multi-url-crawling/">Multi-URL Crawling</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/crawl-dispatcher/">Crawl Dispatcher</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/identity-based-crawling/">Identity Based Crawling</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/ssl-certificate/">SSL Certificate</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/network-console-capture/">Network &amp; Console Capture</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="advanced/pdf-parsing/">PDF Parsing</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Extraction</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="extraction/no-llm-strategies/">LLM-Free Strategies</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="extraction/llm-strategies/">LLM Strategies</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="extraction/clustring-strategies/">Clustering Strategies</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="extraction/chunking/">Chunking</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">API Reference</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/async-webcrawler/">AsyncWebCrawler</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/arun/">arun()</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/arun_many/">arun_many()</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/parameters/">Browser, Crawler &amp; LLM Config</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/crawl-result/">CrawlResult</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/strategies/">Strategies</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="api/c4a-script-reference/">C4A-Script Reference</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="branding/">Brand Book</a>
+        
+    
+    
+    
+  </li>
+        
+          
+
+
+
+<li class="terminal-mkdocs-side-nav-li">
+    
+    
+        
+        
+
+        
+            
+    
+        
+        
+            
+            
+            <span class="
+        
+    
+
+    terminal-mkdocs-side-nav-item terminal-mkdocs-side-nav-section-no-index">Community</span>
+        
+    
+    
+        
+      
+        
+            <ul class="terminal-mkdocs-side-nav-li-ul">
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="CONTRIBUTING/">Contributing Guide</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="https://github.com/unclecode/crawl4ai/blob/main/CODE_OF_CONDUCT.md">Code of Conduct</a>
+        
+    
+    </li>
+            
+        
+            
+            
+
+             
+                <li class="terminal-mkdocs-side-nav-li-ul-li">
+    
+        
+        
+            <a class="
+
+    terminal-mkdocs-side-nav-item" href="https://github.com/unclecode/crawl4ai/blob/main/CONTRIBUTORS.md">Contributors</a>
+        
+    
+    </li>
+            
+            
+    </ul>
+        
+    
+  </li>
+        
+    </ul>
+  
+</nav><hr>
+<nav>
+    <ul>
+        <li><a href="#crawl4ai-open-source-llm-friendly-web-crawler-scraper">🚀🤖 Crawl4AI: Open-Source LLM-Friendly Web Crawler &amp; Scraper</a></li>
+        <li><a href="#crawl4ai-cloud-api-closed-beta-launching-soon">🚀 Crawl4AI Cloud API — Closed Beta (Launching Soon)</a></li><li><a href="#ai-assistant-skill-now-available">🆕 AI Assistant Skill Now Available!</a></li><li><a href="#new-adaptive-web-crawling">🎯 New: Adaptive Web Crawling</a></li><li><a href="#quick-start">Quick Start</a></li><li><a href="#video-tutorial">Video Tutorial</a></li><li><a href="#what-does-crawl4ai-do">What Does Crawl4AI Do?</a></li><li><a href="#documentation-structure">Documentation Structure</a></li><li><a href="#how-you-can-support">How You Can Support</a></li><li><a href="#quick-links">Quick Links</a></li>
+    </ul>
+</nav>
+</aside>
+            <main id="terminal-mkdocs-main-content">
+<section id="mkdocs-terminal-content">
+    <h1 id="crawl4ai-open-source-llm-friendly-web-crawler-scraper">🚀🤖 Crawl4AI: Open-Source LLM-Friendly Web Crawler &amp; Scraper</h1>
+<div class="badges" align="center">
+
+  <p>
+    <a href="https://trendshift.io/repositories/11716" target="_blank">
+      <img src="https://trendshift.io/api/badge/repositories/11716" alt="unclecode%2Fcrawl4ai | Trendshift" style="width: 250px; height: 55px;" width="250" height="55">
+    </a>
+
+  </p>
+
+  <p>
+    <a href="https://github.com/unclecode/crawl4ai/stargazers">
+      <img src="https://img.shields.io/github/stars/unclecode/crawl4ai?style=social" alt="GitHub Stars">
+    </a>
+    <a href="https://github.com/unclecode/crawl4ai/network/members">
+      <img src="https://img.shields.io/github/forks/unclecode/crawl4ai?style=social" alt="GitHub Forks">
+    </a>
+    <a href="https://badge.fury.io/py/crawl4ai">
+      <img src="https://badge.fury.io/py/crawl4ai.svg" alt="PyPI version">
+    </a>
+  </p>
+
+  <p>
+    <a href="https://pypi.org/project/crawl4ai/">
+      <img src="https://img.shields.io/pypi/pyversions/crawl4ai" alt="Python Version" width="198" height="20">
+    </a>
+    <a href="https://pepy.tech/project/crawl4ai">
+      <img src="https://static.pepy.tech/badge/crawl4ai/month" alt="Downloads" width="136" height="20">
+    </a>
+    <a href="https://github.com/unclecode/crawl4ai/blob/main/LICENSE">
+      <img src="https://img.shields.io/github/license/unclecode/crawl4ai" alt="License" width="120" height="20">
+    </a>
+  </p>
+  <p align="center">
+    <a href="https://x.com/crawl4ai">
+      <img src="https://img.shields.io/badge/Follow%20on%20X-000000?style=for-the-badge&amp;logo=x&amp;logoColor=white" alt="Follow on X" width="136" height="28">
+    </a>
+    <a href="https://www.linkedin.com/company/crawl4ai">
+      <img src="https://img.shields.io/badge/Follow%20on%20LinkedIn-0077B5?style=for-the-badge&amp;logo=linkedin&amp;logoColor=white" alt="Follow on LinkedIn" width="175" height="28">
+    </a>
+    <a href="https://discord.gg/jP8KfhDhyN">
+      <img src="https://img.shields.io/badge/Join%20our%20Discord-5865F2?style=for-the-badge&amp;logo=discord&amp;logoColor=white" alt="Join our Discord" width="175" height="28">
+    </a>
+  </p>
+
+</div>
+
+<hr>
+<h4 id="crawl4ai-cloud-api-closed-beta-launching-soon">🚀 Crawl4AI Cloud API — Closed Beta (Launching Soon)</h4>
+<p>Reliable, large-scale web extraction, now built to be <em><strong>drastically more cost-effective</strong></em> than any of the existing solutions.</p>
+<p>👉 <strong>Apply <a href="https://forms.gle/E9MyPaNXACnAMaqG7">here</a> for early access</strong><br>
+<em>We’ll be onboarding in phases and working closely with early users.
+Limited slots.</em></p>
+<hr>
+<p>Crawl4AI is the #1 trending GitHub repository, actively maintained by a vibrant community. It delivers blazing-fast, AI-ready web crawling tailored for large language models, AI agents, and data pipelines. Fully open source, flexible, and built for real-time performance, <strong>Crawl4AI</strong> empowers developers with unmatched speed, precision, and deployment ease.</p>
+<blockquote>
+<p>Enjoy using Crawl4AI? Consider <strong><a href="https://github.com/sponsors/unclecode">becoming a sponsor</a></strong> to support ongoing development and community growth!</p>
+</blockquote>
+<h2 id="ai-assistant-skill-now-available">🆕 AI Assistant Skill Now Available!</h2>
+<div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); padding: 20px; border-radius: 10px; margin: 20px 0; box-shadow: 0 4px 6px rgba(0,0,0,0.1);">
+  <h3 style="color: white; margin: 0 0 10px 0;" id="toc-heading-2--crawl4ai-skill-for-claude--ai-assistants">🤖 Crawl4AI Skill for Claude &amp; AI Assistants</h3>
+  <p style="color: white; margin: 10px 0;">Supercharge your AI coding assistant with complete Crawl4AI knowledge! Download our comprehensive skill package that includes:</p>
+  <ul style="color: white; margin: 10px 0;">
+    <li>📚 Complete SDK reference (23K+ words)</li>
+    <li>🚀 Ready-to-use extraction scripts</li>
+    <li>⚡ Schema generation for efficient scraping</li>
+    <li>🔧 Version 0.7.4 compatible</li>
+  </ul>
+  <div style="text-align: center; margin-top: 15px;">
+    <a href="assets/crawl4ai-skill.zip" download="" style="background: white; color: #667eea; padding: 12px 30px; border-radius: 5px; text-decoration: none; font-weight: bold; display: inline-block; transition: transform 0.2s;">
+      📦 Download Skill Package
+    </a>
+  </div>
+  <p style="color: white; margin: 15px 0 0 0; font-size: 0.9em; text-align: center;">
+    Works with Claude, Cursor, Windsurf, and other AI coding assistants. Import the .zip file into your AI assistant's skill/knowledge system.
+  </p>
+</div>
+
+<h2 id="new-adaptive-web-crawling">🎯 New: Adaptive Web Crawling</h2>
+<p>Crawl4AI now features intelligent adaptive crawling that knows when to stop! Using advanced information foraging algorithms, it determines when sufficient information has been gathered to answer your query.</p>
+<p><a href="core/adaptive-crawling/">Learn more about Adaptive Crawling →</a></p>
+<h2 id="quick-start">Quick Start</h2>
+<p>Here's a quick example to show you how easy it is to use Crawl4AI with its asynchronous capabilities:</p>
+<div class="highlight"><pre><span></span><code data-highlighted="yes" class="hljs language-python"><span class="hljs-keyword">import</span> asyncio
+<span class="hljs-keyword">from</span> crawl4ai <span class="hljs-keyword">import</span> AsyncWebCrawler
+
+<span class="hljs-keyword">async</span> <span class="hljs-keyword">def</span> <span class="hljs-title function_">main</span>():
+    <span class="hljs-comment"># Create an instance of AsyncWebCrawler</span>
+    <span class="hljs-keyword">async</span> <span class="hljs-keyword">with</span> AsyncWebCrawler() <span class="hljs-keyword">as</span> crawler:
+        <span class="hljs-comment"># Run the crawler on a URL</span>
+        result = <span class="hljs-keyword">await</span> crawler.arun(url=<span class="hljs-string">"https://crawl4ai.com"</span>)
+
+        <span class="hljs-comment"># Print the extracted content</span>
+        <span class="hljs-built_in">print</span>(result.markdown)
+
+<span class="hljs-comment"># Run the async main function</span>
+asyncio.run(main())
+</code><button class="copy-code-button" type="button" aria-label="Copy code to clipboard" title="Copy code to clipboard">Copy</button></pre></div>
+<hr>
+<h2 id="video-tutorial">Video Tutorial</h2>
+<div align="center">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/xo3qK6Hg9AA?start=15" title="Crawl4AI Tutorial" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=""></iframe>
+</div>
+
+<hr>
+<h2 id="what-does-crawl4ai-do">What Does Crawl4AI Do?</h2>
+<p>Crawl4AI is a feature-rich crawler and scraper that aims to:</p>
+<p>1. <strong>Generate Clean Markdown</strong>: Perfect for RAG pipelines or direct ingestion into LLMs.<br>
+2. <strong>Structured Extraction</strong>: Parse repeated patterns with CSS, XPath, or LLM-based extraction.<br>
+3. <strong>Advanced Browser Control</strong>: Hooks, proxies, stealth modes, session re-use—fine-grained control.<br>
+4. <strong>High Performance</strong>: Parallel crawling, chunk-based extraction, real-time use cases.<br>
+5. <strong>Open Source</strong>: No forced API keys, no paywalls—everyone can access their data.  </p>
+<p><strong>Core Philosophies</strong>:
+- <strong>Democratize Data</strong>: Free to use, transparent, and highly configurable.<br>
+- <strong>LLM Friendly</strong>: Minimally processed, well-structured text, images, and metadata, so AI models can easily consume it.</p>
+<hr>
+<h2 id="documentation-structure">Documentation Structure</h2>
+<p>To help you get started, we’ve organized our docs into clear sections:</p>
+<ul>
+<li><strong>Setup &amp; Installation</strong><br>
+  Basic instructions to install Crawl4AI via pip or Docker.  </li>
+<li><strong>Quick Start</strong><br>
+  A hands-on introduction showing how to do your first crawl, generate Markdown, and do a simple extraction.  </li>
+<li><strong>Core</strong><br>
+  Deeper guides on single-page crawling, advanced browser/crawler parameters, content filtering, and caching.  </li>
+<li><strong>Advanced</strong><br>
+  Explore link &amp; media handling, lazy loading, hooking &amp; authentication, proxies, session management, and more.  </li>
+<li><strong>Extraction</strong><br>
+  Detailed references for no-LLM (CSS, XPath) vs. LLM-based strategies, chunking, and clustering approaches.  </li>
+<li><strong>API Reference</strong><br>
+  Find the technical specifics of each class and method, including <code>AsyncWebCrawler</code>, <code>arun()</code>, and <code>CrawlResult</code>.</li>
+</ul>
+<p>Throughout these sections, you’ll find code samples you can <strong>copy-paste</strong> into your environment. If something is missing or unclear, raise an issue or PR.</p>
+<hr>
+<h2 id="how-you-can-support">How You Can Support</h2>
+<ul>
+<li><strong>Star &amp; Fork</strong>: If you find Crawl4AI helpful, star the repo on GitHub or fork it to add your own features.  </li>
+<li><strong>File Issues</strong>: Encounter a bug or missing feature? Let us know by filing an issue, so we can improve.  </li>
+<li><strong>Pull Requests</strong>: Whether it’s a small fix, a big feature, or better docs—contributions are always welcome.  </li>
+<li><strong>Join Discord</strong>: Come chat about web scraping, crawling tips, or AI workflows with the community.  </li>
+<li><strong>Spread the Word</strong>: Mention Crawl4AI in your blog posts, talks, or on social media.  </li>
+</ul>
+<p><strong>Our mission</strong>: to empower everyone—students, researchers, entrepreneurs, data scientists—to access, parse, and shape the world’s data with speed, cost-efficiency, and creative freedom.</p>
+<hr>
+<h2 id="quick-links">Quick Links</h2>
+<ul>
+<li><strong><a href="https://github.com/unclecode/crawl4ai">GitHub Repo</a></strong>  </li>
+<li><strong><a href="core/installation/">Installation Guide</a></strong>  </li>
+<li><strong><a href="core/quickstart/">Quick Start</a></strong>  </li>
+<li><strong><a href="api/async-webcrawler/">API Reference</a></strong>  </li>
+<li><strong><a href="https://github.com/unclecode/crawl4ai/blob/main/CHANGELOG.md">Changelog</a></strong>  </li>
+</ul>
+<p>Thank you for joining me on this journey. Let’s keep building an <strong>open, democratic</strong> approach to data extraction and AI together.</p>
+<p>Happy Crawling!<br>
+— <em>Unclecode, Founder &amp; Maintainer of Crawl4AI</em>  </p>
+</section>
+
+            </main>
+        <aside id="toc-sidebar" style=""><h4>On this page</h4><ul><li class="toc-level-4"><a href="#crawl4ai-cloud-api-closed-beta-launching-soon">🚀 Crawl4AI Cloud API — Closed Beta (Launching Soon)</a></li><li class="toc-level-2"><a href="#ai-assistant-skill-now-available">🆕 AI Assistant Skill Now Available!</a></li><li class="toc-level-3"><a href="#toc-heading-2--crawl4ai-skill-for-claude--ai-assistants">🤖 Crawl4AI Skill for Claude &amp; AI Assistants</a></li><li class="toc-level-2"><a href="#new-adaptive-web-crawling">🎯 New: Adaptive Web Crawling</a></li><li class="toc-level-2"><a href="#quick-start">Quick Start</a></li><li class="toc-level-2"><a href="#video-tutorial">Video Tutorial</a></li><li class="toc-level-2"><a href="#what-does-crawl4ai-do">What Does Crawl4AI Do?</a></li><li class="toc-level-2"><a href="#documentation-structure">Documentation Structure</a></li><li class="toc-level-2"><a href="#how-you-can-support">How You Can Support</a></li><li class="toc-level-2"><a href="#quick-links">Quick Links</a></li></ul></aside></div>
+        <hr>
+<feedback-button project="w8plzp8vjp" button-style="dark" button-position="center-right" modal-position="sidebar-right" session-id="ahil6j8233o" class="hydrated">
+    &gt;
+    Feedback
+</feedback-button>
+
+    </div>
+
+    
+    <div class="modal" id="mkdocs_search_modal" tabindex="-1" role="alertdialog" aria-modal="true" aria-labelledby="searchModalLabel">
+    <div class="modal-dialog modal-lg" role="search">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="searchModalLabel">Search</h5>
+                <button type="button" class="close btn btn-default btn-ghost" data-dismiss="modal"><span aria-hidden="true">x</span><span class="sr-only">Close</span></button>
+            </div>
+            <div class="modal-body">
+                <p id="searchInputLabel">Type to start searching</p>
+                <form>
+                    <div class="form-group">
+                        <input type="search" class="form-control" aria-labelledby="searchInputLabel" placeholder="" id="mkdocs-search-query" title="Please enter search terms here">
+                    </div>
+                </form>
+                <div id="mkdocs-search-results" data-no-results-text="No document matches found"></div>
+            </div>
+            <div class="modal-footer">
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+
+
+<feedback-modal class="hydrated"></feedback-modal><a class="floating-ask-ai-button" href="/core/ask-ai/" title="Ask Crawl4AI Assistant" aria-label="Ask Crawl4AI Assistant">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="24" height="24" fill="currentColor">
+            <path d="M20 2H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14l4 4V4c0-1.1-.9-2-2-2zm-2 12H6v-2h12v2zm0-3H6V9h12v2zm0-3H6V6h12v2z"></path>
+        </svg>
+        <span>Ask AI</span>
+    </a><div class="mobile-menu-backdrop" style="display: none;"></div></body></html>

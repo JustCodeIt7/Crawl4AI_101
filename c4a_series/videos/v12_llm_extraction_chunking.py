@@ -14,14 +14,21 @@ from pydantic import BaseModel, Field
 if __package__ in {None, ""}:
     sys.path.append(str(Path(__file__).resolve().parents[2]))
 
-from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig, LLMConfig, LLMExtractionStrategy
+from crawl4ai import (
+    AsyncWebCrawler,
+    CacheMode,
+    CrawlerRunConfig,
+    LLMConfig,
+    LLMExtractionStrategy,
+)
 
-from c4a_series.common.io import load_env
+from c4a_series.videos.common.io import load_env
 
 # Target URL — the Crawl4AI quickstart documentation page
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
 ############################ Output Schema Definition ########################
+
 
 # Pydantic model that defines the structured JSON shape we want the LLM to
 # produce. Crawl4AI serialises this into a JSON Schema and passes it to the
@@ -57,37 +64,29 @@ async def main() -> None:
     strategy = LLMExtractionStrategy(
         # Which LLM to call and how to authenticate with it
         llm_config=LLMConfig(provider="openai/gpt-4o-mini", api_token=api_key),
-
         # Pass the JSON Schema derived from our Pydantic model so the LLM
         # knows the exact field names and types it must populate
         schema=PageSummary.model_json_schema(),
-
         # extraction_type="schema" tells the strategy to validate and coerce
         # the LLM response against the provided JSON Schema (as opposed to
         # "block" mode which returns free-form labelled text blocks)
         extraction_type="schema",
-
         # Natural-language prompt appended to each chunk sent to the LLM
         instruction="Extract the page title and 3 to 5 quickstart steps as JSON.",
-
         # input_format="fit_markdown" converts the crawled HTML into a compact
         # markdown representation before passing it to the LLM, reducing token
         # usage compared to sending raw HTML
         input_format="fit_markdown",
-
         # ── Chunking parameters ──────────────────────────────────────────────
         # chunk_token_threshold: maximum number of tokens per chunk; content
         # exceeding this limit is split into multiple LLM calls
         chunk_token_threshold=1400,
-
         # overlap_rate: fraction of each chunk that is repeated at the start of
         # the next chunk (0.1 = 10% overlap) so context is not lost at split points
         overlap_rate=0.1,
-
         # apply_chunking: set to True to enable the chunking behaviour described
         # above; set to False to send the entire page in a single LLM call
         apply_chunking=True,
-
         # extra_args are passed directly to the underlying LLM API call,
         # allowing fine-grained control over sampling (temperature) and the
         # maximum number of tokens the model may generate per chunk (max_tokens)
@@ -96,7 +95,9 @@ async def main() -> None:
 
     # Attach the extraction strategy to the crawler run configuration and
     # bypass the cache so we always fetch a fresh copy of the page
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False
+    )
 
     # Run the crawl inside an async context manager — the browser is launched
     # on entry and shut down cleanly on exit
