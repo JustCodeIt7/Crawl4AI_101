@@ -1,25 +1,12 @@
 import asyncio
-import sys
-from pathlib import Path
-
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v04_crawlresult_masterclass.py`),
-# __package__ will be None or empty. In that case, add the project root (two levels
-# up) to sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
-
 from c4a_series.common.io import episode_dir, fit_markdown, raw_markdown, write_text
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
 
-############################ Main Crawl Routine ##############################
 
-
+##################### Main Crawl Routine #######################
 async def main() -> None:
     """Crawl a single URL and explore the key fields of the CrawlResult object.
 
@@ -62,8 +49,7 @@ async def main() -> None:
         print("error:", result.error_message)
         return
 
-    ########################### HTML Representations #########################
-
+    ##################### HTML Representations ####################
     # raw.html — the full, unmodified HTML exactly as the browser received it,
     # including all scripts, styles, and hidden elements
     write_text(out_dir / "raw.html", result.html or "")
@@ -76,7 +62,7 @@ async def main() -> None:
     # only the main body content; this is what feeds the fit markdown variant
     write_text(out_dir / "fit.html", result.fit_html or "")
 
-    ########################### Markdown Variants ############################
+    ######################## Markdown Variants #########################
 
     # raw.md — markdown converted from the full cleaned HTML; captures everything
     # on the page including navigation bars, footers, and sidebars
@@ -86,7 +72,7 @@ async def main() -> None:
     # content, making it more suitable for downstream LLM consumption
     write_text(out_dir / "fit.md", fit_markdown(result.markdown))
 
-    ########################### Links and Media ##############################
+    ######################## Links and Media #########################
 
     # result.links is a dict with "internal" and "external" keys, each holding
     # a list of link objects discovered on the page.
@@ -103,9 +89,6 @@ async def main() -> None:
     print("media_keys:", sorted((result.media or {}).keys()))
 
 
-################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to execute the
-# async main() coroutine from a synchronous context
+############################# Entry Point #########################
 if __name__ == "__main__":
     asyncio.run(main())
