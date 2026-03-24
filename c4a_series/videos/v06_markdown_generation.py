@@ -1,22 +1,6 @@
 import asyncio
-import sys
-from pathlib import Path
-
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v05_markdown_generation.py`),
-# __package__ will be None or empty. In that case, add the project root (two
-# levels up) to sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
-
-# DefaultMarkdownGenerator controls how Crawl4AI converts the crawled page into
-# markdown. The key parameter is `content_source`, which selects which version
-# of the page HTML is fed into the markdown pipeline.
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
-
 from c4a_series.common.io import preview, raw_markdown
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
@@ -62,7 +46,9 @@ async def crawl_with_source(source: str) -> None:
     # - BYPASS cache so we always fetch the live page instead of stale data
     # - Attach our custom markdown generator to override the default pipeline
     # - Disable verbose logging to keep console output focused on our comparisons
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False
+    )
 
     # Launch an async crawler session using a context manager, which handles
     # browser startup and teardown (Crawl4AI uses a headless browser under the hood)
@@ -86,8 +72,6 @@ async def crawl_with_source(source: str) -> None:
 
 
 ############################## Main Entry Logic ##############################
-
-
 async def main() -> None:
     """Run the same crawl three times, once for each supported content source.
 
@@ -103,8 +87,5 @@ async def main() -> None:
 
 
 ################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to execute the
-# async main() coroutine from a synchronous context
 if __name__ == "__main__":
     asyncio.run(main())

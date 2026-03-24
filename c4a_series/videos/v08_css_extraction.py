@@ -2,16 +2,12 @@ import asyncio
 import json
 import sys
 from pathlib import Path
-
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v08_css_extraction.py`),
-# __package__ will be None or empty. In that case, add the project root (two
-# levels up) to sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
-from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig, JsonCssExtractionStrategy
+from crawl4ai import (
+    AsyncWebCrawler,
+    CacheMode,
+    CrawlerRunConfig,
+    JsonCssExtractionStrategy,
+)
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -42,7 +38,13 @@ SCHEMA = {
         # type="attribute"   — extract an attribute rather than text content
         # attribute="href"   — the specific attribute to read
         # default=""         — fall back to an empty string if the attribute is absent
-        {"name": "href", "selector": "a", "type": "attribute", "attribute": "href", "default": ""},
+        {
+            "name": "href",
+            "selector": "a",
+            "type": "attribute",
+            "attribute": "href",
+            "default": "",
+        },
     ],
 }
 
@@ -61,7 +63,9 @@ async def main() -> None:
     # Attach the extraction strategy to a CrawlerRunConfig so it runs
     # automatically after the page is fetched and rendered
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False
+    )
 
     # Launch an async crawler session using a context manager, which handles
     # browser startup and teardown (Crawl4AI uses a headless browser under the hood)

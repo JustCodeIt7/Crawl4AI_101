@@ -7,16 +7,12 @@ Demonstrates:
 
 Prerequisites:
 - `pip install crawl4ai playwright`
-- `playwright install`
-
-Run:
-- `python crawl4ai_101/video_04_content_selection.py`
 """
 
 import asyncio
 import inspect
-
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
+from rich import print
 
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
@@ -58,11 +54,6 @@ async def main() -> None:
         f"target_elements markdown={len(focused_md)} "
         f"internal_links={len((focused.links or {}).get('internal', []))}"
     )
-
-    if supports_config_option("flatten_shadow_dom"):
-        print("flatten_shadow_dom is available in this Crawl4AI version.")
-    else:
-        print("flatten_shadow_dom is not available in this installed version.")
 
 
 if __name__ == "__main__":
