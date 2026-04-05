@@ -6,7 +6,8 @@ Demonstrates:
 - feature detection for newer options like flatten_shadow_dom
 
 Prerequisites:
-- `pip install crawl4ai playwright`
+- `pip install crawl4ai`
+- `crawl4ai-setup`
 """
 
 ################# Imports & Constants #################
@@ -18,26 +19,22 @@ from rich import print
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
 
-################# Helper Functions #################
-def supports_config_option(name: str) -> bool:
-    """Check if a given option exists in CrawlerRunConfig's signature."""
-    return name in inspect.signature(CrawlerRunConfig).parameters
-
-
 ################# Main Crawl Logic #################
 async def main() -> None:
     """Run two crawls to compare css_selector vs target_elements extraction."""
 
     # Limit extraction to content inside the <main> element only
     scoped_config = CrawlerRunConfig(
-        css_selector="main",
+        # css_selector="main",
+        css_selector="#mkdocs-terminal-content > ol:nth-child(3)",
         delay_before_return_html=0.5,  # Allow dynamic content to render
         verbose=False,
     )
 
     # Extract markdown from multiple elements while preserving full page context for links
     focused_config = CrawlerRunConfig(
-        target_elements=["main", "nav"],
+        # target_elements=["main", "nav"],
+        target_elements=["nav"],
         delay_before_return_html=0.5,
         verbose=False,
     )
@@ -56,21 +53,12 @@ async def main() -> None:
         return
 
     ################# Compare Results #################
-    # Extract raw markdown, falling back to string representation for older versions
-    scoped_md = getattr(scoped.markdown, "raw_markdown", str(scoped.markdown))
-    focused_md = getattr(focused.markdown, "raw_markdown", str(focused.markdown))
-
     # Display content size and link counts to illustrate the difference between strategies
-    print(
-        f"css_selector markdown={len(scoped_md)} "
-        f"internal_links={len((scoped.links or {}).get('internal', []))}"
-    )
-    print(scoped.markdown[:500])
-    print(
-        f"target_elements markdown={len(focused_md)} "
-        f"internal_links={len((focused.links or {}).get('internal', []))}"
-    )
-    print(focused.markdown[:500])
+    print(f"\nContent selection results for {URL}")
+    print(f"css_selector markdown={len(scoped.markdown)} internal_links={len((scoped.links or {}).get('internal', []))}")
+    print(scoped.markdown[:700])
+    print(f"\ntarget_elements markdown={len(focused.markdown)} internal_links={len((focused.links or {}).get('internal', []))}")
+    print(focused.markdown[:700])
 
 
 if __name__ == "__main__":
