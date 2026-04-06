@@ -7,8 +7,6 @@ from pathlib import Path
 # When running this script directly (e.g., `python 05.3_fit_markdown_filters.py`),
 # __package__ will be None or empty. In that case, add the project root (two
 # levels up) to sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
 
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import BM25ContentFilter, PruningContentFilter
