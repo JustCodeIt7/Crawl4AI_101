@@ -20,7 +20,8 @@ This repository contains practical examples and comparisons of different web scr
 ├── 01-Intro/                          # Introduction and beginner examples
 │   ├── 01-app.py                      # Basic Crawl4AI application
 │   └── 01-app_v3.py                   # Verbose comparison with rich output
-├── src/c4a_series/videos/             # 20 short YouTube tutorial scripts
+├── crawl4ai_101/                      # Advanced tutorial scripts and outputs
+├── src/c4_series/videos/             # 20 short YouTube tutorial scripts
 ├── use-browser_101/                   # Browser sanity checks and intro
 ├── crawl4ai_quickstart.py             # Quick start guide script
 ├── crawl4ai_quickstart.ipynb          # Interactive quickstart notebook

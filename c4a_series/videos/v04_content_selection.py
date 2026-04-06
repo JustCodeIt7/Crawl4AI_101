@@ -17,7 +17,6 @@ import asyncio
 import inspect
 from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
 from rich import print
-from torch import le
 
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
@@ -34,10 +33,10 @@ async def main() -> None:
         verbose=False,
     )
 
-    # Extract markdown from multiple elements while preserving full page context for links
+    # Extract markdown from multiple elements while preserving full page context
     focused_config = CrawlerRunConfig(
         # target_elements=["main", "nav"],
-        target_elements=["nav"],
+        target_elements=["main"],
         delay_before_return_html=0.5,
         verbose=False,
     )
@@ -51,7 +50,7 @@ async def main() -> None:
 
     # Drop any element matching a CSS selector (e.g. cookie banners, ads)
     excluded_selector_config = CrawlerRunConfig(
-        excluded_selector=".md-sidebar, .md-footer",
+        excluded_selector=".md-sidebar, .md-footer, main",
         delay_before_return_html=0.5,
         verbose=False,
     )
