@@ -1,1 +1,1 @@
-"""Crawl4AI YouTube tutorial series package."""
+"""Runnable tutorial scripts for each YouTube episode."""
