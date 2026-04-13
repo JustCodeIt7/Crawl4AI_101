@@ -1,0 +1,21 @@
+{
+  "name": "Product List",
+  "baseSelector": ".product-card",
+  "fields": [
+    {
+      "name": "name",
+      "selector": "h2",
+      "type": "text"
+    },
+    {
+      "name": "price",
+      "selector": ".price",
+      "type": "text"
+    },
+    {
+      "name": "rating",
+      "selector": ".rating",
+      "type": "text"
+    }
+  ]
+}

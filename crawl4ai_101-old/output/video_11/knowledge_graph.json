@@ -1,0 +1,113 @@
+{
+  "entities": [
+    {
+      "name": "Facebook, Inc.",
+      "description": "A social media company involved in a legal case regarding web scraping."
+    },
+    {
+      "name": "Power Ventures, Inc.",
+      "description": "A company that was ruled against for scraping Facebook pages."
+    },
+    {
+      "name": "Associated Press",
+      "description": "A news organization that held a legal case against Meltwater for scraping and republishing news."
+    },
+    {
+      "name": "Meltwater U.S. Holdings, Inc.",
+      "description": "A company that was held liable for scraping news information from the Associated Press."
+    },
+    {
+      "name": "hiQ Labs",
+      "description": "A company involved in a legal case against LinkedIn regarding web scraping."
+    },
+    {
+      "name": "LinkedIn",
+      "description": "A professional networking site involved in a legal case regarding web scraping."
+    },
+    {
+      "name": "Internet Archive",
+      "description": "An organization that collects and distributes publicly available web pages."
+    },
+    {
+      "name": "Danish Maritime and Commercial Court",
+      "description": "A court that ruled on the legality of web scraping in Denmark."
+    },
+    {
+      "name": "Ryanair",
+      "description": "An airline involved in a legal case regarding the enforceability of click-wrap agreements."
+    },
+    {
+      "name": "Billigfluege.de GmbH",
+      "description": "A company involved in a legal case against Ryanair regarding web scraping."
+    },
+    {
+      "name": "French Data Protection Authority (CNIL)",
+      "description": "The authority that released guidelines on web scraping in France."
+    },
+    {
+      "name": "Spam Act 2003",
+      "description": "An Australian law that outlaws certain forms of web harvesting."
+    },
+    {
+      "name": "Information Technology Act, 2000",
+      "description": "An Indian law that penalizes unauthorized access to computer resources."
+    }
+  ],
+  "relationships": [
+    {
+      "entity1": "Power Ventures, Inc.",
+      "entity2": "Facebook, Inc.",
+      "relation_type": "Legal Case",
+      "description": "Power Ventures was ruled against for scraping Facebook pages."
+    },
+    {
+      "entity1": "Meltwater U.S. Holdings, Inc.",
+      "entity2": "Associated Press",
+      "relation_type": "Legal Case",
+      "description": "Meltwater was held liable for scraping and republishing news from the Associated Press."
+    },
+    {
+      "entity1": "hiQ Labs",
+      "entity2": "LinkedIn",
+      "relation_type": "Legal Case",
+      "description": "hiQ Labs was involved in a legal case against LinkedIn regarding web scraping."
+    },
+    {
+      "entity1": "Internet Archive",
+      "entity2": "Copyright Laws",
+      "relation_type": "Compliance",
+      "description": "Internet Archive collects publicly available web pages without violating copyright laws."
+    },
+    {
+      "entity1": "Danish Maritime and Commercial Court",
+      "entity2": "ofir.dk",
+      "relation_type": "Legal Ruling",
+      "description": "The court ruled that systematic crawling and indexing by ofir.dk does not conflict with Danish law."
+    },
+    {
+      "entity1": "Ryanair",
+      "entity2": "Billigfluege.de GmbH",
+      "relation_type": "Legal Case",
+      "description": "Ryanair's click-wrap agreement was ruled legally binding in a case against Billigfluege.de."
+    },
+    {
+      "entity1": "French Data Protection Authority (CNIL)",
+      "entity2": "Web Scraping Guidelines",
+      "relation_type": "Guideline Release",
+      "description": "CNIL released guidelines clarifying that publicly available data is still personal data."
+    },
+    {
+      "entity1": "Spam Act 2003",
+      "entity2": "Web Harvesting",
+      "relation_type": "Legal Restriction",
+      "description": "The Spam Act 2003 outlaws certain forms of web harvesting in Australia."
+    },
+    {
+      "entity1": "Information Technology Act, 2000",
+      "entity2": "Unauthorized Access",
+      "relation_type": "Legal Penalty",
+      "description": "The act penalizes unauthorized access to computer resources in India."
+    }
+  ],
+  "error": false
+}
