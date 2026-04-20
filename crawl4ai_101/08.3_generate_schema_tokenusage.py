@@ -20,7 +20,7 @@ from crawl4ai import (
     LLMConfig,
 )
 
-from common.io import SCHEMA_CACHE_DIR, load_env, write_json
+from crawl4ai_101.common.io import SCHEMA_CACHE_DIR, load_env, write_json
 
 # Target URL — the Crawl4AI quickstart documentation page we want to extract
 # structured data from

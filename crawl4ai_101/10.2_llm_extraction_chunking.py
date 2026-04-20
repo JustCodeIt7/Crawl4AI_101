@@ -22,7 +22,7 @@ from crawl4ai import (
     LLMExtractionStrategy,
 )
 
-from common.io import load_env
+from crawl4ai_101.common.io import load_env
 
 # Target URL — the Crawl4AI quickstart documentation page
 URL = "https://docs.crawl4ai.com/core/quickstart/"

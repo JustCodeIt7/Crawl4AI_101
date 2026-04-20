@@ -21,7 +21,7 @@ from crawl4ai import (
     RoundRobinProxyStrategy,
 )
 
-from common.io import load_env
+from crawl4ai_101.common.io import load_env
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
