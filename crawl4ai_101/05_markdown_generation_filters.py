@@ -3,7 +3,7 @@
 Demonstrates:
 - content_source: raw_html, cleaned_html, fit_html
 - PruningContentFilter and BM25ContentFilter
-- raw_markdown, fit_markdown, and references preview
+- raw markdown, fit markdown, and references preview
 
 Run:
 - python crawl4ai_101/05_markdown_generation_filters.py
@@ -19,8 +19,7 @@ from crawl4ai import (
     DefaultMarkdownGenerator,
     PruningContentFilter,
 )
-
-from common.io import fit_markdown, preview, raw_markdown
+from rich import print
 
 URL = "https://docs.crawl4ai.com/core/browser-crawler-config/"
 QUERY = "proxy configuration user agent browser config"
@@ -32,6 +31,7 @@ async def show_result(
     generator: DefaultMarkdownGenerator,
     fit_view: bool = False,
 ):
+    """Crawl the page and print either raw-only or raw-vs-fit markdown stats."""
     config = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         markdown_generator=generator,
@@ -41,12 +41,19 @@ async def show_result(
     if not result.success:
         print(f"{label} failed: {result.error_message}")
         return None
-    raw_text = raw_markdown(result.markdown)
-    if not fit_view:
-        print(f"{label}: chars={len(raw_text)} preview={preview(raw_text, 120)}")
-        return result
-    fit_text = fit_markdown(result.markdown)
-    print(f"{label}: raw={len(raw_text)} fit={len(fit_text)} preview={preview(fit_text, 120)}")
+
+    markdown = result.markdown
+    raw_text = markdown.raw_markdown or ""
+
+    preview_text = raw_text
+    summary = f"{label}: chars={len(raw_text)}"
+    if fit_view:
+        fit_text = markdown.fit_markdown or ""
+        preview_text = fit_text
+        summary = f"{label}: raw={len(raw_text)} fit={len(fit_text)}"
+
+    preview = preview_text[:120].replace("\n", " ").strip()
+    print(f"{summary} preview={preview}")
     return result
 
 

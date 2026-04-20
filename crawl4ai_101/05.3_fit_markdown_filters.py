@@ -1,18 +1,11 @@
 import asyncio
-import sys
-from pathlib import Path
 
 ############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python 05.3_fit_markdown_filters.py`),
-# __package__ will be None or empty. In that case, add the project root (two
-# levels up) to sys.path so that sibling package imports resolve correctly.
 
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import BM25ContentFilter, PruningContentFilter
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
-
-from common.io import fit_markdown, preview, raw_markdown
+from rich import print
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -51,14 +44,22 @@ async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> Non
         print(label, "failed:", result.error_message)
         return
 
-    # raw_markdown() returns the full, unfiltered markdown produced from the
-    # crawled page — everything Crawl4AI extracted before any content filter ran
-    raw_text = raw_markdown(result.markdown)
+    # Extract the full, unfiltered markdown produced from the crawled page —
+    # everything Crawl4AI extracted before any content filter ran.
+    markdown = result.markdown
+    if hasattr(markdown, "raw_markdown"):
+        raw_text = markdown.raw_markdown or ""
+    else:
+        raw_text = str(markdown or "")
 
-    # fit_markdown() returns the filtered markdown — only the blocks that
-    # survived the content filter attached to the generator.  Comparing its
-    # length to raw_text shows how much the filter removed.
-    fit_text = fit_markdown(result.markdown)
+    # Extract the filtered markdown — only the blocks that survived the
+    # content filter attached to the generator. Comparing its length to
+    # raw_text shows how much the filter removed.
+    if hasattr(markdown, "fit_markdown"):
+        fit_text = markdown.fit_markdown or ""
+    else:
+        fit_text = ""
+    fit_preview = fit_text[:160].replace("\n", " ").strip()
 
     # Print a one-line summary: label, raw size, fit size, and a short preview
     # of the fit output so we can visually verify what was kept
@@ -69,7 +70,7 @@ async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> Non
         "fit=",
         len(fit_text),
         "preview=",
-        preview(fit_text, 160),
+        fit_preview,
     )
 
 

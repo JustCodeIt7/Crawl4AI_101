@@ -1,7 +1,7 @@
 import asyncio
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
-from common.io import preview, raw_markdown
+from rich import print
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -65,8 +65,13 @@ async def crawl_with_source(source: str) -> None:
     # Extract the raw markdown string from the result object and display the
     # source label, total character count, and a 140-character preview so the
     # three variants can be compared at a glance
-    markdown = raw_markdown(result.markdown)
-    print(source, "chars=", len(markdown), "preview=", preview(markdown, 140))
+    markdown = result.markdown
+    if hasattr(markdown, "raw_markdown"):
+        markdown_text = markdown.raw_markdown or ""
+    else:
+        markdown_text = str(markdown or "")
+    markdown_preview = markdown_text[:140].replace("\n", " ").strip()
+    print(source, "chars=", len(markdown_text), "preview=", markdown_preview)
 
 
 ############################## Main Entry Logic ##############################

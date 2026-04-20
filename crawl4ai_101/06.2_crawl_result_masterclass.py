@@ -2,8 +2,6 @@ import asyncio
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from common.io import (
     episode_dir,
-    fit_markdown,
-    raw_markdown,
     write_text,
 )
 
@@ -69,13 +67,24 @@ async def main() -> None:
 
     ######################## Markdown Variants #########################
 
+    markdown = result.markdown
+    if hasattr(markdown, "raw_markdown"):
+        raw_markdown_text = markdown.raw_markdown or ""
+    else:
+        raw_markdown_text = str(markdown or "")
+
+    if hasattr(markdown, "fit_markdown"):
+        fit_markdown_text = markdown.fit_markdown or ""
+    else:
+        fit_markdown_text = ""
+
     # raw.md — markdown converted from the full cleaned HTML; captures everything
     # on the page including navigation bars, footers, and sidebars
-    write_text(out_dir / "raw.md", raw_markdown(result.markdown))
+    write_text(out_dir / "raw.md", raw_markdown_text)
 
     # fit.md — markdown derived from the fit HTML; contains only the core page
     # content, making it more suitable for downstream LLM consumption
-    write_text(out_dir / "fit.md", fit_markdown(result.markdown))
+    write_text(out_dir / "fit.md", fit_markdown_text)
 
     ######################## Links and Media #########################
 

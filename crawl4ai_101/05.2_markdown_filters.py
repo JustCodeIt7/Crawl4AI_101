@@ -24,6 +24,7 @@ from crawl4ai import (
     DefaultMarkdownGenerator,
     PruningContentFilter,
 )
+from rich import print
 
 URL = "https://docs.crawl4ai.com/core/browser-crawler-config/"
 QUERY = "proxy configuration user agent browser config"
@@ -65,10 +66,7 @@ async def main() -> None:
     bm25_raw, bm25_fit = lengths(bm25)
     print(f"Pruning lengths: raw={prune_raw} fit={prune_fit}")
     print(f"BM25 lengths: raw={bm25_raw} fit={bm25_fit}")
-    print(
-        "Citation references preview: "
-        f"{(bm25.markdown.references_markdown or '').splitlines()[:3]}"
-    )
+    print(f"Citation references preview: {(bm25.markdown.references_markdown or '').splitlines()[:3]}")
 
 
 if __name__ == "__main__":

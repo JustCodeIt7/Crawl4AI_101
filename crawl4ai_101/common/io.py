@@ -38,19 +38,3 @@ def write_text(path: Path, text: str) -> None:
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, indent=2, ensure_ascii=False), encoding="utf-8")
-
-
-def raw_markdown(markdown: Any) -> str:
-    if hasattr(markdown, "raw_markdown"):
-        return markdown.raw_markdown or ""
-    return str(markdown or "")
-
-
-def fit_markdown(markdown: Any) -> str:
-    if hasattr(markdown, "fit_markdown"):
-        return markdown.fit_markdown or ""
-    return ""
-
-
-def preview(text: str, size: int = 200) -> str:
-    return text[:size].replace("\n", " ").strip()
