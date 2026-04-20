@@ -42,8 +42,12 @@ from rich import print
 
 ########################## Configuration ##########################
 
+# The target URL we want to crawl and analyze.
 URL = "https://docs.crawl4ai.com/core/browser-crawler-config/"
-QUERY = "proxy configuration user agent browser config"  # Search query for BM25 relevance filtering
+
+# This query is used by the BM25ContentFilter to find the most relevant
+# parts of the page. Think of it like a mini-search engine within the page.
+QUERY = "proxy configuration user agent browser config"
 
 
 ###################### Crawl & Display Helper ######################
@@ -74,22 +78,26 @@ async def show_result(
         The CrawlResult object if successful, otherwise None.
 
     """
-    # We use BYPASS cache mode here because we want to see the actual
-    # transformation process on every run without stale data interference.
+    # We use BYPASS cache mode here because we want to
+    # see the actual transformation process on every
+    # run without stale data interference.
+    # If we used CACHE_MODE.ENABLED, we might see the same result even if
+    # we changed the filters, which would make debugging/learning harder!
     config = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
-        markdown_generator=generator,
+        markdown_generator=generator,  # Attach our custom generator with the desired content source and filters
         verbose=False,
     )
 
     result = await crawler.arun(URL, config=config)
-
+    # Check if the crawl was successful before trying to access the markdown.
     if not result.success:
         print(f"[!] {label} failed: {result.error_message}")
         return None
 
     markdown = result.markdown
     # 'raw_markdown' is the direct conversion from the source HTML.
+    # It contains everything: headers, footers, ads, and the actual content.
     raw_text = markdown.raw_markdown or ""
 
     # Default to showing raw text unless the user specifically wants to see the 'fit' version.
@@ -98,6 +106,7 @@ async def show_result(
 
     # 'fit_markdown' is the magic part! It's the markdown that remains AFTER
     # the content filters (like BM25 or Pruning) have done their work.
+    # This is what you'd typically send to an LLM to save tokens.
     if fit_view:
         fit_text = markdown.fit_markdown or ""
         preview_text = fit_text
@@ -123,14 +132,17 @@ async def main() -> None:
                 crawler,
                 source,
                 DefaultMarkdownGenerator(
-                    content_source=source,
-                    options={"ignore_links": True, "body_width": 80},
+                    content_source=source,  # Select which HTML version feeds the markdown generator
+                    options={"ignore_links": True, "body_width": 80},  # Keep the console output tidy by ignoring links and wrapping lines
                 ),
             )
 
         # Demonstrate two filtering strategies for extracting relevant content
         print("\n== content_filters ==")
-        # Remove boilerplate using statistical pruning with a dynamic threshold
+
+        # STRATEGY 1: Pruning (Statistical Filtering)
+        # This removes "noise" based on patterns. For example, if a block of text
+        # is very short or doesn't meet a certain density, it's likely boilerplate.
         pruning = DefaultMarkdownGenerator(
             content_filter=PruningContentFilter(
                 threshold=0.45,
@@ -139,7 +151,10 @@ async def main() -> None:
             ),
             options={"citations": True, "body_width": 80},
         )
-        # Rank content blocks by BM25 relevance to the search query
+
+        # STRATEGY 2: BM25 (Semantic/Keyword Filtering)
+        # This uses the BM25 algorithm (used in search engines) to rank blocks
+        # based on how well they match our QUERY. It's great for "finding the needle in the haystack".
         bm25 = DefaultMarkdownGenerator(
             content_filter=BM25ContentFilter(user_query=QUERY, bm25_threshold=1.0),
             options={"citations": True, "body_width": 80},
