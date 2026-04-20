@@ -1,15 +1,33 @@
-"""Video 05: Markdown generation and fit filters.
+"""
+Module: Markdown Generation and Content Filtering Demonstration
 
-Demonstrates:
-- content_source: raw_html, cleaned_html, fit_html
-- PruningContentFilter and BM25ContentFilter
-- raw markdown, fit markdown, and references preview
+PURPOSE IN THE SYSTEM:
+In a large-scale web crawling system, raw HTML is often cluttered with 'noise'
+(headers, footers, sidebars, ads). If you pass all this noise to an LLM,
+you waste tokens and introduce irrelevant context. This module demonstrates
+the tools provided by Crawl4AI to:
+1. Control the source of Markdown generation (raw vs. cleaned vs. fit).
+2. Apply statistical filters (Pruning) to remove boilerplate.
+3. Apply semantic filters (BM25) to extract content relevant to a specific query.
+
+WHEN TO USE THESE FILTERS:
+- Use `PruningContentFilter` when you want to reduce token usage by removing
+  low-information blocks (e.g., short menu items or footer links).
+- Use `BM25ContentFilter` when you have a specific topic in
+  in mind and want the crawler to 'find' the relevant parts of the page for you.
+
+DEMONSTRATES:
+- `content_source`: Switching between `raw_html`, `cleaned_html`, and `fit_html`.
+- `PruningContentFilter`: Statistical removal of boilerplate.
+- `BM25ContentFilter`: Semantic relevance ranking using the BM25 algorithm.
+- Comparison of raw markdown vs. 'fit' markdown.
 
 Run:
 - python crawl4ai_101/05_markdown_generation_filters.py
 """
 
 import asyncio
+from typing import Optional
 
 from crawl4ai import (
     AsyncWebCrawler,
@@ -18,6 +36,7 @@ from crawl4ai import (
     CrawlerRunConfig,
     DefaultMarkdownGenerator,
     PruningContentFilter,
+    CrawlResult,
 )
 from rich import print
 
@@ -35,31 +54,59 @@ async def show_result(
     label: str,
     generator: DefaultMarkdownGenerator,
     fit_view: bool = False,
-):
-    """Crawl a page and print raw-only or raw-vs-fit markdown stats with a short preview."""
+) -> Optional[CrawlResult]:
+    """
+    Executes a crawl operation and prints a summary of the generated Markdown.
+
+    This helper function abstracts the boilerplate of running a crawler and
+    formatting the output for the console. It allows us to compare different
+    generation strategies side-by-side.
+
+    Args:
+        crawler: The active AsyncWebCrawler instance.
+        label: A descriptive name for the current test case (e.g., 'pruning').
+        generator: The MarkdownGenerator configuration to use for this run.
+        fit_view: If True, it will attempt to display the 'fit_markdown'
+                  (the version after filters have been applied) instead of
+                  just the 'raw_markdown'.
+
+    Returns:
+        The CrawlResult object if successful, otherwise None.
+
+    """
+    # We use BYPASS cache mode here because we want to see the actual
+    # transformation process on every run without stale data interference.
     config = CrawlerRunConfig(
-        cache_mode=CacheMode.BYPASS,  # Always fetch fresh content
+        cache_mode=CacheMode.BYPASS,
         markdown_generator=generator,
         verbose=False,
     )
+
     result = await crawler.arun(URL, config=config)
+
     if not result.success:
-        print(f"{label} failed: {result.error_message}")
+        print(f"[!] {label} failed: {result.error_message}")
         return None
 
     markdown = result.markdown
+    # 'raw_markdown' is the direct conversion from the source HTML.
     raw_text = markdown.raw_markdown or ""
 
+    # Default to showing raw text unless the user specifically wants to see the 'fit' version.
     preview_text = raw_text
     summary = f"{label}: chars={len(raw_text)}"
-    # Show fit (filtered) markdown stats when fit_view is enabled
+
+    # 'fit_markdown' is the magic part! It's the markdown that remains AFTER
+    # the content filters (like BM25 or Pruning) have done their work.
     if fit_view:
         fit_text = markdown.fit_markdown or ""
         preview_text = fit_text
         summary = f"{label}: raw={len(raw_text)} fit={len(fit_text)}"
 
+    # Clean up the preview for the console: remove newlines and truncate.
     preview = preview_text[:120].replace("\n", " ").strip()
-    print(f"{summary} preview={preview}")
+    print(f"[+] {summary} preview: {preview}...")
+
     return result
 
 
