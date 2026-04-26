@@ -112,7 +112,7 @@ async def demo_bm25_filter():
         # It scores each block against `user_query` and keeps the top matches.
         content_filter=BM25ContentFilter(
             user_query="neural networks deep learning",  # what we care about
-            bm25_threshold=1.2,  # higher = stricter (fewer blocks kept)
+            bm25_threshold=1,  # higher = stricter (fewer blocks kept)
             language="english",  # used for stemming ("running" -> "run")
         ),
         options={"ignore_links": True},
@@ -135,7 +135,7 @@ async def demo_result_object():
 
     config = CrawlerRunConfig(
         markdown_generator=DefaultMarkdownGenerator(
-            content_filter=PruningContentFilter(threshold=0.6)
+            content_filter=PruningContentFilter(threshold=0.9)
         )
     )
     async with AsyncWebCrawler() as crawler:
