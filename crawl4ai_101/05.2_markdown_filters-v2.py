@@ -38,7 +38,7 @@ async def demo_basic():
         if result.success:
             # `result.markdown` is a MarkdownGenerationResult object.
             # `.raw_markdown` = unfiltered Markdown of the entire cleaned page.
-            print(result.markdown.raw_markdown[:500], "...\n")
+            print(result.markdown.raw_markdown[:400], "...\n")
 
 
 # ──────────────────────────────────────────────────────────────
@@ -61,7 +61,7 @@ async def demo_custom_options():
         result = await crawler.arun(URL, config=config)
         if result.success:
             # Notice how the output is cleaner — no link clutter or image refs.
-            print(result.markdown.raw_markdown[:500], "...\n")
+            print(result.markdown.raw_markdown[:400], "...\n")
 
 
 # ──────────────────────────────────────────────────────────────
@@ -92,7 +92,7 @@ async def demo_pruning_filter():
             print(f"Raw length:  {len(result.markdown.raw_markdown)}")
             print(f"Fit length:  {len(result.markdown.fit_markdown)}")
             print("--- fit_markdown preview ---")
-            print(result.markdown.fit_markdown[:500], "...\n")
+            print(result.markdown.fit_markdown[:400], "...\n")
 
 
 # ──────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ async def demo_bm25_filter():
         result = await crawler.arun(URL, config=config)
         if result.success:
             # fit_markdown will contain ONLY the query-relevant chunks.
-            print(result.markdown.fit_markdown[:500], "...\n")
+            print(result.markdown.fit_markdown[:400], "...\n")
 
 
 # ──────────────────────────────────────────────────────────────
