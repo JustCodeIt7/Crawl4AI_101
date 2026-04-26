@@ -1,11 +1,16 @@
 """
-Crawl4AI Tutorial — Markdown Generation Made Easy
+5.2 — Markdown Generation Made Easy
 -------------------------------------------------
 This script walks through 5 progressive demos showing how to turn any
 webpage into clean, LLM-ready Markdown using Crawl4AI.
 
+You'll see how to:
+- Generate basic Markdown with a single line of code.
+- Customize the HTML→Markdown conversion with options.
+- Use content filters to prune boilerplate and focus on what's important.
+
 Install:
-    crawl4ai-setup        # downloads Playwright browsers (one-time)
+    crawl4ai-setup
 """
 
 import asyncio
