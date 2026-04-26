@@ -10,18 +10,7 @@ URL = "https://docs.crawl4ai.com/"
 
 
 async def crawl_with_source(source: str) -> None:
-    """Crawl the target URL using a specific HTML content source and print a preview.
-
-    Crawl4AI can derive markdown from three different representations of the
-    page HTML. This function runs a full crawl for the given source, then
-    prints the character count and a short preview of the resulting markdown
-    so you can compare the outputs side-by-side.
-
-    Args:
-        source: One of "raw_html", "cleaned_html", or "fit_html" — controls
-                which version of the page HTML is passed to the markdown
-                generator (see inline comments below for details).
-    """
+    """Crawl the target URL using a DefaultMarkdownGenerator configured with the specified content source."""
     # Configure the markdown generator:
     #
     # content_source selects the HTML input fed into the markdown pipeline:
@@ -45,44 +34,31 @@ async def crawl_with_source(source: str) -> None:
     # Build the crawler run configuration:
     # - BYPASS cache so we always fetch the live page instead of stale data
     # - Attach our custom markdown generator to override the default pipeline
-    # - Disable verbose logging to keep console output focused on our comparisons
-    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False)
+    config = CrawlerRunConfig(
+        cache_mode=CacheMode.BYPASS, markdown_generator=generator, verbose=False
+    )
 
-    # Launch an async crawler session using a context manager, which handles
-    # browser startup and teardown (Crawl4AI uses a headless browser under the hood)
+    # Launch an async crawler session using a context manager, which handles browser startup and teardown
     async with AsyncWebCrawler() as crawler:
         # Perform the actual crawl — arun() fetches the page, renders any
-        # JavaScript, and converts the visible content into markdown using our
-        # configured generator
+        # JavaScript, and converts the visible content into markdown using our configured generator
         result = await crawler.arun(url=URL, config=config)
 
-    # Guard against crawl failures (e.g., network errors, timeouts) before
-    # attempting to access the result payload
-    if not result.success:
-        print(source, "failed:", result.error_message)
-        return
-
     # Extract the raw markdown string from the result object and display the
-    # source label, total character count, and a 140-character preview so the
-    # three variants can be compared at a glance
+    # source label, total character count, and a 140-character preview
     markdown = result.markdown
-    if hasattr(markdown, "raw_markdown"):
-        markdown_text = markdown.raw_markdown or ""
-    else:
-        markdown_text = str(markdown or "")
-    markdown_preview = markdown_text[:140].replace("\n", " ").strip()
-    print(source, "chars=", len(markdown_text), "preview=", markdown_preview)
+    # raw_markdown is the unfiltered output from the selected content_source
+    markdown_text = markdown.raw_markdown
+
+    markdown_preview = markdown_text[:140]
+    print()
+    print(source, "chars=", len(markdown_text), "preview=")
+    print(markdown_preview)
 
 
 ############################## Main Entry Logic ##############################
 async def main() -> None:
-    """Run the same crawl three times, once for each supported content source.
-
-    Iterating over all three content_source values lets you observe how the
-    choice of HTML input affects the length and quality of the generated
-    markdown — from verbose raw HTML all the way down to tightly filtered
-    fit HTML.
-    """
+    """Run the same crawl three times, once for each supported content source."""
     # Cycle through each content source variant in order from least to most
     # filtered, printing a comparative summary line for each
     for source in ("raw_html", "cleaned_html", "fit_html"):

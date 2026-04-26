@@ -5,9 +5,6 @@ This module shows how to:
 1. Control Markdown source (raw, cleaned, or fit).
 2. Use `PruningContentFilter` to remove boilerplate (statistical).
 3. Use `BM25ContentFilter` to extract relevant content (semantic).
-
-Run:
-    python crawl4ai_101/05_markdown_generation_filters.py
 """
 
 import asyncio
@@ -30,12 +27,10 @@ from rich import print
 URL = "https://docs.crawl4ai.com/core/browser-crawler-config/"
 
 # Query for BM25ContentFilter to find relevant content.
-QUERY = "proxy configuration user agent browser config"
+QUERY = "markdown generation configuration options"
 
 
 ###################### Crawl & Display Helper ######################
-
-
 async def show_result(
     crawler: AsyncWebCrawler,
     label: str,
@@ -47,17 +42,18 @@ async def show_result(
     config = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
         markdown_generator=generator,
+        css_selector="#terminal-mkdocs-main-content",
         verbose=False,
     )
-
+    # Run the crawler and get the result, which includes the generated Markdown.
     result = await crawler.arun(URL, config=config)
-    if not result.success:
-        print(f"[!] {label} failed: {result.error_message}")
-        return None
 
     markdown = result.markdown
+    # raw_markdown is the unfiltered output from the selected content_source
     raw_text = markdown.raw_markdown or ""
 
+    # By default, we preview the raw text. If 'fit_view' is True,
+    # we preview the filtered version instead.
     preview_text = raw_text
     summary = f"{label}: chars={len(raw_text)}"
 
@@ -68,15 +64,14 @@ async def show_result(
         summary = f"{label}: raw={len(raw_text)} fit={len(fit_text)}"
 
     # Clean up the preview for the console: remove newlines and truncate.
-    preview = preview_text[:120].replace("\n", " ").strip()
-    print(f"[+] {summary} preview: {preview}...")
+    preview = preview_text[:300]
+    print(f"\n[+] {summary} \npreview:")
+    print(preview)
 
     return result
 
 
 ########################### Main Pipeline ###########################
-
-
 async def main() -> None:
     """Run demos for content_source options and content filters."""
     async with AsyncWebCrawler() as crawler:
@@ -87,8 +82,10 @@ async def main() -> None:
                 crawler,
                 source,
                 DefaultMarkdownGenerator(
-                    content_source=source,  # Select which HTML version feeds the markdown generator
-                    options={"ignore_links": True, "body_width": 80},  # Keep the console output tidy by ignoring links and wrapping lines
+                    # Select which HTML version feeds the markdown generator
+                    content_source=source,
+                    # Keep the console output tidy by ignoring links and wrapping lines
+                    options={"ignore_links": True, "body_width": 80},
                 ),
             )
 
@@ -107,8 +104,10 @@ async def main() -> None:
 
         # STRATEGY 2: BM25 (Semantic Filtering) - ranks blocks by relevance to QUERY.
         bm25 = DefaultMarkdownGenerator(
-            content_filter=BM25ContentFilter(user_query=QUERY, bm25_threshold=1.0),  # Adjust threshold to be more or less aggressive; 1.0 is a common default
-            options={"citations": True, "body_width": 80},  # Enable citation references in the output for BM25 so we can see what sources it kept
+            # Adjust threshold to be more or less aggressive; 1.0 is a common default
+            content_filter=BM25ContentFilter(user_query=QUERY, bm25_threshold=1.0),
+            # Enable citation references in the output for BM25 so we can see what sources it kept
+            options={"citations": True, "body_width": 80},
         )
         await show_result(crawler, "pruning", pruning, fit_view=True)
         bm25_result = await show_result(crawler, "bm25", bm25, fit_view=True)

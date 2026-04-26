@@ -9,11 +9,9 @@ Demonstrates:
 Prerequisites:
 - `pip install crawl4ai playwright`
 - `playwright install`
-
-Run:
-- `python crawl4ai_101/video_05_markdown_filters.py`
 """
 
+############################# Imports & Constants ##############################
 import asyncio
 
 from crawl4ai import (
@@ -27,45 +25,67 @@ from crawl4ai import (
 from rich import print
 
 URL = "https://docs.crawl4ai.com/core/browser-crawler-config/"
-QUERY = "proxy configuration user agent browser config"
+QUERY = "Browser configuration options for Crawl4AI"
 
 
+############################### Helper Functions ###############################
 def lengths(result) -> tuple[int, int]:
+    """Return character counts for raw and filtered markdown."""
     markdown = result.markdown
     return len(markdown.raw_markdown or ""), len(markdown.fit_markdown or "")
 
 
+########################### Main Crawl & Comparison ############################
 async def main() -> None:
+    """Configure two markdown generators, crawl the same URL, and compare output sizes."""
+
+    # Set up a pruning filter that removes low-density content blocks
     pruning_generator = DefaultMarkdownGenerator(
-        content_filter=PruningContentFilter(threshold=0.48, threshold_type="dynamic"),
-        options={"citations": True, "body_width": 100},
+        content_filter=PruningContentFilter(
+            threshold=0.48,  # The threshold determines how aggressive the pruning is — lower means more blocks removed, higher means more kept.
+            threshold_type="dynamic",  # Dynamic means the threshold is adjusted based on the page's content distribution, rather than being a fixed cutoff.
+        ),
+        options={
+            "citations": True,  # Enable citation links in output
+            "body_width": 100,
+        },  # Enable citation links in output
     )
+
+    # Set up a BM25 filter that keeps only content relevant to the search query
     bm25_generator = DefaultMarkdownGenerator(
-        content_filter=BM25ContentFilter(user_query=QUERY, bm25_threshold=1.1),
-        options={"citations": True, "body_width": 100},
+        content_filter=BM25ContentFilter(
+            user_query=QUERY,  # The BM25 filter needs a query to determine relevance, unlike pruning which is query-agnostic
+            bm25_threshold=1,  # A higher threshold means stricter relevance filtering, so only blocks with a strong match to the query will be kept.
+            language="english",
+        ),
+        options={"citations": False, "body_width": 100},
     )
+
+    # Build a crawl config for the pruning strategy
     prune_config = CrawlerRunConfig(
-        cache_mode=CacheMode.BYPASS,
+        cache_mode=CacheMode.BYPASS,  # Force a fresh fetch, skip cache
         markdown_generator=pruning_generator,
         verbose=False,
     )
+
+    # Clone the config and swap in the BM25 generator to keep all other settings identical
     bm25_config = prune_config.clone(markdown_generator=bm25_generator)
 
+    # Crawl the same URL with both filter strategies
     async with AsyncWebCrawler() as crawler:
         pruned = await crawler.arun(URL, config=prune_config)
         bm25 = await crawler.arun(URL, config=bm25_config)
 
-    if not pruned.success:
-        print(f"Pruning crawl failed: {pruned.error_message}")
-        return
-    if not bm25.success:
-        print(f"BM25 crawl failed: {bm25.error_message}")
-        return
-
+    ############################ Display Results ################################
+    # Compare raw vs fit_markdown lengths to see how much each filter removed
     prune_raw, prune_fit = lengths(pruned)
     bm25_raw, bm25_fit = lengths(bm25)
-    print(f"Pruning lengths: raw={prune_raw} fit={prune_fit}")
-    print(f"BM25 lengths: raw={bm25_raw} fit={bm25_fit}")
+    print(f"\nPruning lengths: raw={prune_raw} fit={prune_fit}")
+    print(f"\n Preview:\n{(pruned.markdown.fit_markdown or '')[:500]}")
+    print(f"\nBM25 lengths: raw={bm25_raw} fit={bm25_fit}")
+    print(f"\n Preview:\n{(bm25.markdown.fit_markdown or '')[:500]}")
+
+    # Preview the first few citation reference lines from the BM25 result
     print(f"Citation references preview: {(bm25.markdown.references_markdown or '').splitlines()[:3]}")
 
 
