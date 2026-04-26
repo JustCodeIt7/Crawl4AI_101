@@ -1,94 +1,171 @@
-"""Video 05.2: Markdown generation and content filters.
+"""
+5.2 — Markdown Generation Made Easy
+-------------------------------------------------
+This script walks through 5 progressive demos showing how to turn any
+webpage into clean, LLM-ready Markdown using Crawl4AI.
 
-Demonstrates:
-- DefaultMarkdownGenerator
-- PruningContentFilter and BM25ContentFilter
-- raw_markdown vs fit_markdown
-- citations and references output
+You'll see how to:
+- Generate basic Markdown with a single line of code.
+- Customize the HTML→Markdown conversion with options.
+- Use content filters to prune boilerplate and focus on what's important.
 
-Prerequisites:
-- `pip install crawl4ai playwright`
-- `playwright install`
+Install:
+    crawl4ai-setup
 """
 
-############################# Imports & Constants ##############################
 import asyncio
-
-from crawl4ai import (
-    AsyncWebCrawler,
-    BM25ContentFilter,
-    CacheMode,
-    CrawlerRunConfig,
-    DefaultMarkdownGenerator,
-    PruningContentFilter,
-)
+from crawl4ai import AsyncWebCrawler, CrawlerRunConfig
+from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
+from crawl4ai.content_filter_strategy import BM25ContentFilter, PruningContentFilter
 from rich import print
 
-URL = "https://docs.streamlit.io/get-started"
-QUERY = "How to get started with Streamlit?"  # Used for BM25 relevance filtering, not needed for pruning
+# The page we'll crawl across all demos. Swap this with any URL you like.
+URL = "https://en.wikipedia.org/wiki/Machine_learning"
 
 
-############################### Helper Functions ###############################
-def lengths(result) -> tuple[int, int]:
-    """Return character counts for raw and filtered markdown."""
-    markdown = result.markdown
-    return len(markdown.raw_markdown or ""), len(markdown.fit_markdown or "")
+# ──────────────────────────────────────────────────────────────
+# DEMO 1: Basic markdown generation (no filtering)
+# ──────────────────────────────────────────────────────────────
+async def demo_basic():
+    """The simplest possible crawl: fetch the page and return Markdown."""
+    print("\n=== DEMO 1: Basic Markdown ===")
 
+    # CrawlerRunConfig tells the crawler HOW to handle this run.
+    # Here we only specify the markdown generator — defaults handle the rest.
+    config = CrawlerRunConfig(markdown_generator=DefaultMarkdownGenerator())
 
-########################### Main Crawl & Comparison ############################
-async def main() -> None:
-    """Configure two markdown generators, crawl the same URL, and compare output sizes."""
-
-    # Set up a pruning filter that removes low-density content blocks
-    pruning_generator = DefaultMarkdownGenerator(
-        content_filter=PruningContentFilter(
-            threshold=0.48,  # How aggressive to prune — lower means more blocks removed
-            threshold_type="dynamic",  # Threshold is adjusted based on page's content distribution
-        ),
-        options={
-            "citations": True,  # Enable citation links in output
-            "body_width": 80,  # Set width to 100 characters better readability in the console
-        },
-    )
-
-    # Set up a BM25 filter that keeps only content relevant to the search query
-    bm25_generator = DefaultMarkdownGenerator(
-        content_filter=BM25ContentFilter(
-            user_query=QUERY,  # The BM25 filter needs a query to determine relevance, unlike pruning which is query-agnostic
-            bm25_threshold=1,  # A higher threshold means stricter relevance filtering, so only blocks with a strong match to the query will be kept.
-            language="english",
-        ),
-        options={"citations": False, "body_width": 80},
-    )
-
-    # Build a crawl config for the pruning strategy
-    prune_config = CrawlerRunConfig(
-        cache_mode=CacheMode.BYPASS,  # Force a fresh fetch, skip cache
-        markdown_generator=pruning_generator,
-        verbose=False,
-    )
-
-    # Clone the config and swap in the BM25 generator to keep all other settings identical
-    bm25_config = prune_config.clone(markdown_generator=bm25_generator)
-
-    # Crawl the same URL with both filter strategies
+    # `async with` ensures the browser launches and shuts down cleanly.
     async with AsyncWebCrawler() as crawler:
-        pruned = await crawler.arun(URL, config=prune_config)
-        bm25 = await crawler.arun(URL, config=bm25_config)
+        # arun() = "async run" — performs a single crawl and returns a CrawlResult
+        result = await crawler.arun(URL, config=config)
 
-    ############################ Display Results ################################
-    # Compare raw vs fit_markdown lengths to see how much each filter removed
-    prune_raw, prune_fit = lengths(pruned)
-    bm25_raw, bm25_fit = lengths(bm25)
-    print(pruned.metadata)
-    print(f"\nPruning lengths: raw={prune_raw} fit={prune_fit}")
-    print(f"\n Preview:\n{(pruned.markdown.fit_markdown or '')[:500]}")
-    print(f"\nBM25 lengths: raw={bm25_raw} fit={bm25_fit}")
-    print(f"\n Preview:\n{(bm25.markdown.fit_markdown or '')[:500]}")
+        # Always check `result.success` before using output (network errors, etc.)
+        if result.success:
+            # `result.markdown` is a MarkdownGenerationResult object.
+            # `.raw_markdown` = unfiltered Markdown of the entire cleaned page.
+            print(result.markdown.raw_markdown[:400], "...\n")
 
-    # Preview the first few citation reference lines from the BM25 result
-    print(f"Citation references preview: {(bm25.markdown.references_markdown or '').splitlines()[:3]}")
+
+# ──────────────────────────────────────────────────────────────
+# DEMO 2: Customize markdown options (ignore links, wrap text)
+# ──────────────────────────────────────────────────────────────
+async def demo_custom_options():
+    """Tweak the HTML→Markdown conversion via the `options` dict."""
+    print("\n=== DEMO 2: Custom Options ===")
+
+    # Build a generator with custom html2text-style options:
+    #   ignore_links  -> strip [text](url) hyperlinks entirely
+    #   ignore_images -> drop ![alt](src) image tags
+    #   body_width    -> hard-wrap text lines at N characters (0 = no wrap)
+    md_generator = DefaultMarkdownGenerator(
+        options={"ignore_links": True, "ignore_images": True, "body_width": 80}
+    )
+    config = CrawlerRunConfig(markdown_generator=md_generator)
+
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(URL, config=config)
+        if result.success:
+            # Notice how the output is cleaner — no link clutter or image refs.
+            print(result.markdown.raw_markdown[:400], "...\n")
+
+
+# ──────────────────────────────────────────────────────────────
+# DEMO 3: PruningContentFilter — strip boilerplate noise
+# ──────────────────────────────────────────────────────────────
+async def demo_pruning_filter():
+    """Use heuristic pruning to remove low-value content blocks (nav, ads)."""
+    print("\n=== DEMO 3: Pruning Filter (fit_markdown) ===")
+
+    md_generator = DefaultMarkdownGenerator(
+        # PruningContentFilter scores every block (text density, link density,
+        # tag patterns) and drops anything below the threshold.
+        content_filter=PruningContentFilter(
+            threshold=0.5,  # keep blocks scoring >= 0.5
+            threshold_type="fixed",  # "fixed" = absolute cutoff; "dynamic" = adaptive
+            min_word_threshold=50,  # discard blocks with < 50 words
+        ),
+        options={"ignore_links": True},
+    )
+    config = CrawlerRunConfig(markdown_generator=md_generator)
+
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(URL, config=config)
+        if result.success:
+            # When a content_filter is set, you get BOTH outputs:
+            #   raw_markdown -> the full page in Markdown
+            #   fit_markdown -> the pruned, focused Markdown
+            print(f"Raw length:  {len(result.markdown.raw_markdown)}")
+            print(f"Fit length:  {len(result.markdown.fit_markdown)}")
+            print("--- fit_markdown preview ---")
+            print(result.markdown.fit_markdown[:400], "...\n")
+
+
+# ──────────────────────────────────────────────────────────────
+# DEMO 4: BM25ContentFilter — query-focused extraction
+# ──────────────────────────────────────────────────────────────
+async def demo_bm25_filter():
+    """Keep only the page sections that are relevant to a search query."""
+    print("\n=== DEMO 4: BM25 Filter (query-driven) ===")
+
+    md_generator = DefaultMarkdownGenerator(
+        # BM25 is a classic information-retrieval ranking algorithm.
+        # It scores each block against `user_query` and keeps the top matches.
+        content_filter=BM25ContentFilter(
+            user_query="neural networks deep learning",  # what we care about
+            bm25_threshold=1,  # higher = stricter (fewer blocks kept)
+            language="english",  # used for stemming ("running" -> "run")
+        ),
+        options={"ignore_links": True},
+    )
+    config = CrawlerRunConfig(markdown_generator=md_generator)
+
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(URL, config=config)
+        if result.success:
+            # fit_markdown will contain ONLY the query-relevant chunks.
+            print(result.markdown.fit_markdown[:400], "...\n")
+
+
+# ──────────────────────────────────────────────────────────────
+# DEMO 5: Inspect the full MarkdownGenerationResult object
+# ──────────────────────────────────────────────────────────────
+async def demo_result_object():
+    """Explore every field returned in `result.markdown`."""
+    print("\n=== DEMO 5: MarkdownGenerationResult Fields ===")
+
+    config = CrawlerRunConfig(
+        markdown_generator=DefaultMarkdownGenerator(
+            content_filter=PruningContentFilter(threshold=0.9)
+        )
+    )
+    async with AsyncWebCrawler() as crawler:
+        result = await crawler.arun(URL, config=config)
+
+        # `result.markdown` exposes 4 useful string fields:
+        md = result.markdown
+        #   raw_markdown            -> direct HTML→Markdown conversion
+        #   markdown_with_citations -> links converted to [text][1] footnotes
+        #   references_markdown     -> the [1]: https://... footnote section
+        #   fit_markdown            -> the filtered/pruned version
+        print(f"raw_markdown            : {len(md.raw_markdown)} chars")
+        print(f"markdown_with_citations : {len(md.markdown_with_citations)} chars")
+        print(f"references_markdown     : {len(md.references_markdown)} chars")
+        print(f"fit_markdown            : {len(md.fit_markdown)} chars")
+
+
+# ──────────────────────────────────────────────────────────────
+# Entry point — run all demos sequentially
+# ──────────────────────────────────────────────────────────────
+async def main():
+    # Each demo opens its own browser; running sequentially keeps output readable.
+    # In production, reuse a single AsyncWebCrawler for many URLs.
+    await demo_basic()
+    await demo_custom_options()
+    await demo_pruning_filter()
+    await demo_bm25_filter()
+    await demo_result_object()
 
 
 if __name__ == "__main__":
+    # asyncio.run() boots the event loop and runs main() to completion.
     asyncio.run(main())
