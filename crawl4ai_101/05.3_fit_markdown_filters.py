@@ -9,6 +9,7 @@ Prerequisites:
 - `playwright install`
 
 """
+
 import asyncio
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from crawl4ai.content_filter_strategy import BM25ContentFilter, PruningContentFilter
@@ -16,7 +17,8 @@ from crawl4ai.markdown_generation_strategy import DefaultMarkdownGenerator
 from rich import print
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
-URL = "https://docs.crawl4ai.com/"
+URL = "https://en.wikipedia.org/wiki/Machine_learning"
+
 
 ########################## Filter Comparison Helper ##########################
 async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> None:
@@ -55,7 +57,7 @@ async def compare_filter(label: str, generator: DefaultMarkdownGenerator) -> Non
         fit_text = ""
     fit_preview = fit_text[:160].replace("\n", " ").strip()
 
-    # Print a one-line summary: label, raw size, fit size, and a short preview
+    # Print a one-line  summary: label, raw size, fit size, and a short preview
     # of the fit output so we can visually verify what was kept
     print(
         label,
@@ -83,7 +85,7 @@ async def main() -> None:
     # are considered relevant to the topic we care about
     bm25 = DefaultMarkdownGenerator(
         content_filter=BM25ContentFilter(
-            user_query="installation quickstart browser config", bm25_threshold=1.0
+            user_query="Types of Machine Learning", bm25_threshold=1.0
         )
     )
 
