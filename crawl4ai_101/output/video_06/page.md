@@ -344,6 +344,7 @@ Hidden categories:
   * [Statistics](https://stats.wikimedia.org/#/en.wikipedia.org)
   * [Cookie statement](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement)
   * [Mobile view](https://en.wikipedia.org/w/index.php?title=Web_scraping&mobileaction=toggle_view_mobile)
+  * [Edit preview settings](https://en.wikipedia.org/wiki/Web_scraping)
 
 
   * [![Wikimedia Foundation](https://en.wikipedia.org/static/images/footer/wikimedia.svg)](https://www.wikimedia.org/)
@@ -356,3 +357,4 @@ Toggle the table of contents
 Web scraping
 [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping)
 22 languages [Add topic ](https://en.wikipedia.org/wiki/Web_scraping)
+[](https://en.wikipedia.org/wiki/Web_scraping?action=edit)

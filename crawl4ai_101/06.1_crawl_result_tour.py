@@ -15,6 +15,7 @@ import base64
 from pathlib import Path
 
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
+from rich import print
 
 ################################ Configuration ################################
 
@@ -94,10 +95,7 @@ async def main() -> None:
     print(f"Saved markdown to: {output_dir / 'page.md'}")
     print(f"Internal links: {internal_links}, external links: {external_links}")
     print(f"Images discovered: {image_count}")
-    print(
-        "Artifacts available: "
-        f"png={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}"
-    )
+    print(f"Artifacts available: png={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}")
 
 
 ################################ Entry Point ################################
