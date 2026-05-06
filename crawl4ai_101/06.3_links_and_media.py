@@ -1,16 +1,6 @@
 import asyncio
-import sys
-from pathlib import Path
-
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v07_links_media.py`), __package__
-# will be None or empty. In that case, add the project root (two levels up) to
-# sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
+from rich import print
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -53,7 +43,7 @@ def summarize(label: str, result) -> None:
     print(
         label,
         "html_chars=",
-        len(result.html or ""),      # Raw HTML length gives a rough page-size proxy
+        len(result.html or ""),  # Raw HTML length gives a rough page-size proxy
         "internal_links=",
         len(internal),
         "external_links=",
@@ -98,8 +88,8 @@ async def main() -> None:
             url=URL,
             config=CrawlerRunConfig(
                 cache_mode=CacheMode.BYPASS,
-                exclude_external_images=True,       # Drop images hosted off-domain
-                exclude_social_media_links=True,    # Drop links to social platforms
+                exclude_external_images=True,  # Drop images hosted off-domain
+                exclude_social_media_links=True,  # Drop links to social platforms
                 verbose=False,
             ),
         )

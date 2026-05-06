@@ -1,9 +1,6 @@
 import asyncio
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
-from crawl4ai_101.common.io import (
-    episode_dir,
-    write_text,
-)
+from rich import print
 
 # Define the target URL to crawl — the official Crawl4AI documentation site
 URL = "https://docs.crawl4ai.com/"
@@ -20,7 +17,7 @@ async def main() -> None:
     """
     # Resolve the per-episode output directory (e.g., outputs/v04/) so all
     # generated files are grouped together for easy inspection
-    out_dir = episode_dir("v04")
+    # out_dir = episode_dir("v04")
 
     # Build the crawler run configuration:
     # - BYPASS cache so we always hit the live page instead of returning stale data
@@ -55,15 +52,15 @@ async def main() -> None:
     ##################### HTML Representations ####################
     # raw.html — the full, unmodified HTML exactly as the browser received it,
     # including all scripts, styles, and hidden elements
-    write_text(out_dir / "raw.html", result.html or "")
+    print(f"raw.html length: {len(result.html or '')}")
 
     # cleaned.html — Crawl4AI's sanitised version: scripts, styles, and other
     # noise have been stripped, leaving only the meaningful document structure
-    write_text(out_dir / "cleaned.html", result.cleaned_html or "")
+    print(f"cleaned.html length: {len(result.cleaned_html or '')}")
 
     # fit.html — the "fit" (content-focused) HTML, further pruned to include
     # only the main body content; this is what feeds the fit markdown variant
-    write_text(out_dir / "fit.html", result.fit_html or "")
+    print(f"fit.html length: {len(result.fit_html or '')}")
 
     ######################## Markdown Variants #########################
 
@@ -80,11 +77,11 @@ async def main() -> None:
 
     # raw.md — markdown converted from the full cleaned HTML; captures everything
     # on the page including navigation bars, footers, and sidebars
-    write_text(out_dir / "raw.md", raw_markdown_text)
+    print(f"raw.md length: {len(raw_markdown_text)}")
 
     # fit.md — markdown derived from the fit HTML; contains only the core page
     # content, making it more suitable for downstream LLM consumption
-    write_text(out_dir / "fit.md", fit_markdown_text)
+    print(f"fit.md length: {len(fit_markdown_text)}")
 
     ######################## Links and Media #########################
 
