@@ -24,25 +24,6 @@ Contribute
 [Search ](https://en.wikipedia.org/wiki/Special:Search "Search Wikipedia \[ctrl-option-f\]")
 Search
 Appearance
-Appearance
-move to sidebar hide
-Text
-  * Small
-Standard
-Large
-
-This page always uses small font size
-Width
-  * Standard
-Wide
-
-The content is as wide as possible for your browser window.
-Color 
-  * Automatic
-Light
-Dark
-
-This page is always in light mode.
   * [Donate](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=en.wikipedia.org&uselang=en)
   * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Web+scraping "You are encouraged to create an account and log in; however, it is not mandatory")
   * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
@@ -54,7 +35,6 @@ Personal tools
   * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
 
 
-Toggle the table of contents
 ## Contents
 move to sidebar hide
   * [ (Top) ](https://en.wikipedia.org/wiki/Web_scraping)
@@ -78,6 +58,7 @@ move to sidebar hide
   * [ 6 References ](https://en.wikipedia.org/wiki/Web_scraping#References)
 
 
+Toggle the table of contents
 # Web scraping
 22 languages
   * [العربية](https://ar.wikipedia.org/wiki/%D8%AA%D8%AC%D8%B1%D9%8A%D9%81_%D9%88%D9%8A%D8%A8 "تجريف ويب – Arabic")
@@ -128,11 +109,10 @@ General
   * [What links here](https://en.wikipedia.org/wiki/Special:WhatLinksHere/Web_scraping "List of all English Wikipedia pages containing links to this page \[ctrl-option-j\]")
   * [Related changes](https://en.wikipedia.org/wiki/Special:RecentChangesLinked/Web_scraping "Recent changes in pages linked from this page \[ctrl-option-k\]")
   * [Upload file](https://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard "Upload files \[ctrl-option-u\]")
-  * [Permanent link](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1347947002 "Permanent link to this revision of this page")
+  * [Permanent link](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840 "Permanent link to this revision of this page")
   * [Page information](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=info "More information about this page")
-  * [Cite this page](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Web_scraping&id=1347947002&wpFormIdentifier=titleform "Information on how to cite this page")
+  * [Cite this page](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Web_scraping&id=1355278840&wpFormIdentifier=titleform "Information on how to cite this page")
   * [Get shortened URL](https://en.wikipedia.org/w/index.php?title=Special:UrlShortener&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FWeb_scraping)
-  * [Edit interlanguage links](https://www.wikidata.org/wiki/Special:EntityPage/Q665452#sitelinks-wikipedia "Edit interlanguage links")
 
 
 Print/export 
@@ -145,6 +125,8 @@ In other projects
   * [Wikidata item](https://www.wikidata.org/wiki/Special:EntityPage/Q665452 "Structured data on this page hosted by Wikidata \[ctrl-option-g\]")
 
 
+Appearance
+move to sidebar hide
 From Wikipedia, the free encyclopedia
 For broader coverage of this topic, see [Data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping").
 Method of extracting data from websites
@@ -155,7 +137,7 @@ _Find sources:_ ["Web scraping"](https://www.google.com/search?as_eq=wikipedia&q
 **Web scraping** , **web harvesting** , or **web data extraction** is [data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping") used for [extracting data](https://en.wikipedia.org/wiki/Data_extraction "Data extraction") from [websites](https://en.wikipedia.org/wiki/Website "Website").[[1]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-1) Web scraping software may directly access the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web "World Wide Web") using the [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol "Hypertext Transfer Protocol") or a web browser. While web scraping can be done manually by a software user, the term typically refers to automated processes implemented using a [bot](https://en.wikipedia.org/wiki/Internet_bot "Internet bot") or [web crawler](https://en.wikipedia.org/wiki/Web_crawler "Web crawler"). It is a form of copying in which specific data is gathered and copied from the web, typically into a central local [database](https://en.wikipedia.org/wiki/Database "Database") or [spreadsheet](https://en.wikipedia.org/wiki/Spreadsheet "Spreadsheet"), for later [retrieval](https://en.wikipedia.org/wiki/Data_retrieval "Data retrieval") or [analysis](https://en.wikipedia.org/wiki/Data_analysis "Data analysis"). 
 Scraping a web page involves fetching it and then extracting data from it. Fetching is the downloading of a page (which a browser does when a user views a page). Therefore, web crawling is a main component of web scraping, to fetch pages for later processing. Having fetched, extraction can take place. The content of a page may be [parsed](https://en.wikipedia.org/wiki/Parsing "Parsing"), searched and reformatted, and its data copied into a spreadsheet or loaded into a database. Web scrapers typically take something out of a page, to make use of it for another purpose somewhere else. An example would be finding and copying names and telephone numbers, companies and their URLs, or e-mail addresses to a list (contact scraping). Another example is collecting competitors product prices for marketing purposes, which can involve gathering large-scale pricing datasets from e-commerce websites and analysing them using data science techniques such as trend analysis, predictive modelling, and competitive benchmarking. 
 [Contact scraping](https://en.wikipedia.org/wiki/Contact_scraping "Contact scraping") is a type of web scraping that is used as a component of applications used for [web indexing](https://en.wikipedia.org/wiki/Web_indexing "Web indexing"), [web mining](https://en.wikipedia.org/wiki/Web_mining "Web mining") and [data mining](https://en.wikipedia.org/wiki/Data_mining "Data mining"), online price change monitoring and [price comparison](https://en.wikipedia.org/wiki/Comparison_shopping_website "Comparison shopping website"), product review scraping (to watch the competition), gathering real estate listings, weather data monitoring, [website change detection](https://en.wikipedia.org/wiki/Change_detection_and_notification "Change detection and notification"), research, tracking online presence and reputation, [web mashup](https://en.wikipedia.org/wiki/Web_mashup "Web mashup"), and [web data integration](https://en.wikipedia.org/wiki/Web_data_integration "Web data integration"). 
-[Web pages](https://en.wikipedia.org/wiki/Web_page "Web page") are built using text-based [markup languages](https://en.wikipedia.org/wiki/Markup_languages "Markup languages") ([HTML](https://en.wikipedia.org/wiki/HTML "HTML") and [XHTML](https://en.wikipedia.org/wiki/XHTML "XHTML")), and frequently contain a wealth of useful data in text form. However, most web pages are designed for human [end-users](https://en.wikipedia.org/wiki/End-user_\(computer_science\) "End-user \(computer science\)") and not for ease of automated use. As a result, specialized tools and software have been developed to facilitate the scraping of web pages. Web scraping applications include [market research](https://en.wikipedia.org/wiki/Market_research "Market research"), price comparison, content monitoring and [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence "Artificial intelligence"). Businesses rely on web scraping services to efficiently gather and utilize this data. 
+[Web pages](https://en.wikipedia.org/wiki/Web_page "Web page") are built using text-based [markup languages](https://en.wikipedia.org/wiki/Markup_languages "Markup languages") ([HTML](https://en.wikipedia.org/wiki/HTML "HTML") and [XHTML](https://en.wikipedia.org/wiki/XHTML "XHTML")), and frequently contain a wealth of data in text form. However, most web pages are designed for human [end-users](https://en.wikipedia.org/wiki/End-user_\(computer_science\) "End-user \(computer science\)") and not for ease of automated use. As a result, specialized tools and software have been developed to facilitate the scraping of web pages. Web scraping applications include [market research](https://en.wikipedia.org/wiki/Market_research "Market research"), price comparison, content monitoring and [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence "Artificial intelligence"). Businesses rely on web scraping services to efficiently gather and utilize this data. 
 Newer forms of web scraping involve monitoring [data feeds](https://en.wikipedia.org/wiki/Data_feed "Data feed") from [web servers](https://en.wikipedia.org/wiki/Web_servers "Web servers"). For example, [JSON](https://en.wikipedia.org/wiki/JSON "JSON") is commonly used as a transport mechanism between the client and the web server. 
 There are methods that some websites use to prevent web scraping, such as detecting and disallowing bots from crawling (viewing) their pages. In response, web scraping systems use techniques involving [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") parsing, [computer vision](https://en.wikipedia.org/wiki/Computer_vision "Computer vision") and [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing "Natural language processing") to simulate human-like browsing to enable gathering web page content for offline parsing. 
 ## History
@@ -173,17 +155,17 @@ Data extraction techniques range from manual collection to sophisticated automat
 The simplest form of web scraping is manual copying and pasting of data from a web page into a text file or spreadsheet. This approach requires no technical tools and can be used when automated scraping is blocked by website restrictions or when human judgment is necessary to interpret complex content. However, manual scraping is highly inefficient for large datasets, as it is time-consuming, prone to human error, and mentally exhausting. For this reason, it is generally considered impractical compared to automated methods, except in cases where automation is not feasible. 
 ### Text pattern matching
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=4 "Edit section: Text pattern matching")]
-A simple yet capable approach to extract information from web pages is to use the UNIX [grep](https://en.wikipedia.org/wiki/Grep "Grep") command or [regular expression](https://en.wikipedia.org/wiki/Regular_expression "Regular expression")-matching facilities of programming languages (for instance [Perl](https://en.wikipedia.org/wiki/Perl "Perl") or [Python](https://en.wikipedia.org/wiki/Python_\(programming_language\) "Python \(programming language\)")), in order to find text matching a specified pattern. 
+A simple approach to extract information from web pages is to use the UNIX [grep](https://en.wikipedia.org/wiki/Grep "Grep") command or [regular expression](https://en.wikipedia.org/wiki/Regular_expression "Regular expression")-matching facilities of programming languages (for instance [Perl](https://en.wikipedia.org/wiki/Perl "Perl") or [Python](https://en.wikipedia.org/wiki/Python_\(programming_language\) "Python \(programming language\)")), in order to find text matching a specified pattern. 
 ### HTTP programming
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=5 "Edit section: HTTP programming")]
 [Static](https://en.wikipedia.org/wiki/Static_web_page "Static web page") and [dynamic web pages](https://en.wikipedia.org/wiki/Dynamic_web_page "Dynamic web page") can be retrieved by posting HTTP requests to the remote web server using [socket programming](https://en.wikipedia.org/wiki/Socket_programming "Socket programming"). 
 ### HTML parsing
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=6 "Edit section: HTML parsing")]
-Many websites have large collections of pages generated dynamically from an underlying structured source like a database. Data of the same category are typically encoded into similar pages by a common script or template. In data mining, a program that detects such templates in a particular information source, extracts its content, and translates it into a relational form, is called a [wrapper](https://en.wikipedia.org/wiki/Wrapper_\(data_mining\) "Wrapper \(data mining\)"). Wrapper generation algorithms assume that input pages of a wrapper induction system conform to a common template and that they can be easily identified in terms of a URL common scheme.[[4]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-4) Moreover, some [semi-structured data](https://en.wikipedia.org/wiki/Semi-structured_data "Semi-structured data") query languages, such as [XQuery](https://en.wikipedia.org/wiki/XQuery "XQuery") and the HTQL, can be used to parse HTML pages and to retrieve and transform page content. 
+Many websites have large collections of pages generated dynamically from an underlying structured source, like a database. Data of the same category are typically encoded into similar pages by a common script or template. In data mining, a program that detects such templates in a particular information source, extracts its content, and translates it into a relational form, is called a [wrapper](https://en.wikipedia.org/wiki/Wrapper_\(data_mining\) "Wrapper \(data mining\)"). Wrapper generation algorithms assume that input pages of a wrapper induction system conform to a common template and that they can be easily identified in terms of a URL common scheme.[[4]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-4) Moreover, some [semi-structured data](https://en.wikipedia.org/wiki/Semi-structured_data "Semi-structured data") query languages, such as [XQuery](https://en.wikipedia.org/wiki/XQuery "XQuery") and the HTQL, can be used to parse HTML pages and to retrieve and transform page content. 
 ### DOM parsing
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=7 "Edit section: DOM parsing")]
 Further information: [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model")
-By using a program such as [Selenium](https://en.wikipedia.org/wiki/Selenium_\(software\) "Selenium \(software\)") or [Playwright](https://en.wikipedia.org/wiki/Playwright_\(software\) "Playwright \(software\)"), developers can control a web browser such as [Chrome](https://en.wikipedia.org/wiki/ChromeOS "ChromeOS") or [Firefox](https://en.wikipedia.org/wiki/Firefox "Firefox") wherein they can load, navigate, and retrieve data from websites. This method can be especially useful for scraping data from dynamic sites since a web browser will fully load each page. Once an entire page is loaded, you can access and parse the [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") using an expression language such as [XPath](https://en.wikipedia.org/wiki/XPath "XPath"). 
+By using a program such as [Selenium](https://en.wikipedia.org/wiki/Selenium_\(software\) "Selenium \(software\)") or [Playwright](https://en.wikipedia.org/wiki/Playwright_\(software\) "Playwright \(software\)"), developers can control a web browser such as [Chrome](https://en.wikipedia.org/wiki/ChromeOS "ChromeOS") or [Firefox](https://en.wikipedia.org/wiki/Firefox "Firefox") to load, navigate, and retrieve data from websites. This method can be especially useful for scraping data from dynamic sites since a web browser will fully load each page. Once an entire page is loaded, developers can access and parse the [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") using an expression language such as [XPath](https://en.wikipedia.org/wiki/XPath "XPath"). 
 ### Vertical aggregation
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=8 "Edit section: Vertical aggregation")]
 There are several companies that have developed vertical specific harvesting platforms. These platforms create and monitor a multitude of "bots" for specific verticals with no "man in the loop" (no direct human involvement), and no work related to a specific target site. The preparation involves establishing the knowledge base for the entire vertical and then the platform creates the bots automatically. The platform's robustness is measured by the quality of the information it retrieves (usually number of fields) and its scalability (how quick it can scale up to hundreds or thousands of sites). This scalability is mostly used to target the [Long Tail](https://en.wikipedia.org/wiki/Long_Tail "Long Tail") of sites that common aggregators find complicated or too labor-intensive to harvest content from. 
@@ -221,7 +203,7 @@ On April 30, 2020, the French Data Protection Authority (CNIL) released new guid
 In Australia, the [Spam Act 2003](https://en.wikipedia.org/wiki/Spam_Act_2003 "Spam Act 2003") outlaws some forms of web harvesting, although this only applies to email addresses.[[30]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-30)[[31]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-31)
 ### India
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=15 "Edit section: India")]
-Leaving a few cases dealing with IPR infringement, Indian courts have not expressly ruled on the legality of web scraping. However, since all common forms of electronic contracts are enforceable in India, violating the terms of use prohibiting data scraping will be a violation of the contract law. It will also violate the [Information Technology Act, 2000](https://en.wikipedia.org/wiki/Information_Technology_Act,_2000#:~:text=From_Wikipedia,_the_free_encyclopedia_The_Information_Technology,in_India_dealing_with_cybercrime_and_electronic_commerce. "Information Technology Act, 2000"), which penalizes unauthorized access to a computer resource or extracting data from a computer resource. 
+Besides a few cases dealing with IPR infringement, Indian courts have not expressly ruled on the legality of web scraping. However, since all common forms of electronic contracts are enforceable in India, violating the terms of use prohibiting data scraping will be a violation of the contract law. It will also violate the [Information Technology Act, 2000](https://en.wikipedia.org/wiki/Information_Technology_Act,_2000#:~:text=From_Wikipedia,_the_free_encyclopedia_The_Information_Technology,in_India_dealing_with_cybercrime_and_electronic_commerce. "Information Technology Act, 2000"), which penalizes unauthorized access to a computer resource or extracting data from a computer resource. 
 ## Methods to prevent web scraping
 [[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=16 "Edit section: Methods to prevent web scraping")]
 The administrator of a website can use various measures to stop or slow a bot. Some techniques include: 
@@ -307,7 +289,7 @@ The administrator of a website can use various measures to stop or slow a bot. S
   37. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-HasDataTLS_37-0 "Jump up")** Ermakovich, Sergey. ["What Is Web Scraping?"](https://hasdata.com/blog/web-scraping#how-web-scraping-actually-works). _HasData_. Retrieved 2026-01-27.
 
 
-Retrieved from "[https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1347947002](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1347947002)"
+Retrieved from "[https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840)"
 [Category](https://en.wikipedia.org/wiki/Help:Category "Help:Category"): 
   * [Web scraping](https://en.wikipedia.org/wiki/Category:Web_scraping "Category:Web scraping")
 
@@ -330,7 +312,7 @@ Hidden categories:
   * [Articles with unsourced statements from April 2023](https://en.wikipedia.org/wiki/Category:Articles_with_unsourced_statements_from_April_2023 "Category:Articles with unsourced statements from April 2023")
 
 
-  * This page was last edited on 9 April 2026, at 19:39 (UTC).
+  * This page was last edited on 20 May 2026, at 23:28 (UTC).
   * Text is available under the [Creative Commons Attribution-ShareAlike 4.0 License](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License "Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License"); additional terms may apply. By using this site, you agree to the [Terms of Use](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use "foundation:Special:MyLanguage/Policy:Terms of Use") and [Privacy Policy](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy "foundation:Special:MyLanguage/Policy:Privacy policy"). Wikipedia® is a registered trademark of the [Wikimedia Foundation, Inc.](https://wikimediafoundation.org/), a non-profit organization.
 
 
@@ -344,7 +326,6 @@ Hidden categories:
   * [Statistics](https://stats.wikimedia.org/#/en.wikipedia.org)
   * [Cookie statement](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement)
   * [Mobile view](https://en.wikipedia.org/w/index.php?title=Web_scraping&mobileaction=toggle_view_mobile)
-  * [Edit preview settings](https://en.wikipedia.org/wiki/Web_scraping)
 
 
   * [![Wikimedia Foundation](https://en.wikipedia.org/static/images/footer/wikimedia.svg)](https://www.wikimedia.org/)
@@ -357,4 +338,3 @@ Toggle the table of contents
 Web scraping
 [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping)
 22 languages [Add topic ](https://en.wikipedia.org/wiki/Web_scraping)
-[](https://en.wikipedia.org/wiki/Web_scraping?action=edit)
