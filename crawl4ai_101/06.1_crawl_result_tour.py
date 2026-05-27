@@ -21,6 +21,8 @@ from rich import print
 
 # Target page used to demonstrate multi-format capture (markdown, image, PDF, MHTML)
 URL = "https://en.wikipedia.org/wiki/Web_scraping"
+# URL = "https://en.wikipedia.org/wiki/MHTML#External_links"
+
 
 # Resolve output directory relative to this script for portable artifact storage
 local_path = "output/video_06"
@@ -62,7 +64,6 @@ async def main() -> None:
     # Use the async context manager so the underlying browser is cleaned up automatically
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(URL, config=config)
-
 
     ############################ Persist Artifacts ############################
 
