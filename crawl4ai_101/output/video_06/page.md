@@ -24,25 +24,6 @@ Contribute
 [Search ](https://en.wikipedia.org/wiki/Special:Search "Search Wikipedia \[ctrl-option-f\]")
 Search
 Appearance
-Appearance
-move to sidebar hide
-Text
-  * Small
-Standard
-Large
-
-This page always uses small font size
-Width
-  * Standard
-Wide
-
-The content is as wide as possible for your browser window.
-Color 
-  * Automatic
-Light
-Dark
-
-This page is always in light mode.
   * [Donate](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=en.wikipedia.org&uselang=en)
   * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Web+scraping "You are encouraged to create an account and log in; however, it is not mandatory")
   * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
@@ -54,7 +35,6 @@ Personal tools
   * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
 
 
-Toggle the table of contents
 ## Contents
 move to sidebar hide
   * [ (Top) ](https://en.wikipedia.org/wiki/Web_scraping)
@@ -78,6 +58,7 @@ move to sidebar hide
   * [ 6 References ](https://en.wikipedia.org/wiki/Web_scraping#References)
 
 
+Toggle the table of contents
 # Web scraping
 22 languages
   * [العربية](https://ar.wikipedia.org/wiki/%D8%AA%D8%AC%D8%B1%D9%8A%D9%81_%D9%88%D9%8A%D8%A8 "تجريف ويب – Arabic")
@@ -132,7 +113,6 @@ General
   * [Page information](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=info "More information about this page")
   * [Cite this page](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Web_scraping&id=1355278840&wpFormIdentifier=titleform "Information on how to cite this page")
   * [Get shortened URL](https://en.wikipedia.org/w/index.php?title=Special:UrlShortener&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FWeb_scraping)
-  * [Edit interlanguage links](https://www.wikidata.org/wiki/Special:EntityPage/Q665452#sitelinks-wikipedia "Edit interlanguage links")
 
 
 Print/export 
@@ -145,6 +125,8 @@ In other projects
   * [Wikidata item](https://www.wikidata.org/wiki/Special:EntityPage/Q665452 "Structured data on this page hosted by Wikidata \[ctrl-option-g\]")
 
 
+Appearance
+move to sidebar hide
 From Wikipedia, the free encyclopedia
 For broader coverage of this topic, see [Data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping").
 Method of extracting data from websites
@@ -344,7 +326,6 @@ Hidden categories:
   * [Statistics](https://stats.wikimedia.org/#/en.wikipedia.org)
   * [Cookie statement](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement)
   * [Mobile view](https://en.wikipedia.org/w/index.php?title=Web_scraping&mobileaction=toggle_view_mobile)
-  * [Edit preview settings](https://en.wikipedia.org/wiki/Web_scraping)
 
 
   * [![Wikimedia Foundation](https://en.wikipedia.org/static/images/footer/wikimedia.svg)](https://www.wikimedia.org/)
@@ -357,4 +338,3 @@ Toggle the table of contents
 Web scraping
 [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping)
 22 languages [Add topic ](https://en.wikipedia.org/wiki/Web_scraping)
-[](https://en.wikipedia.org/wiki/Web_scraping?action=edit)

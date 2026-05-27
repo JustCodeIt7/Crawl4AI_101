@@ -91,14 +91,14 @@ async def main() -> None:
     internal_links = len((result.links or {}).get("internal", []))
     external_links = len((result.links or {}).get("external", []))
     image_count = len((result.media or {}).get("images", []))
+    # Show all available fields in the CrawlResult for this page
+    print(result[0].__dict__.keys())
+
+    print(f"\nSaved markdown to: '{local_path}/page.md'")
+    print(f"\nInternal links: {internal_links}, external links: {external_links}")
+    print(f"\nImages discovered: {image_count}")
     print(
-        result[0].__dict__.keys()
-    )  # Show all available fields in the CrawlResult for this page
-    print(f"Saved markdown to: '{local_path}/page.md'")
-    print(f"Internal links: {internal_links}, external links: {external_links}")
-    print(f"Images discovered: {image_count}")
-    print(
-        f"Artifacts available: \npng={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}"
+        f"\nArtifacts available: \npng={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}\n"
     )
 
 
