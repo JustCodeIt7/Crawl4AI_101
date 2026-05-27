@@ -3,7 +3,7 @@ from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig
 from rich import print
 
 # Target URL to crawl
-URL = "https://en.wikipedia.org/wiki/Web_scraping"
+URL = "https://meta.wikimedia.org/wiki/VideoWiki"
 
 
 ##################### Main Crawl Routine #######################
@@ -12,9 +12,8 @@ async def main() -> None:
     # Configure crawler: bypass cache, skip extra captures, quiet logs
     config = CrawlerRunConfig(
         cache_mode=CacheMode.BYPASS,
-        screenshot=False,
-        pdf=False,
-        capture_mhtml=False,
+        screenshot=False,  # Whether to take a screenshot after crawling
+        pdf=True,  # Whether to generate a PDF of the page
         verbose=False,
     )
 
@@ -22,6 +21,9 @@ async def main() -> None:
     async with AsyncWebCrawler() as crawler:
         # Fetch page, render JS, populate CrawlResult
         result = await crawler.arun(url=URL, config=config)
+    # print result keys and types for exploration
+    print("CrawlResult keys and types:")
+    print(result[0].__dict__.keys())
 
     # Print success flag and HTTP status (status_code may be missing on errors)
     print("success:", result.success, "status:", getattr(result, "status_code", None))

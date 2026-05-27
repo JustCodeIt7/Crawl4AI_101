@@ -5,7 +5,9 @@ from rich import print
 ############################ Configuration ###################################
 
 # Target URL to crawl — Wikipedia page rich in links and media for comparison
-URL = "https://en.wikipedia.org/wiki/Web_scraping"
+URL = "https://meta.wikimedia.org/wiki/VideoWiki"
+# Alternate URL with more media (YouTube) for testing filter effects:
+URL = "https://www.youtube.com/watch?v=fzld3WjvBSk"
 
 ############################ Helper: Summarize ###############################
 

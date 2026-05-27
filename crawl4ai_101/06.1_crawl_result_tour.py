@@ -23,8 +23,8 @@ from rich import print
 URL = "https://en.wikipedia.org/wiki/Web_scraping"
 
 # Resolve output directory relative to this script for portable artifact storage
-OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "video_06"
-
+local_path = "output/video_06"
+OUTPUT_DIR = Path(__file__).resolve().parent / local_path
 
 ################################ Helper Functions ################################
 
@@ -63,19 +63,17 @@ async def main() -> None:
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(URL, config=config)
 
-    # Bail out early when the crawl fails so we don't try to read missing fields
-    if not result.success:
-        print(f"Crawl failed: {result.error_message}")
-        return
 
     ############################ Persist Artifacts ############################
 
     # Prefer the raw markdown attribute, falling back to string form for older result shapes
     markdown = getattr(result.markdown, "raw_markdown", str(result.markdown))
+    # Write the markdown to disk as UTF-8 text; this is the most human-friendly artifact for quick inspection
     (output_dir / "page.md").write_text(markdown or "", encoding="utf-8")
 
     # Screenshots arrive as base64; decode before writing to a binary PNG
     if result.screenshot:
+        # The result.screenshot field is a base64-encoded string representing the PNG image data.
         png_bytes = base64.b64decode(result.screenshot)
         save_bytes(output_dir / "page.png", png_bytes)
 
@@ -92,10 +90,15 @@ async def main() -> None:
     internal_links = len((result.links or {}).get("internal", []))
     external_links = len((result.links or {}).get("external", []))
     image_count = len((result.media or {}).get("images", []))
-    print(f"Saved markdown to: {output_dir / 'page.md'}")
+    print(
+        result[0].__dict__.keys()
+    )  # Show all available fields in the CrawlResult for this page
+    print(f"Saved markdown to: '{local_path}/page.md'")
     print(f"Internal links: {internal_links}, external links: {external_links}")
     print(f"Images discovered: {image_count}")
-    print(f"Artifacts available: png={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}")
+    print(
+        f"Artifacts available: \npng={bool(result.screenshot)} pdf={bool(result.pdf)} mhtml={bool(result.mhtml)}"
+    )
 
 
 ################################ Entry Point ################################
