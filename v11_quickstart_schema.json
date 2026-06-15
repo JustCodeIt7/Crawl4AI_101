@@ -1,0 +1,29 @@
+{
+  "name": "Quick Start Page",
+  "baseSelector": ".header",
+  "baseFields": [
+    {
+      "name": "title",
+      "type": "text"
+    }
+  ],
+  "fields": [
+    {
+      "name": "sections",
+      "selector": ".section",
+      "type": "list",
+      "fields": [
+        {
+          "name": "title",
+          "selector": ".section-title",
+          "type": "text"
+        },
+        {
+          "name": "description",
+          "selector": ".section-description",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

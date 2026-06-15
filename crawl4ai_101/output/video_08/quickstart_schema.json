@@ -1,0 +1,29 @@
+{
+  "name": "Quick Start Article Sections",
+  "baseSelector": "body > div > div > div > nav > ul > li",
+  "fields": [
+    {
+      "name": "title",
+      "selector": "head > title",
+      "type": "text"
+    },
+    {
+      "name": "quickstart_sections",
+      "type": "list",
+      "selector": "body > div > div > div > nav > ul > li",
+      "fields": [
+        {
+          "name": "section_name",
+          "selector": "span",
+          "type": "text"
+        },
+        {
+          "name": "section_link",
+          "selector": "a",
+          "type": "attribute",
+          "attribute": "href"
+        }
+      ]
+    }
+  ]
+}

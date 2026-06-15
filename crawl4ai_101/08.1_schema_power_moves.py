@@ -3,17 +3,8 @@ import json
 import sys
 from pathlib import Path
 
-############################# Path Configuration #############################
-
-# When running this script directly (e.g., `python v09_schema_power_moves.py`),
-# __package__ will be None or empty. In that case, add the project root (two
-# levels up) to sys.path so that sibling package imports resolve correctly.
-if __package__ in {None, ""}:
-    sys.path.append(str(Path(__file__).resolve().parents[2]))
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig, JsonCssExtractionStrategy
 
-# Target URL — the Crawl4AI quickstart docs page used as our extraction subject
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
 ################################ Schema Definition ###########################
@@ -49,11 +40,9 @@ URL = "https://docs.crawl4ai.com/core/quickstart/"
 #                       flat and concise.
 SCHEMA = {
     "name": "Docs article outline",
-    # Scope the entire extraction to the <main> element so we skip chrome
-    # (nav, sidebar, footer) and focus on the article body
+    # Scope the entire extraction to the <main> element so we skip chrome (nav, sidebar, footer) and focus on the article body
     "baseSelector": "main",
-    # baseFields are extracted once from the root element — perfect for
-    # page-level data like the primary <h1> heading
+    # baseFields are extracted once from the root element — perfect for page-level data like the primary <h1> heading
     "baseFields": [
         {"name": "page_title", "selector": "h1", "type": "text", "transform": "strip", "default": "Untitled"},
     ],
@@ -137,8 +126,5 @@ async def main() -> None:
 
 
 ################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to drive the async
-# main() coroutine from a synchronous context
 if __name__ == "__main__":
     asyncio.run(main())

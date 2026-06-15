@@ -4,6 +4,14 @@ Demonstrates:
 - JsonCssExtractionStrategy.generate_schema()
 - saving a generated schema for reuse
 - running the generated schema without another LLM call
+
+Prerequisites:
+- `pip install crawl4ai playwright`
+- `playwright install`
+- `OPENAI_API_KEY` set in your environment
+
+Run:
+- `python crawl4ai_101/video_08_schema_generation.py`
 """
 
 import asyncio
@@ -17,16 +25,9 @@ from crawl4ai import (
     JsonCssExtractionStrategy,
     LLMConfig,
 )
-from rich import print
 
-############################### Configuration & Constants ################################
-# Load API key from environment to authenticate the LLM-based schema generation
 API_KEY = os.getenv("OPENAI_API_KEY")
-
-# Resolve output directory relative to this script so results land consistently
 OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "video_08"
-
-# Provide representative markup so the LLM can infer a reusable CSS schema
 SAMPLE_HTML = """
 <section class="products">
   <article class="product-card">
@@ -43,20 +44,13 @@ SAMPLE_HTML = """
 """
 
 
-################################ Helper Functions ################################
 def ensure_output_dir() -> Path:
-    """Create the output directory if needed and return its path."""
-    # Use parents=True/exist_ok=True to safely create nested dirs without errors
     OUTPUT_DIR.mkdir(parents=True, exist_ok=True)
     return OUTPUT_DIR
 
 
-################################ Main Workflow ################################
 async def main() -> None:
-    """Generate a schema via LLM, persist it, then reuse it for extraction without a second LLM call."""
     output_dir = ensure_output_dir()
-
-    # Ask the LLM once to infer a CSS extraction schema from the sample markup
     schema = JsonCssExtractionStrategy.generate_schema(
         SAMPLE_HTML,
         query="Extract each product name, price, and rating as a flat record.",
@@ -64,36 +58,26 @@ async def main() -> None:
             provider="openai/gpt-4o-mini", api_token=API_KEY, max_tokens=500, temperature=0
         ),  # deterministic output for demo purposes
     )
-
-    # Persist the generated schema so future runs can skip the LLM entirely
     schema_path = output_dir / "product_schema.json"
     schema_path.write_text(json.dumps(schema, indent=2), encoding="utf-8")
 
-    # Configure the crawler to apply the generated schema purely via CSS rules
     config = CrawlerRunConfig(
         extraction_strategy=JsonCssExtractionStrategy(schema),
         verbose=False,
     )
-
-    # Run the crawler against the raw HTML using the reusable, LLM-free schema
     async with AsyncWebCrawler() as crawler:
-        result = await crawler.arun(f"raw://{SAMPLE_HTML}", config=config)  # raw:// feeds HTML directly
+        result = await crawler.arun(f"raw://{SAMPLE_HTML}", config=config)
 
-    # Bail out early if the crawl did not succeed
     if not result.success:
         print(f"Generated-schema crawl failed: {result.error_message}")
         return
 
-    # Parse the extracted JSON, defaulting to an empty list when nothing was returned
     items = json.loads(result.extracted_content or "[]")
     print(f"Generated schema saved to: {schema_path}")
     print(f"Reusable extraction rows: {len(items)}")
-
-    # Preview the first record to confirm the schema captured the expected fields
     if items:
         print(f"First row: {items[0]}")
 
 
-################################ Entry Point ################################
 if __name__ == "__main__":
     asyncio.run(main())
