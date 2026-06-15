@@ -1,4 +1,4 @@
-[Jump to content](https://en.wikipedia.org/wiki/Web_scraping#bodyContent)
+[Jump to content](https://en.wikipedia.org/wiki/MHTML#bodyContent)
 Main menu
 Main menu
 move to sidebar hide
@@ -25,294 +25,734 @@ Contribute
 Search
 Appearance
   * [Donate](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=en.wikipedia.org&uselang=en)
-  * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Web+scraping "You are encouraged to create an account and log in; however, it is not mandatory")
-  * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
+  * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=MHTML "You are encouraged to create an account and log in; however, it is not mandatory")
+  * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=MHTML "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
 
 
 Personal tools
   * [Donate](https://donate.wikimedia.org/?wmf_source=donate&wmf_medium=sidebar&wmf_campaign=en.wikipedia.org&uselang=en)
-  * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=Web+scraping "You are encouraged to create an account and log in; however, it is not mandatory")
-  * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=Web+scraping "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
+  * [Create account](https://en.wikipedia.org/w/index.php?title=Special:CreateAccount&returnto=MHTML "You are encouraged to create an account and log in; however, it is not mandatory")
+  * [Log in](https://en.wikipedia.org/w/index.php?title=Special:UserLogin&returnto=MHTML "You're encouraged to log in; however, it's not mandatory. \[ctrl-option-o\]")
 
 
 ## Contents
 move to sidebar hide
-  * [ (Top) ](https://en.wikipedia.org/wiki/Web_scraping)
-  * [ 1 History ](https://en.wikipedia.org/wiki/Web_scraping#History)
-  * [ 2 Techniques ](https://en.wikipedia.org/wiki/Web_scraping#Techniques) Toggle Techniques subsection
-    * [ 2.1 Human copy-and-paste ](https://en.wikipedia.org/wiki/Web_scraping#Human_copy-and-paste)
-    * [ 2.2 Text pattern matching ](https://en.wikipedia.org/wiki/Web_scraping#Text_pattern_matching)
-    * [ 2.3 HTTP programming ](https://en.wikipedia.org/wiki/Web_scraping#HTTP_programming)
-    * [ 2.4 HTML parsing ](https://en.wikipedia.org/wiki/Web_scraping#HTML_parsing)
-    * [ 2.5 DOM parsing ](https://en.wikipedia.org/wiki/Web_scraping#DOM_parsing)
-    * [ 2.6 Vertical aggregation ](https://en.wikipedia.org/wiki/Web_scraping#Vertical_aggregation)
-    * [ 2.7 Semantic annotation recognizing ](https://en.wikipedia.org/wiki/Web_scraping#Semantic_annotation_recognizing)
-    * [ 2.8 Computer vision web-page analysis ](https://en.wikipedia.org/wiki/Web_scraping#Computer_vision_web-page_analysis)
-  * [ 3 Legal issues ](https://en.wikipedia.org/wiki/Web_scraping#Legal_issues) Toggle Legal issues subsection
-    * [ 3.1 United States ](https://en.wikipedia.org/wiki/Web_scraping#United_States)
-    * [ 3.2 European Union ](https://en.wikipedia.org/wiki/Web_scraping#European_Union)
-    * [ 3.3 Australia ](https://en.wikipedia.org/wiki/Web_scraping#Australia)
-    * [ 3.4 India ](https://en.wikipedia.org/wiki/Web_scraping#India)
-  * [ 4 Methods to prevent web scraping ](https://en.wikipedia.org/wiki/Web_scraping#Methods_to_prevent_web_scraping)
-  * [ 5 See also ](https://en.wikipedia.org/wiki/Web_scraping#See_also)
-  * [ 6 References ](https://en.wikipedia.org/wiki/Web_scraping#References)
+  * [ (Top) ](https://en.wikipedia.org/wiki/MHTML)
+  * [ 1 Layout ](https://en.wikipedia.org/wiki/MHTML#Layout)
+  * [ 2 MIME type ](https://en.wikipedia.org/wiki/MHTML#MIME_type)
+  * [ 3 Supporting apps ](https://en.wikipedia.org/wiki/MHTML#Supporting_apps) Toggle Supporting apps subsection
+    * [ 3.1 Web browsers ](https://en.wikipedia.org/wiki/MHTML#Web_browsers)
+    * [ 3.2 Other apps ](https://en.wikipedia.org/wiki/MHTML#Other_apps)
+  * [ 4 Exploits ](https://en.wikipedia.org/wiki/MHTML#Exploits)
+  * [ 5 Alternatives ](https://en.wikipedia.org/wiki/MHTML#Alternatives) Toggle Alternatives subsection
+    * [ 5.1 Data URI scheme ](https://en.wikipedia.org/wiki/MHTML#Data_URI_scheme)
+    * [ 5.2 Mozilla Archive Format ](https://en.wikipedia.org/wiki/MHTML#Mozilla_Archive_Format)
+  * [ 6 See also ](https://en.wikipedia.org/wiki/MHTML#See_also)
+  * [ 7 References ](https://en.wikipedia.org/wiki/MHTML#References)
+  * [ 8 External links ](https://en.wikipedia.org/wiki/MHTML#External_links)
 
 
 Toggle the table of contents
-# Web scraping
-22 languages
-  * [العربية](https://ar.wikipedia.org/wiki/%D8%AA%D8%AC%D8%B1%D9%8A%D9%81_%D9%88%D9%8A%D8%A8 "تجريف ويب – Arabic")
-  * [الدارجة](https://ary.wikipedia.org/wiki/%D8%AA%D8%BA%D8%B1%D8%A7%D9%81_%D9%84%D9%88%D9%8A%D8%A8 "تغراف لويب – Moroccan Arabic")
-  * [Català](https://ca.wikipedia.org/wiki/Web_scraping "Web scraping – Catalan")
-  * [Čeština](https://cs.wikipedia.org/wiki/Web_scraping "Web scraping – Czech")
-  * [Deutsch](https://de.wikipedia.org/wiki/Screen_Scraping "Screen Scraping – German")
-  * [Español](https://es.wikipedia.org/wiki/Web_scraping "Web scraping – Spanish")
-  * [Euskara](https://eu.wikipedia.org/wiki/Web_scraping "Web scraping – Basque")
-  * [فارسی](https://fa.wikipedia.org/wiki/%D8%AA%D8%B1%D8%A7%D8%B4%DB%8C%D8%AF%D9%86_%D9%88%D8%A8 "تراشیدن وب – Persian")
-  * [Français](https://fr.wikipedia.org/wiki/Web_scraping "Web scraping – French")
-  * [Bahasa Indonesia](https://id.wikipedia.org/wiki/Penggalian_web "Penggalian web – Indonesian")
-  * [Íslenska](https://is.wikipedia.org/wiki/Vefs%C3%B6fnun "Vefsöfnun – Icelandic")
-  * [Italiano](https://it.wikipedia.org/wiki/Web_scraping "Web scraping – Italian")
-  * [日本語](https://ja.wikipedia.org/wiki/%E3%82%A6%E3%82%A7%E3%83%96%E3%82%B9%E3%82%AF%E3%83%AC%E3%82%A4%E3%83%94%E3%83%B3%E3%82%B0 "ウェブスクレイピング – Japanese")
-  * [한국어](https://ko.wikipedia.org/wiki/%EC%9B%B9_%EC%8A%A4%ED%81%AC%EB%9E%98%ED%95%91 "웹 스크래핑 – Korean")
-  * [Latviešu](https://lv.wikipedia.org/wiki/Rasmo%C5%A1ana "Rasmošana – Latvian")
-  * [Nederlands](https://nl.wikipedia.org/wiki/Scrapen "Scrapen – Dutch")
-  * [Português](https://pt.wikipedia.org/wiki/Web_scraping "Web scraping – Portuguese")
-  * [Русский](https://ru.wikipedia.org/wiki/%D0%92%D0%B5%D0%B1-%D1%81%D0%BA%D1%80%D0%B5%D0%B9%D0%BF%D0%B8%D0%BD%D0%B3 "Веб-скрейпинг – Russian")
-  * [Türkçe](https://tr.wikipedia.org/wiki/Web_kaz%C4%B1ma "Web kazıma – Turkish")
-  * [Українська](https://uk.wikipedia.org/wiki/Web_scraping "Web scraping – Ukrainian")
-  * [粵語](https://zh-yue.wikipedia.org/wiki/%E7%B6%B2%E9%A0%81%E5%88%AE%E6%96%99 "網頁刮料 – Cantonese")
-  * [中文](https://zh.wikipedia.org/wiki/%E7%BD%91%E9%A1%B5%E6%8A%93%E5%8F%96 "网页抓取 – Chinese")
+# MHTML
+13 languages
+  * [বাংলা](https://bn.wikipedia.org/wiki/%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%87%E0%A6%9A%E0%A6%9F%E0%A6%BF%E0%A6%8F%E0%A6%AE%E0%A6%8F%E0%A6%B2 "এমএইচটিএমএল – Bangla")
+  * [Deutsch](https://de.wikipedia.org/wiki/MIME_Encapsulation_of_Aggregate_HTML_Documents "MIME Encapsulation of Aggregate HTML Documents – German")
+  * [Español](https://es.wikipedia.org/wiki/MHTML "MHTML – Spanish")
+  * [Français](https://fr.wikipedia.org/wiki/MIME_Encapsulation_of_Aggregate_Documents,_such_as_HTML "MIME Encapsulation of Aggregate Documents, such as HTML – French")
+  * [Italiano](https://it.wikipedia.org/wiki/MHTML "MHTML – Italian")
+  * [日本語](https://ja.wikipedia.org/wiki/MHTML "MHTML – Japanese")
+  * [한국어](https://ko.wikipedia.org/wiki/MHTML "MHTML – Korean")
+  * [Polski](https://pl.wikipedia.org/wiki/MHTML "MHTML – Polish")
+  * [Português](https://pt.wikipedia.org/wiki/MHTML "MHTML – Portuguese")
+  * [Русский](https://ru.wikipedia.org/wiki/MHTML "MHTML – Russian")
+  * [ไทย](https://th.wikipedia.org/wiki/%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1%E0%B9%80%E0%B8%AD%E0%B8%8A%E0%B8%97%E0%B8%B5%E0%B9%80%E0%B8%AD%E0%B9%87%E0%B8%A1%E0%B9%81%E0%B8%AD%E0%B8%A5 "เอ็มเอชทีเอ็มแอล – Thai")
+  * [Українська](https://uk.wikipedia.org/wiki/MHTML "MHTML – Ukrainian")
+  * [中文](https://zh.wikipedia.org/wiki/MHTML "MHTML – Chinese")
 
 
-[Edit links](https://www.wikidata.org/wiki/Special:EntityPage/Q665452#sitelinks-wikipedia "Edit interlanguage links")
-  * [Article](https://en.wikipedia.org/wiki/Web_scraping "View the content page \[ctrl-option-c\]")
-  * [Talk](https://en.wikipedia.org/wiki/Talk:Web_scraping "Discuss improvements to the content page \[ctrl-option-t\]")
+[Edit links](https://www.wikidata.org/wiki/Special:EntityPage/Q954199#sitelinks-wikipedia "Edit interlanguage links")
+  * [Article](https://en.wikipedia.org/wiki/MHTML "View the content page \[ctrl-option-c\]")
+  * [Talk](https://en.wikipedia.org/wiki/Talk:MHTML "Discuss improvements to the content page \[ctrl-option-t\]")
 
 
 English
-  * [Read](https://en.wikipedia.org/wiki/Web_scraping)
-  * [Edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit "Edit this page \[ctrl-option-e\]")
-  * [View history](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=history "Past revisions of this page \[ctrl-option-h\]")
+  * [Read](https://en.wikipedia.org/wiki/MHTML)
+  * [Edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit "Edit this page \[ctrl-option-e\]")
+  * [View history](https://en.wikipedia.org/w/index.php?title=MHTML&action=history "Past revisions of this page \[ctrl-option-h\]")
 
 
 Tools
 Tools
 move to sidebar hide
 Actions 
-  * [Read](https://en.wikipedia.org/wiki/Web_scraping)
-  * [Edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit "Edit this page \[ctrl-option-e\]")
-  * [View history](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=history)
+  * [Read](https://en.wikipedia.org/wiki/MHTML)
+  * [Edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit "Edit this page \[ctrl-option-e\]")
+  * [View history](https://en.wikipedia.org/w/index.php?title=MHTML&action=history)
 
 
 General 
-  * [What links here](https://en.wikipedia.org/wiki/Special:WhatLinksHere/Web_scraping "List of all English Wikipedia pages containing links to this page \[ctrl-option-j\]")
-  * [Related changes](https://en.wikipedia.org/wiki/Special:RecentChangesLinked/Web_scraping "Recent changes in pages linked from this page \[ctrl-option-k\]")
+  * [What links here](https://en.wikipedia.org/wiki/Special:WhatLinksHere/MHTML "List of all English Wikipedia pages containing links to this page \[ctrl-option-j\]")
+  * [Related changes](https://en.wikipedia.org/wiki/Special:RecentChangesLinked/MHTML "Recent changes in pages linked from this page \[ctrl-option-k\]")
   * [Upload file](https://en.wikipedia.org/wiki/Wikipedia:File_Upload_Wizard "Upload files \[ctrl-option-u\]")
-  * [Permanent link](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840 "Permanent link to this revision of this page")
-  * [Page information](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=info "More information about this page")
-  * [Cite this page](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=Web_scraping&id=1355278840&wpFormIdentifier=titleform "Information on how to cite this page")
-  * [Get shortened URL](https://en.wikipedia.org/w/index.php?title=Special:UrlShortener&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FWeb_scraping)
+  * [Permanent link](https://en.wikipedia.org/w/index.php?title=MHTML&oldid=1346556407#External_links "Permanent link to this revision of this page")
+  * [Page information](https://en.wikipedia.org/w/index.php?title=MHTML&action=info "More information about this page")
+  * [Cite this page](https://en.wikipedia.org/w/index.php?title=Special:CiteThisPage&page=MHTML&id=1346556407&wpFormIdentifier=titleform "Information on how to cite this page")
+  * [Get shortened URL](https://en.wikipedia.org/w/index.php?title=Special:UrlShortener&url=https%3A%2F%2Fen.wikipedia.org%2Fwiki%2FMHTML)
+  * [Expand all](https://en.wikipedia.org/wiki/MHTML "Expand all collapsible elements on the current page")
 
 
 Print/export 
-  * [Download as PDF](https://en.wikipedia.org/w/index.php?title=Special:DownloadAsPdf&page=Web_scraping&action=show-download-screen "Download this page as a PDF file")
-  * [Printable version](https://en.wikipedia.org/w/index.php?title=Web_scraping&printable=yes "Printable version of this page \[ctrl-option-p\]")
+  * [Download as PDF](https://en.wikipedia.org/w/index.php?title=Special:DownloadAsPdf&page=MHTML&action=show-download-screen "Download this page as a PDF file")
+  * [Printable version](https://en.wikipedia.org/w/index.php?title=MHTML&printable=yes "Printable version of this page \[ctrl-option-p\]")
 
 
 In other projects 
-  * [Wikimedia Commons](https://commons.wikimedia.org/wiki/Category:Web_scraping)
-  * [Wikidata item](https://www.wikidata.org/wiki/Special:EntityPage/Q665452 "Structured data on this page hosted by Wikidata \[ctrl-option-g\]")
+  * [Wikidata item](https://www.wikidata.org/wiki/Special:EntityPage/Q954199 "Structured data on this page hosted by Wikidata \[ctrl-option-g\]")
 
 
 Appearance
 move to sidebar hide
 From Wikipedia, the free encyclopedia
-For broader coverage of this topic, see [Data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping").
-Method of extracting data from websites
-"Web scraper" redirects here. For websites that scrape content, see [Scraper site](https://en.wikipedia.org/wiki/Scraper_site "Scraper site").
-[![icon](https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/60px-Question_book-new.svg.png)](https://en.wikipedia.org/wiki/File:Question_book-new.svg) | This article **needs additional citations for[verification](https://en.wikipedia.org/wiki/Wikipedia:Verifiability "Wikipedia:Verifiability")**. Please help [improve this article](https://en.wikipedia.org/wiki/Special:EditPage/Web_scraping "Special:EditPage/Web scraping") by [adding citations to reliable sources](https://en.wikipedia.org/wiki/Help:Referencing_for_beginners "Help:Referencing for beginners"). Unsourced material may be challenged and removed.  
-_Find sources:_ ["Web scraping"](https://www.google.com/search?as_eq=wikipedia&q=%22Web+scraping%22) – [news](https://www.google.com/search?tbm=nws&q=%22Web+scraping%22+-wikipedia&tbs=ar:1) **·** [newspapers](https://www.google.com/search?&q=%22Web+scraping%22&tbs=bkt:s&tbm=bks) **·** [books](https://www.google.com/search?tbs=bks:1&q=%22Web+scraping%22+-wikipedia) **·** [scholar](https://scholar.google.com/scholar?q=%22Web+scraping%22) **·** [JSTOR](https://www.jstor.org/action/doBasicSearch?Query=%22Web+scraping%22&acc=on&wc=on) _( April 2023)__([Learn how and when to remove this message](https://en.wikipedia.org/wiki/Help:Maintenance_template_removal "Help:Maintenance template removal"))_  
+Web page archive (file) format
+[![icon](https://upload.wikimedia.org/wikipedia/en/thumb/9/99/Question_book-new.svg/60px-Question_book-new.svg.png)](https://en.wikipedia.org/wiki/File:Question_book-new.svg) | This article **needs additional citations for[verification](https://en.wikipedia.org/wiki/Wikipedia:Verifiability "Wikipedia:Verifiability")**. Please help [improve this article](https://en.wikipedia.org/wiki/Special:EditPage/MHTML "Special:EditPage/MHTML") by [adding citations to reliable sources](https://en.wikipedia.org/wiki/Help:Referencing_for_beginners "Help:Referencing for beginners"). Unsourced material may be challenged and removed.  
+_Find sources:_ ["MHTML"](https://www.google.com/search?as_eq=wikipedia&q=%22MHTML%22) – [news](https://www.google.com/search?tbm=nws&q=%22MHTML%22+-wikipedia&tbs=ar:1) **·** [newspapers](https://www.google.com/search?&q=%22MHTML%22&tbs=bkt:s&tbm=bks) **·** [books](https://www.google.com/search?tbs=bks:1&q=%22MHTML%22+-wikipedia) **·** [scholar](https://scholar.google.com/scholar?q=%22MHTML%22) **·** [JSTOR](https://www.jstor.org/action/doBasicSearch?Query=%22MHTML%22&acc=on&wc=on) _( April 2014)__([Learn how and when to remove this message](https://en.wikipedia.org/wiki/Help:Maintenance_template_removal "Help:Maintenance template removal"))_  
 ---|---  
-**Web scraping** , **web harvesting** , or **web data extraction** is [data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping") used for [extracting data](https://en.wikipedia.org/wiki/Data_extraction "Data extraction") from [websites](https://en.wikipedia.org/wiki/Website "Website").[[1]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-1) Web scraping software may directly access the [World Wide Web](https://en.wikipedia.org/wiki/World_Wide_Web "World Wide Web") using the [Hypertext Transfer Protocol](https://en.wikipedia.org/wiki/Hypertext_Transfer_Protocol "Hypertext Transfer Protocol") or a web browser. While web scraping can be done manually by a software user, the term typically refers to automated processes implemented using a [bot](https://en.wikipedia.org/wiki/Internet_bot "Internet bot") or [web crawler](https://en.wikipedia.org/wiki/Web_crawler "Web crawler"). It is a form of copying in which specific data is gathered and copied from the web, typically into a central local [database](https://en.wikipedia.org/wiki/Database "Database") or [spreadsheet](https://en.wikipedia.org/wiki/Spreadsheet "Spreadsheet"), for later [retrieval](https://en.wikipedia.org/wiki/Data_retrieval "Data retrieval") or [analysis](https://en.wikipedia.org/wiki/Data_analysis "Data analysis"). 
-Scraping a web page involves fetching it and then extracting data from it. Fetching is the downloading of a page (which a browser does when a user views a page). Therefore, web crawling is a main component of web scraping, to fetch pages for later processing. Having fetched, extraction can take place. The content of a page may be [parsed](https://en.wikipedia.org/wiki/Parsing "Parsing"), searched and reformatted, and its data copied into a spreadsheet or loaded into a database. Web scrapers typically take something out of a page, to make use of it for another purpose somewhere else. An example would be finding and copying names and telephone numbers, companies and their URLs, or e-mail addresses to a list (contact scraping). Another example is collecting competitors product prices for marketing purposes, which can involve gathering large-scale pricing datasets from e-commerce websites and analysing them using data science techniques such as trend analysis, predictive modelling, and competitive benchmarking. 
-[Contact scraping](https://en.wikipedia.org/wiki/Contact_scraping "Contact scraping") is a type of web scraping that is used as a component of applications used for [web indexing](https://en.wikipedia.org/wiki/Web_indexing "Web indexing"), [web mining](https://en.wikipedia.org/wiki/Web_mining "Web mining") and [data mining](https://en.wikipedia.org/wiki/Data_mining "Data mining"), online price change monitoring and [price comparison](https://en.wikipedia.org/wiki/Comparison_shopping_website "Comparison shopping website"), product review scraping (to watch the competition), gathering real estate listings, weather data monitoring, [website change detection](https://en.wikipedia.org/wiki/Change_detection_and_notification "Change detection and notification"), research, tracking online presence and reputation, [web mashup](https://en.wikipedia.org/wiki/Web_mashup "Web mashup"), and [web data integration](https://en.wikipedia.org/wiki/Web_data_integration "Web data integration"). 
-[Web pages](https://en.wikipedia.org/wiki/Web_page "Web page") are built using text-based [markup languages](https://en.wikipedia.org/wiki/Markup_languages "Markup languages") ([HTML](https://en.wikipedia.org/wiki/HTML "HTML") and [XHTML](https://en.wikipedia.org/wiki/XHTML "XHTML")), and frequently contain a wealth of data in text form. However, most web pages are designed for human [end-users](https://en.wikipedia.org/wiki/End-user_\(computer_science\) "End-user \(computer science\)") and not for ease of automated use. As a result, specialized tools and software have been developed to facilitate the scraping of web pages. Web scraping applications include [market research](https://en.wikipedia.org/wiki/Market_research "Market research"), price comparison, content monitoring and [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence "Artificial intelligence"). Businesses rely on web scraping services to efficiently gather and utilize this data. 
-Newer forms of web scraping involve monitoring [data feeds](https://en.wikipedia.org/wiki/Data_feed "Data feed") from [web servers](https://en.wikipedia.org/wiki/Web_servers "Web servers"). For example, [JSON](https://en.wikipedia.org/wiki/JSON "JSON") is commonly used as a transport mechanism between the client and the web server. 
-There are methods that some websites use to prevent web scraping, such as detecting and disallowing bots from crawling (viewing) their pages. In response, web scraping systems use techniques involving [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") parsing, [computer vision](https://en.wikipedia.org/wiki/Computer_vision "Computer vision") and [natural language processing](https://en.wikipedia.org/wiki/Natural_language_processing "Natural language processing") to simulate human-like browsing to enable gathering web page content for offline parsing. 
-## History
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=1 "Edit section: History")]
-After the [birth of the World Wide Web](https://en.wikipedia.org/wiki/History_of_the_World_Wide_Web "History of the World Wide Web") in 1989, the first web robot,[[2]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-2) [World Wide Web Wanderer](https://en.wikipedia.org/wiki/World_Wide_Web_Wanderer "World Wide Web Wanderer"), was created in June 1993, which was intended only to measure the size of the web. 
-In December 1993, the first crawler-based web search engine, [JumpStation](https://en.wikipedia.org/wiki/JumpStation "JumpStation"), was launched.[_[citation needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed "Wikipedia:Citation needed")_] As there were fewer websites available on the web, search engines at that time used to rely on human administrators to collect and format links. In comparison, Jump Station was the first WWW search engine to rely on a web robot. 
-In 2000, the first Web [API](https://en.wikipedia.org/wiki/API "API") and [API](https://en.wikipedia.org/wiki/API "API") crawler were created. In 2000, [Salesforce](https://en.wikipedia.org/wiki/Salesforce.com "Salesforce.com") and [eBay](https://en.wikipedia.org/wiki/EBay "EBay") launched their own API, with which programmers could access and download some of the data available to the public.[[3]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-3) Since then, many websites offer web APIs for people to access their public database. 
-## Techniques
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=2 "Edit section: Techniques")]
-![](https://upload.wikimedia.org/wikipedia/en/thumb/b/b4/Ambox_important.svg/40px-Ambox_important.svg.png) | This section **contains[instructions or advice](https://en.wikipedia.org/wiki/Wikipedia:What_Wikipedia_is_not#GUIDE "Wikipedia:What Wikipedia is not")**. Wikipedia is not a guidebook; please help [rewrite such content](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit) to be encyclopedic or move it to [Wikiversity](https://en.wikiversity.org/wiki/ "v:"), [Wikibooks](https://en.wikibooks.org/wiki/ "b:"), or [Wikivoyage](https://en.wikivoyage.org/wiki/ "voy:"). _( October 2025)_  
----|---  
-Data extraction techniques range from manual collection to sophisticated automated systems. Advanced methods analyze the underlying structure of web pages to transform unstructured content into a [machine-readable format](https://en.wikipedia.org/wiki/Machine-readable_medium_and_data "Machine-readable medium and data"). These techniques utilize [text processing](https://en.wikipedia.org/wiki/Text_processing "Text processing") or [artificial intelligence](https://en.wikipedia.org/wiki/Artificial_intelligence "Artificial intelligence"), aligning with the technical goals of the [Semantic Web](https://en.wikipedia.org/wiki/Semantic_Web "Semantic Web"). 
-### Human copy-and-paste
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=3 "Edit section: Human copy-and-paste")]
-The simplest form of web scraping is manual copying and pasting of data from a web page into a text file or spreadsheet. This approach requires no technical tools and can be used when automated scraping is blocked by website restrictions or when human judgment is necessary to interpret complex content. However, manual scraping is highly inefficient for large datasets, as it is time-consuming, prone to human error, and mentally exhausting. For this reason, it is generally considered impractical compared to automated methods, except in cases where automation is not feasible. 
-### Text pattern matching
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=4 "Edit section: Text pattern matching")]
-A simple approach to extract information from web pages is to use the UNIX [grep](https://en.wikipedia.org/wiki/Grep "Grep") command or [regular expression](https://en.wikipedia.org/wiki/Regular_expression "Regular expression")-matching facilities of programming languages (for instance [Perl](https://en.wikipedia.org/wiki/Perl "Perl") or [Python](https://en.wikipedia.org/wiki/Python_\(programming_language\) "Python \(programming language\)")), in order to find text matching a specified pattern. 
-### HTTP programming
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=5 "Edit section: HTTP programming")]
-[Static](https://en.wikipedia.org/wiki/Static_web_page "Static web page") and [dynamic web pages](https://en.wikipedia.org/wiki/Dynamic_web_page "Dynamic web page") can be retrieved by posting HTTP requests to the remote web server using [socket programming](https://en.wikipedia.org/wiki/Socket_programming "Socket programming"). 
-### HTML parsing
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=6 "Edit section: HTML parsing")]
-Many websites have large collections of pages generated dynamically from an underlying structured source, like a database. Data of the same category are typically encoded into similar pages by a common script or template. In data mining, a program that detects such templates in a particular information source, extracts its content, and translates it into a relational form, is called a [wrapper](https://en.wikipedia.org/wiki/Wrapper_\(data_mining\) "Wrapper \(data mining\)"). Wrapper generation algorithms assume that input pages of a wrapper induction system conform to a common template and that they can be easily identified in terms of a URL common scheme.[[4]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-4) Moreover, some [semi-structured data](https://en.wikipedia.org/wiki/Semi-structured_data "Semi-structured data") query languages, such as [XQuery](https://en.wikipedia.org/wiki/XQuery "XQuery") and the HTQL, can be used to parse HTML pages and to retrieve and transform page content. 
-### DOM parsing
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=7 "Edit section: DOM parsing")]
-Further information: [Document Object Model](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model")
-By using a program such as [Selenium](https://en.wikipedia.org/wiki/Selenium_\(software\) "Selenium \(software\)") or [Playwright](https://en.wikipedia.org/wiki/Playwright_\(software\) "Playwright \(software\)"), developers can control a web browser such as [Chrome](https://en.wikipedia.org/wiki/ChromeOS "ChromeOS") or [Firefox](https://en.wikipedia.org/wiki/Firefox "Firefox") to load, navigate, and retrieve data from websites. This method can be especially useful for scraping data from dynamic sites since a web browser will fully load each page. Once an entire page is loaded, developers can access and parse the [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model") using an expression language such as [XPath](https://en.wikipedia.org/wiki/XPath "XPath"). 
-### Vertical aggregation
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=8 "Edit section: Vertical aggregation")]
-There are several companies that have developed vertical specific harvesting platforms. These platforms create and monitor a multitude of "bots" for specific verticals with no "man in the loop" (no direct human involvement), and no work related to a specific target site. The preparation involves establishing the knowledge base for the entire vertical and then the platform creates the bots automatically. The platform's robustness is measured by the quality of the information it retrieves (usually number of fields) and its scalability (how quick it can scale up to hundreds or thousands of sites). This scalability is mostly used to target the [Long Tail](https://en.wikipedia.org/wiki/Long_Tail "Long Tail") of sites that common aggregators find complicated or too labor-intensive to harvest content from. 
-### Semantic annotation recognizing
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=9 "Edit section: Semantic annotation recognizing")]
-The pages being scraped may embrace [metadata](https://en.wikipedia.org/wiki/Metadata "Metadata") or semantic markups and annotations, which can be used to locate specific data snippets. If the annotations are embedded in the pages, as [Microformat](https://en.wikipedia.org/wiki/Microformat "Microformat") does, this technique can be viewed as a special case of DOM parsing. In another case, the annotations, organized into a semantic layer,[[5]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-5) are stored and managed separately from the web pages, so the scrapers can retrieve data schema and instructions from this layer before scraping the pages. 
-### Computer vision web-page analysis
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=10 "Edit section: Computer vision web-page analysis")]
-There are efforts using [machine learning](https://en.wikipedia.org/wiki/Machine_learning "Machine learning") and [computer vision](https://en.wikipedia.org/wiki/Computer_vision "Computer vision") that attempt to identify and extract information from web pages by interpreting pages visually as a human being might.[[6]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-6)
-## Legal issues
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=11 "Edit section: Legal issues")]
-![Globe icon.](https://upload.wikimedia.org/wikipedia/commons/thumb/b/bd/Ambox_globe_content.svg/60px-Ambox_globe_content.svg.png) | The examples and perspective in this section **deal primarily with the United States and do not represent a[worldwide view](https://en.wikipedia.org/wiki/Wikipedia:WikiProject_Countering_systemic_bias "Wikipedia:WikiProject Countering systemic bias") of the subject**. You may [improve this section](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit), discuss the issue on the [talk page](https://en.wikipedia.org/wiki/Talk:Web_scraping "Talk:Web scraping"), or create a new section, as appropriate. _( October 2015)__([Learn how and when to remove this message](https://en.wikipedia.org/wiki/Help:Maintenance_template_removal "Help:Maintenance template removal"))_  
----|---  
-The legality of web scraping varies across the world. In general, web scraping may be against the [terms of service](https://en.wikipedia.org/wiki/Terms_of_service "Terms of service") of some websites, but the enforceability of these terms is unclear.[[7]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-7)
-### United States
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=12 "Edit section: United States")]
-In the United States, website owners can use three major [legal claims](https://en.wikipedia.org/wiki/Cause_of_action "Cause of action") to prevent undesired web scraping: (1) copyright infringement (compilation), (2) violation of the [Computer Fraud and Abuse Act](https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act "Computer Fraud and Abuse Act") ("CFAA"), and (3) [trespass to chattel](https://en.wikipedia.org/wiki/Trespass_to_chattels "Trespass to chattels").[[8]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-8) However, the effectiveness of these claims relies upon meeting various criteria, and the case law is still evolving. For example, with regard to copyright, while outright duplication of original expression will in many cases be illegal, in the United States the courts ruled in [_Feist Publications v. Rural Telephone Service_](https://en.wikipedia.org/wiki/Feist_Publications,_Inc.,_v._Rural_Telephone_Service_Co. "Feist Publications, Inc., v. Rural Telephone Service Co.") that duplication of facts is allowable. 
-U.S. courts have acknowledged that users of "scrapers" or "robots" may be held liable for committing [trespass to chattels](https://en.wikipedia.org/wiki/Trespass_to_chattels "Trespass to chattels"),[[9]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-9)[[10]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-10) which involves a computer system itself being considered personal property upon which the user of a scraper is trespassing. The best known of these cases, _[eBay v. Bidder's Edge](https://en.wikipedia.org/wiki/EBay_v._Bidder%27s_Edge "EBay v. Bidder's Edge")_ , resulted in an injunction ordering Bidder's Edge to stop accessing, collecting, and indexing auctions from the eBay web site. This case involved automatic placing of bids, known as [auction sniping](https://en.wikipedia.org/wiki/Auction_sniping "Auction sniping"). However, in order to succeed on a claim of trespass to [chattels](https://en.wikipedia.org/wiki/Personal_property "Personal property"), the [plaintiff](https://en.wikipedia.org/wiki/Plaintiff "Plaintiff") must demonstrate that the [defendant](https://en.wikipedia.org/wiki/Defendant "Defendant") intentionally and without authorization interfered with the plaintiff's possessory interest in the computer system and that the defendant's unauthorized use caused damage to the plaintiff. Not all cases of web spidering brought before the courts have been considered trespass to chattels.[[11]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-11)
-One of the first major tests of [screen scraping](https://en.wikipedia.org/wiki/Screen_scraping "Screen scraping") involved [American Airlines](https://en.wikipedia.org/wiki/American_Airlines "American Airlines") (AA), and a firm called FareChase.[[12]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-12) AA successfully obtained an [injunction](https://en.wikipedia.org/wiki/Injunction "Injunction") from a Texas trial court, stopping FareChase from selling software that enables users to compare online fares if the software also searches AA's website. The airline argued that FareChase's websearch software trespassed on AA's servers when it collected the publicly available data. FareChase filed an appeal in March 2003. By June, FareChase and AA agreed to settle and the appeal was dropped.[[13]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-13)
-[Southwest Airlines](https://en.wikipedia.org/wiki/Southwest_Airlines "Southwest Airlines") has also challenged screen-scraping practices, and has involved both FareChase and another firm, Outtask, in a legal claim. Southwest Airlines charged that the screen-scraping is Illegal since it is an example of "Computer Fraud and Abuse" and has led to "Damage and Loss" and "Unauthorized Access" of Southwest's site. It also constitutes "Interference with Business Relations", "Trespass", and "Harmful Access by Computer". They also claimed that screen-scraping constitutes what is legally known as "Misappropriation and Unjust Enrichment", as well as being a breach of the web site's user agreement. Outtask denied all these claims, claiming that the prevailing law, in this case, should be [US Copyright law](https://en.wikipedia.org/wiki/US_Copyright_law "US Copyright law") and that under copyright, the pieces of information being scraped would not be subject to copyright protection. Although the cases were never resolved in the [Supreme Court of the United States](https://en.wikipedia.org/wiki/Supreme_Court_of_the_United_States "Supreme Court of the United States"), FareChase was eventually shuttered by parent company [Yahoo!](https://en.wikipedia.org/wiki/Yahoo! "Yahoo!"), and Outtask was purchased by travel expense company Concur.[[14]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-impervawp2011-14) In 2012, a startup called 3Taps scraped classified housing ads from Craigslist. Craigslist sent 3Taps a cease-and-desist letter and blocked their IP addresses and later sued, in _[Craigslist v. 3Taps](https://en.wikipedia.org/wiki/Craigslist_v._3Taps "Craigslist v. 3Taps")_. The court held that the cease-and-desist letter and IP blocking was sufficient for Craigslist to properly claim that 3Taps had violated the [Computer Fraud and Abuse Act](https://en.wikipedia.org/wiki/Computer_Fraud_and_Abuse_Act "Computer Fraud and Abuse Act") (CFAA). 
-Although these are early scraping decisions, and the theories of liability are not uniform, it is difficult to ignore a pattern emerging that the courts are prepared to protect proprietary content on commercial sites from uses which are undesirable to the owners of such sites. However, the degree of protection for such content is not settled and will depend on the type of access made by the scraper, the amount of information accessed and copied, the degree to which the access adversely affects the site owner's system and the types and manner of prohibitions on such conduct.[[15]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-15)
-While the law in this area becomes more settled, entities contemplating using scraping programs to access a public web site should also consider whether such action is authorized by reviewing the terms of use and other terms or notices posted on or made available through the site. In _[Cvent Inc.](https://en.wikipedia.org/wiki/Cvent "Cvent") v. [Eventbrite Inc.](https://en.wikipedia.org/wiki/Eventbrite "Eventbrite")_ (2010), the United States [district court for the eastern district of Virginia](https://en.wikipedia.org/wiki/United_States_District_Court_for_the_Eastern_District_of_Virginia "United States District Court for the Eastern District of Virginia"), ruled that the terms of use should be brought to the users' attention in order for a [browsewrap](https://en.wikipedia.org/wiki/Browsewrap "Browsewrap") contract or license to be enforceable.[[16]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-16) In a 2014 case, filed in the [United States District Court for the Eastern District of Pennsylvania](https://en.wikipedia.org/wiki/United_States_District_Court_for_the_Eastern_District_of_Pennsylvania "United States District Court for the Eastern District of Pennsylvania"),[[17]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-17) e-commerce site [QVC](https://en.wikipedia.org/wiki/QVC "QVC") objected to the Pinterest-like shopping aggregator Resultly's 'scraping of QVC's site for real-time pricing data. QVC alleges that Resultly "excessively crawled" QVC's retail site (allegedly sending 200-300 search requests to QVC's website per minute, sometimes to up to 36,000 requests per minute) which caused QVC's site to crash for two days, resulting in lost sales for QVC.[[18]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-18) QVC's complaint alleges that the defendant disguised its web crawler to mask its source IP address and thus prevented QVC from quickly repairing the problem. This is a particularly interesting scraping case because QVC is seeking damages for the unavailability of their website, which QVC claims was caused by Resultly. 
-In the plaintiff's web site during the period of this trial, the terms of use link are displayed among all the links of the site, at the bottom of the page as most sites on the internet. This ruling contradicts the Irish ruling described below. The court also rejected the plaintiff's argument that the browse-wrap restrictions were enforceable in view of Virginia's adoption of the Uniform Computer Information Transactions Act (UCITA)—a uniform law that many believed was in favor on common browse-wrap contracting practices.[[19]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-19)
-In _[Facebook, Inc. v. Power Ventures, Inc.](https://en.wikipedia.org/wiki/Facebook,_Inc._v._Power_Ventures,_Inc. "Facebook, Inc. v. Power Ventures, Inc.")_ , a district court ruled in 2012 that Power Ventures could not scrape Facebook pages on behalf of a Facebook user. The case is on appeal, and the [Electronic Frontier Foundation](https://en.wikipedia.org/wiki/Electronic_Frontier_Foundation "Electronic Frontier Foundation") filed a brief in 2015 asking that it be overturned.[[20]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-20)[[21]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-21) In _[Associated Press v. Meltwater U.S. Holdings, Inc.](https://en.wikipedia.org/wiki/Associated_Press_v._Meltwater_U.S._Holdings,_Inc. "Associated Press v. Meltwater U.S. Holdings, Inc.")_ , a court in the US held Meltwater liable for scraping and republishing news information from the Associated Press, but a court in the United Kingdom held in favor of Meltwater. 
-The [Ninth Circuit](https://en.wikipedia.org/wiki/Ninth_Circuit "Ninth Circuit") ruled in 2019 that web scraping did not violate the CFAA in _[hiQ Labs v. LinkedIn](https://en.wikipedia.org/wiki/HiQ_Labs_v._LinkedIn "HiQ Labs v. LinkedIn")_. The case was appealed to the [United States Supreme Court](https://en.wikipedia.org/wiki/United_States_Supreme_Court "United States Supreme Court"), which returned the case to the Ninth Circuit to reconsider the case in light of the 2021 Supreme Court decision in _[Van Buren v. United States](https://en.wikipedia.org/wiki/Van_Buren_v._United_States "Van Buren v. United States")_ which narrowed the applicability of the CFAA.[[22]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-22) On this review, the Ninth Circuit upheld their prior decision.[[23]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-23)
-[Internet Archive](https://en.wikipedia.org/wiki/Internet_Archive "Internet Archive") collects and distributes a significant number of publicly available web pages without being considered to be in violation of copyright laws.[_[citation needed](https://en.wikipedia.org/wiki/Wikipedia:Citation_needed "Wikipedia:Citation needed")_]
-### European Union
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=13 "Edit section: European Union")]
-In February 2006, the [Danish Maritime and Commercial Court](https://en.wikipedia.org/wiki/Maritime_and_Commercial_Court_\(Denmark\) "Maritime and Commercial Court \(Denmark\)") (Copenhagen) ruled that systematic crawling, indexing, and deep linking by portal site ofir.dk of real estate site Home.dk does not conflict with Danish law or the database directive of the European Union.[[24]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-24)
-Ethical data scraping supports offmarket sourcing in business but must comply with GDPR to avoid privacy violations in automated data collection.[[25]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-25)
-In a February 2010 case complicated by matters of jurisdiction, Ireland's High Court delivered a verdict that illustrates the [inchoate](https://en.wikipedia.org/wiki/Inchoate_offense "Inchoate offense") state of developing case law. In the case of _Ryanair Ltd v Billigfluege.de GmbH_ , Ireland's High Court ruled [Ryanair's](https://en.wikipedia.org/wiki/Ryanair "Ryanair") "[click-wrap](https://en.wikipedia.org/wiki/Clickwrap "Clickwrap")" agreement to be legally binding. In contrast to the findings of the United States District Court Eastern District of Virginia and those of the Danish Maritime and Commercial Court, Justice [Michael Hanna](https://en.wikipedia.org/wiki/Michael_Hanna_\(judge\) "Michael Hanna \(judge\)") ruled that the hyperlink to Ryanair's terms and conditions was plainly visible, and that placing the onus on the user to agree to terms and conditions in order to gain access to online services is sufficient to comprise a contractual relationship.[[26]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-26) The decision is under appeal in Ireland's Supreme Court.[[27]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-27)
-On April 30, 2020, the French Data Protection Authority (CNIL) released new guidelines on web scraping.[[28]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-28) The CNIL guidelines made it clear that publicly available data is still personal data and cannot be repurposed without the knowledge of the person to whom that data belongs.[[29]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-29)
-### Australia
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=14 "Edit section: Australia")]
-In Australia, the [Spam Act 2003](https://en.wikipedia.org/wiki/Spam_Act_2003 "Spam Act 2003") outlaws some forms of web harvesting, although this only applies to email addresses.[[30]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-30)[[31]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-31)
-### India
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=15 "Edit section: India")]
-Besides a few cases dealing with IPR infringement, Indian courts have not expressly ruled on the legality of web scraping. However, since all common forms of electronic contracts are enforceable in India, violating the terms of use prohibiting data scraping will be a violation of the contract law. It will also violate the [Information Technology Act, 2000](https://en.wikipedia.org/wiki/Information_Technology_Act,_2000#:~:text=From_Wikipedia,_the_free_encyclopedia_The_Information_Technology,in_India_dealing_with_cybercrime_and_electronic_commerce. "Information Technology Act, 2000"), which penalizes unauthorized access to a computer resource or extracting data from a computer resource. 
-## Methods to prevent web scraping
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=16 "Edit section: Methods to prevent web scraping")]
-The administrator of a website can use various measures to stop or slow a bot. Some techniques include: 
-  * Blocking an [IP address](https://en.wikipedia.org/wiki/IP_address "IP address") either manually or based on criteria such as [geolocation](https://en.wikipedia.org/wiki/Geolocation "Geolocation") and [DNSRBL](https://en.wikipedia.org/wiki/DNSBL "DNSBL"). This will also block all browsing from that address.
-  * Disabling any [web service](https://en.wikipedia.org/wiki/Web_service "Web service") [API](https://en.wikipedia.org/wiki/Application_programming_interface "Application programming interface") that the website's system might expose.
-  * Bots sometimes declare who they are (using [user agent](https://en.wikipedia.org/wiki/User_agent "User agent") [strings](https://en.wikipedia.org/wiki/String_\(computer_science\) "String \(computer science\)")) and can be blocked on that basis using [robots.txt](https://en.wikipedia.org/wiki/Robots_exclusion_standard "Robots exclusion standard"); '[googlebot](https://en.wikipedia.org/wiki/Googlebot "Googlebot")' is an example. Other bots make no distinction between themselves and a human using a browser.
-  * Bots can be blocked by monitoring excess traffic.
-  * Bots can sometimes be blocked with tools to verify that it is a real person accessing the site, like a [CAPTCHA](https://en.wikipedia.org/wiki/CAPTCHA "CAPTCHA"). Bots are sometimes coded to explicitly break specific CAPTCHA patterns or may employ third-party services that utilize human labor to read and respond in real-time to CAPTCHA challenges. They can be triggered because the bot is: 1) making too many requests in a short time, 2) using low-quality proxies, or 3) not covering the web scraper’s fingerprint properly.[[32]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-32)
-  * Commercial anti-bot services: Companies offer anti-bot and anti-scraping services for websites. A few web [application firewalls](https://en.wikipedia.org/wiki/Application_firewall "Application firewall") have limited bot detection capabilities as well. However, many such solutions are not very effective.[[33]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-33)
-  * Locating bots with a [honeypot](https://en.wikipedia.org/wiki/Honeypot_\(computing\) "Honeypot \(computing\)") or other method to identify the IP addresses of automated crawlers.
-  * [Obfuscation](https://en.wikipedia.org/wiki/Obfuscation "Obfuscation") using [CSS sprites](https://en.wikipedia.org/wiki/CSS_sprite "CSS sprite") to display such data as telephone numbers or email addresses, at the cost of [accessibility](https://en.wikipedia.org/wiki/Web_accessibility "Web accessibility") to [screen reader](https://en.wikipedia.org/wiki/Screen_reader "Screen reader") users.
-  * Because bots rely on consistency in the front-end code of a target website, adding small variations to the HTML/CSS surrounding important data and navigation elements would require more human involvement in the initial set up of a bot and if done effectively may render the target website too difficult to scrape due to the diminished ability to automate the scraping process.[[34]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-34)
-  * Websites can declare if crawling is allowed or not in the [robots.txt](https://en.wikipedia.org/wiki/Robots_exclusion_standard "Robots exclusion standard") file and allow partial access, limit the crawl rate, specify the optimal time to crawl and more.
-  * Trapping bots in a [tarpit](https://en.wikipedia.org/wiki/Tarpit_\(networking\) "Tarpit \(networking\)"), feeding them nonsensical data to [poison their dataset](https://en.wikipedia.org/wiki/Data_poisoning "Data poisoning"). This method is particularly effective against bots which ignore robots.txt files.[[35]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-35)
-  * TLS Fingerprinting: Modern security systems analyze the [Transport Layer Security](https://en.wikipedia.org/wiki/Transport_Layer_Security "Transport Layer Security") (TLS) handshake to identify the client application. Different clients (e.g., [Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome "Google Chrome") vs. a [Python](https://en.wikipedia.org/wiki/Python_\(programming_language\) "Python \(programming language\)") script) send [cryptographic ciphers](https://en.wikipedia.org/wiki/Cipher_suite "Cipher suite") and extensions in unique orders. This creates a unique "fingerprint" (such as a JA3 signature) that allows servers to detect and block automated scripts regardless of their [IP address](https://en.wikipedia.org/wiki/IP_address "IP address").[[36]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-SalesforceJA3-36)[[37]](https://en.wikipedia.org/wiki/Web_scraping#cite_note-HasDataTLS-37)
+MHTML  
+---  
+[Filename extension](https://en.wikipedia.org/wiki/Filename_extension "Filename extension") |  .mht, .mhtml  
+[Internet media type](https://en.wikipedia.org/wiki/Media_type "Media type") | 
+  * multipart/related
+  * application/x-mimearchive
+  * message/rfc822
+
+  
+Type of format | [Markup language](https://en.wikipedia.org/wiki/Markup_language "Markup language")  
+Extended from | [HTML](https://en.wikipedia.org/wiki/HTML "HTML")  
+[Standard](https://en.wikipedia.org/wiki/International_standard "International standard") | RFC 2557 (proposed 1999)  
+**MHTML** , an [initialism](https://en.wikipedia.org/wiki/Initialism "Initialism") of "[MIME](https://en.wikipedia.org/wiki/MIME "MIME") encapsulation of aggregate [HTML](https://en.wikipedia.org/wiki/HTML "HTML") documents", is a [web archiving file format](https://en.wikipedia.org/wiki/List_of_web_archiving_file_formats "List of web archiving file formats") used to combine, in a single [computer file](https://en.wikipedia.org/wiki/Computer_file "Computer file"), the HTML code and its companion resources (such as images) that are represented by external [hyperlinks](https://en.wikipedia.org/wiki/Hyperlink "Hyperlink") in the web page's HTML code.[[1]](https://en.wikipedia.org/wiki/MHTML#cite_note-1) The content of an MHTML file is encoded using the same techniques that were first developed for [HTML email](https://en.wikipedia.org/wiki/HTML_email "HTML email") messages, using the [MIME content type](https://en.wikipedia.org/wiki/Media_type "Media type") `multipart/related`.[[2]](https://en.wikipedia.org/wiki/MHTML#cite_note-2) MHTML files use an `.mhtml` or `.mht` [filename extension](https://en.wikipedia.org/wiki/Filename_extension "Filename extension"). 
+The first part of the file is an [e-mail header](https://en.wikipedia.org/wiki/E-mail_header "E-mail header"). The second part is normally HTML code. Subsequent parts are additional resources identified by their original [uniform resource locators](https://en.wikipedia.org/wiki/URL "URL") (URLs) and encoded in [Base64](https://en.wikipedia.org/wiki/Base64 "Base64") [binary-to-text encoding](https://en.wikipedia.org/wiki/Binary-to-text_encoding "Binary-to-text encoding"). MHTML was proposed as an [open standard](https://en.wikipedia.org/wiki/Open_standard#File_formats "Open standard"), then circulated in a revised edition in 1999 as RFC 2557. 
+The `.mhtml` and `.eml[](https://en.wikipedia.org/wiki/Email#Filename_extensions "Email")` filename extensions are interchangeable: either filename extension can be changed from one to the other. An .eml message can be sent by e-mail, and it can be displayed by an [email client](https://en.wikipedia.org/wiki/Email_client "Email client"). An email message can be saved using a `.mhtml` or `.mht` filename extension and then opened for display in a [web browser](https://en.wikipedia.org/wiki/Web_browser "Web browser") or for editing other programs, including [word processors](https://en.wikipedia.org/wiki/Word_processor "Word processor") and [text editors](https://en.wikipedia.org/wiki/Text_editor "Text editor"). 
+## Layout
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=1 "Edit section: Layout")]
+The [header](https://en.wikipedia.org/wiki/Header_\(computing\) "Header \(computing\)") of an MHTML file contains [metadata](https://en.wikipedia.org/wiki/Metadata#File_metadata "Metadata") such as a [date and time stamp](https://en.wikipedia.org/wiki/Time_stamp "Time stamp"), page title, the source URL, and a unique randomized [boundary string](https://en.wikipedia.org/wiki/Delimiter#Content_boundary "Delimiter") for separating resources contained within the file. The boundary string is defined at the beginning and used throughout the file. 
+```
+From: <Saved by Blink>
+Snapshot-Content-Location: https://en.wikipedia.org/wiki/Smartphone
+Subject: Smartphone - Wikipedia
+Date: Sat, 24 Sep 2022 00:34:32 -0000
+MIME-Version: 1.0
+Content-Type: multipart/related;
+        type="text/html";
+        boundary="----MultipartBoundary--GsIBda0vjy2AKIAIliwl7JMwezXDRjDAsLje9khd5l----"
+
+```
+
+Then, the page resources are contained sequentially, starting with the page's rendered HTML source code. Each resource has its own metadata header which specifies its [MIME type](https://en.wikipedia.org/wiki/MIME_type "MIME type") and the original location. 
+```
+------MultipartBoundary--GsIBda0vjy2AKIAIliwl7JMwezXDRjDAsLje9khd5l----
+Content-Type: text/html
+Content-ID: <frame-D968CEC8BB7E60A1859261A8CA5DFB4D@mhtml.blink>
+Content-Transfer-Encoding: binary
+Content-Location: https://en.wikipedia.org/wiki/Smartphone
+
+<!DOCTYPE html>
+
+```
+
+The MHTML file ends with a boundary string that is not followed by any data.[[3]](https://en.wikipedia.org/wiki/MHTML#cite_note-3)
+## MIME type
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=2 "Edit section: MIME type")]
+MIME type for MHTML is not well agreed upon. Used MIME types include: 
+  * `multipart/related`
+  * `application/x-mimearchive`
+  * `message/rfc822`
 
 
+## Supporting apps
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=3 "Edit section: Supporting apps")]
+### Web browsers
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=4 "Edit section: Web browsers")]
+Some browsers support the MHTML format, either directly or through third-party [extensions](https://en.wikipedia.org/wiki/Browser_extension "Browser extension"), but the process for saving a web page along with its resources as an MHTML file is not standardized. Due to this, a web page saved as an MHTML file using one browser may render differently on another. 
+  * **[Internet Explorer 5](https://en.wikipedia.org/wiki/Internet_Explorer_5 "Internet Explorer 5")** was the first browser to support reading and saving web pages and external resources to a single MHTML file.
+  * **[Microsoft Edge](https://en.wikipedia.org/wiki/Microsoft_Edge "Microsoft Edge")** , after switching to the Chromium source code, supports saving web pages as MHTML.
+  * **[Opera](https://en.wikipedia.org/wiki/Opera_\(web_browser\) "Opera \(web browser\)"):** Support for saving web pages as MHTML files was made available in the Opera 9.0 web browser.[[4]](https://en.wikipedia.org/wiki/MHTML#cite_note-4) From Opera 9.50 through the rest of the Presto-based Opera product line (version 12.16 as of 19 July 2013), the default format for saving pages is MHTML. The initial release of the new Webkit/Blink-based Opera (version 15) did not support MHTML, but subsequent releases (16 and later) do. MHTML can be enabled by typing "`opera://flags#save-page-as-mhtml`" at the address bar.
+  * **[Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome "Google Chrome") 86** and later can create MHTML files.
+  * **[Yandex Browser](https://en.wikipedia.org/wiki/Yandex_Browser "Yandex Browser") 22.7.4.960** (July 2022) and later can create MHTML (multipart/related) files.
+  * **[Vivaldi](https://en.wikipedia.org/wiki/Vivaldi_\(web_browser\) "Vivaldi \(web browser\)") 2.3 and later** can create MHTML files.[[5]](https://en.wikipedia.org/wiki/MHTML#cite_note-5) It supports both reading and writing MHTML files by toggling the "`vivaldi://flags/#save-page-as-mhtml`" option.
+  * **[Firefox](https://en.wikipedia.org/wiki/Firefox "Firefox")** does not support MHTML.[[6]](https://en.wikipedia.org/wiki/MHTML#cite_note-6) Until [version 57 ("Firefox Quantum")](https://en.wikipedia.org/wiki/Firefox_version_history#Firefox_52_through_59 "Firefox version history"), two [browser extension](https://en.wikipedia.org/wiki/Browser_extension "Browser extension"), Mozilla Archive Format or UnMHT, could read and write MHTML files. These extensions are incompatible with version 57 and later.
+  * **[Safari](https://en.wikipedia.org/wiki/Safari_\(web_browser\) "Safari \(web browser\)") 3.1.1 and later** terminated native support for the MHTML format. Instead, the browser supports the [Web Archive](https://en.wikipedia.org/wiki/Web_Archive_\(file_format\) "Web Archive \(file format\)") format. The [macOS](https://en.wikipedia.org/wiki/MacOS "MacOS") version includes a print-to-[PDF](https://en.wikipedia.org/wiki/PDF "PDF") feature. As with most other modern web browsers, support for MHTML files can be added to Safari via various third-party extensions.
+  * **[Konqueror](https://en.wikipedia.org/wiki/Konqueror "Konqueror") 3.5.7 and later** terminated support for MHTML files. An extension project, `mhtconv`, can be used to allow saving and viewing of MHTML files.
+  * **[NetFront](https://en.wikipedia.org/wiki/NetFront "NetFront") 3.4** (on devices such as the Sony Ericsson [K850](https://en.wikipedia.org/wiki/K850 "K850")) can view and save MHTML files.
+  * **[Pale Moon](https://en.wikipedia.org/wiki/Pale_Moon_\(web_browser\) "Pale Moon \(web browser\)")** requires an extension to be installed to read and write MHT files. One extension is freely available, MozArchiver, a fork of Mozilla Archive Format extension.[[7]](https://en.wikipedia.org/wiki/MHTML#cite_note-MozArchiver-7)
+  * **[GNOME Web](https://en.wikipedia.org/wiki/GNOME_Web "GNOME Web")** added support for read and save web pages in MHTML since version 3.14.1 released in September 2014.[[8]](https://en.wikipedia.org/wiki/MHTML#cite_note-8)
+
+
+### Other apps
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=5 "Edit section: Other apps")]
+  * [Problem Steps Recorder](https://en.wikipedia.org/wiki/Problem_Steps_Recorder "Problem Steps Recorder") for Windows can save its output to MHT format.
+  * The "Save to Google Drive" extension for [Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome "Google Chrome") can save as MHTML as one of its outputs.
+  * [Microsoft OneNote](https://en.wikipedia.org/wiki/Microsoft_OneNote "Microsoft OneNote") 2010 and later can email individual pages as .mht files.
+  * [Evernote](https://en.wikipedia.org/wiki/Evernote "Evernote") for Windows can export notes as MHT format, as an alternative to HTML or its own native .enex format.
+
+
+## Exploits
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=6 "Edit section: Exploits")]
+In May 2015, a researcher noted that attackers could build malicious documents by creating an MHT file, appending an MSO object at the end (MSO is a file format used by the [Microsoft Outlook](https://en.wikipedia.org/wiki/Microsoft_Outlook "Microsoft Outlook") e-mail application), and renaming the resulting file with a .doc extension.[[9]](https://en.wikipedia.org/wiki/MHTML#cite_note-9) The delivery method would be by [spam emails](https://en.wikipedia.org/wiki/Email_spam "Email spam").[[10]](https://en.wikipedia.org/wiki/MHTML#cite_note-10)
+In April 2019, a security researcher published details about an [XML external entity (XXE) vulnerability](https://en.wikipedia.org/wiki/XML_external_entity_attack "XML external entity attack") that could be exploited when a user opens an MHT file. Since the Windows operating system is set to automatically open all MHT files, by default, in Internet Explorer, the exploit could be triggered when a user double-clicked on a file that they received via email, instant messaging, or another vector, including a different browser.[[11]](https://en.wikipedia.org/wiki/MHTML#cite_note-11)
+## Alternatives
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=7 "Edit section: Alternatives")]
+### Data URI scheme
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=8 "Edit section: Data URI scheme")]
+The [data URI scheme](https://en.wikipedia.org/wiki/Data_URI_scheme "Data URI scheme") offers an alternative for including separate elements such as images, [style-sheets](https://en.wikipedia.org/wiki/Style_sheet_\(web_development\) "Style sheet \(web development\)") and scripts in-line when serving an HTML request or saving an HTML resource for offline use. Like the embedded content within MHTML, data URIs use Base64 encoding of the external resources (which may be binary or text) to embed them in-line within the HTML markup. HTML pages saved with external elements embedded using the [data URI scheme](https://en.wikipedia.org/wiki/Data_URI_scheme "Data URI scheme") are standard web pages, and can be opened by any modern browser, including browsers not supporting MHTML such as Mozilla Firefox.[[12]](https://en.wikipedia.org/wiki/MHTML#cite_note-12) Unlike MHTML, saving web pages with their external resources embedded using data URIs requires a third-party extension to be installed in the browser.[[13]](https://en.wikipedia.org/wiki/MHTML#cite_note-13)
+### Mozilla Archive Format
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=9 "Edit section: Mozilla Archive Format")]
+The [Mozilla Archive Format](https://en.wikipedia.org/wiki/Mozilla_Archive_Format "Mozilla Archive Format") (MAFF) is a legacy Web archive file format that was supported by Firefox from 2004 to 2018 through an add-on.[[14]](https://en.wikipedia.org/wiki/MHTML#cite_note-14) Unlike both MHTML and data URIs, MAFF uses a [ZIP](https://en.wikipedia.org/wiki/ZIP_\(file_format\) "ZIP \(file format\)") container to preserve both the HTML file and its external elements. In October 2017 the add-on developer announced the format would no longer be supported in future versions of Firefox.[[15]](https://en.wikipedia.org/wiki/MHTML#cite_note-15)
 ## See also
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=17 "Edit section: See also")]
-  * [![icon](https://upload.wikimedia.org/wikipedia/commons/thumb/f/f9/Crystal_Clear_app_linneighborhood.svg/40px-Crystal_Clear_app_linneighborhood.svg.png)](https://en.wikipedia.org/wiki/File:Crystal_Clear_app_linneighborhood.svg)[Internet portal](https://en.wikipedia.org/wiki/Portal:Internet "Portal:Internet")
-
-
-  * [Archive.today](https://en.wikipedia.org/wiki/Archive.today "Archive.today")
-  * [Common Crawl Foundation](https://en.wikipedia.org/wiki/Common_Crawl_Foundation "Common Crawl Foundation")
-  * [Comparison of feed aggregators](https://en.wikipedia.org/wiki/Comparison_of_feed_aggregators "Comparison of feed aggregators")
-  * [Data scraping](https://en.wikipedia.org/wiki/Data_scraping "Data scraping")
-  * [Data wrangling](https://en.wikipedia.org/wiki/Data_wrangling "Data wrangling")
-  * [Importer](https://en.wikipedia.org/wiki/Importer_\(computing\) "Importer \(computing\)")
-  * [Job wrapping](https://en.wikipedia.org/wiki/Job_wrapping "Job wrapping")
-  * [Knowledge extraction](https://en.wikipedia.org/wiki/Knowledge_extraction "Knowledge extraction")
-  * [OpenSocial](https://en.wikipedia.org/wiki/OpenSocial "OpenSocial")
-  * [Scraper site](https://en.wikipedia.org/wiki/Scraper_site "Scraper site")
-  * [Fake news website](https://en.wikipedia.org/wiki/Fake_news_website "Fake news website")
-  * [Spamdexing](https://en.wikipedia.org/wiki/Spamdexing "Spamdexing")
-  * [Domain name drop list](https://en.wikipedia.org/wiki/Domain_name_drop_list "Domain name drop list")
-  * [Text corpus](https://en.wikipedia.org/wiki/Text_corpus "Text corpus")
-  * [Web archiving](https://en.wikipedia.org/wiki/Web_archiving "Web archiving")
-  * [Web crawler](https://en.wikipedia.org/wiki/Web_crawler "Web crawler")
-  * [Offline reader](https://en.wikipedia.org/wiki/Offline_reader "Offline reader")
-  * [Link farm](https://en.wikipedia.org/wiki/Link_farm "Link farm") (blog network)
-  * [Search engine scraping](https://en.wikipedia.org/wiki/Search_engine_scraping "Search engine scraping")
-  * [Web crawlers](https://en.wikipedia.org/wiki/Category:Web_crawlers "Category:Web crawlers")
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=10 "Edit section: See also")]
+  * [Data URI scheme](https://en.wikipedia.org/wiki/Data_URI_scheme "Data URI scheme")
+  * [Mozilla Archive Format](https://en.wikipedia.org/wiki/Mozilla_Archive_Format "Mozilla Archive Format")
+  * [Web Archive format](https://en.wikipedia.org/wiki/Web_Archive_\(file_format\) "Web Archive \(file format\)")
+  * [WARC format](https://en.wikipedia.org/wiki/WARC_\(file_format\) "WARC \(file format\)")
+  * [HTML format](https://en.wikipedia.org/wiki/HTML "HTML")
+  * [MIME type](https://en.wikipedia.org/wiki/Media_type "Media type")
 
 
 ## References
-[[edit](https://en.wikipedia.org/w/index.php?title=Web_scraping&action=edit&section=18 "Edit section: References")]
-  1. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-1 "Jump up")** Thapelo, Tsaone Swaabow; Namoshe, Molaletsa; Matsebe, Oduetse; Motshegwa, Tshiamo; Bopape, Mary-Jane Morongwa (2021-07-28). ["SASSCAL WebSAPI: A Web Scraping Application Programming Interface to Support Access to SASSCAL's Weather Data"](https://doi.org/10.5334%2Fdsj-2021-024). _Data Science Journal_. **20** 24. [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.5334/dsj-2021-024](https://doi.org/10.5334%2Fdsj-2021-024). [ISSN](https://en.wikipedia.org/wiki/ISSN_\(identifier\) "ISSN \(identifier\)") [1683-1470](https://search.worldcat.org/issn/1683-1470). [S2CID](https://en.wikipedia.org/wiki/S2CID_\(identifier\) "S2CID \(identifier\)") [237719804](https://api.semanticscholar.org/CorpusID:237719804).
-  2. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-2 "Jump up")** ["Search Engine History.com"](http://www.searchenginehistory.com/). _Search Engine History_. Retrieved November 26, 2019.
-  3. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-3 "Jump up")** ["eBay, API's, and the Connected Web"](https://thehistoryoftheweb.com/ebay-apis-connected-web/). _THE HISTORY OF THE WEB_. 3 September 1995. Retrieved June 23, 2025.
-  4. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-4 "Jump up")** Song, Ruihua; Microsoft Research (Sep 14, 2007). ["Joint optimization of wrapper generation and template detection"](https://web.archive.org/web/20161011080619/https://pdfs.semanticscholar.org/4fb4/3c5a212df751e84c3b2f8d29fabfe56c3616.pdf) (PDF). _Proceedings of the 13th ACM SIGKDD international conference on Knowledge discovery and data mining_. p. 894. [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.1145/1281192.1281287](https://doi.org/10.1145%2F1281192.1281287). [ISBN](https://en.wikipedia.org/wiki/ISBN_\(identifier\) "ISBN \(identifier\)") [9781595936097](https://en.wikipedia.org/wiki/Special:BookSources/9781595936097 "Special:BookSources/9781595936097"). [S2CID](https://en.wikipedia.org/wiki/S2CID_\(identifier\) "S2CID \(identifier\)") [833565](https://api.semanticscholar.org/CorpusID:833565). Archived from [the original](https://pdfs.semanticscholar.org/4fb4/3c5a212df751e84c3b2f8d29fabfe56c3616.pdf) (PDF) on October 11, 2016.
-  5. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-5 "Jump up")** [Semantic annotation based web scraping](http://www.gooseeker.com/en/node/knowledgebase/freeformat)
-  6. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-6 "Jump up")** Roush, Wade (2012-07-25). ["Diffbot Is Using Computer Vision to Reinvent the Semantic Web"](http://www.xconomy.com/san-francisco/2012/07/25/diffbot-is-using-computer-vision-to-reinvent-the-semantic-web/). _Xconomy_. www.xconomy.com. Retrieved 2013-03-15.
-  7. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-7 "Jump up")** ["FAQ about linking – Are website terms of use binding contracts?"](https://web.archive.org/web/20020308222536/http://www.chillingeffects.org/linking/faq.cgi#QID596). www.chillingeffects.org. 2007-08-20. Archived from [the original](http://www.chillingeffects.org/linking/faq.cgi#QID596) on 2002-03-08. Retrieved 2007-08-20.
-  8. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-8 "Jump up")** Kenneth, Hirschey, Jeffrey (2014-01-01). ["Symbiotic Relationships: Pragmatic Acceptance of Data Scraping"](http://scholarship.law.berkeley.edu/btlj/vol29/iss4/16/). _Berkeley Technology Law Journal_. **29** (4). [doi](https://en.wikipedia.org/wiki/Doi_\(identifier\) "Doi \(identifier\)"):[10.15779/Z38B39B](https://doi.org/10.15779%2FZ38B39B). [ISSN](https://en.wikipedia.org/wiki/ISSN_\(identifier\) "ISSN \(identifier\)") [1086-3818](https://search.worldcat.org/issn/1086-3818).`{{cite journal[](https://en.wikipedia.org/wiki/Template:Cite_journal "Template:Cite journal")}}`: CS1 maint: multiple names: authors list ([link](https://en.wikipedia.org/wiki/Category:CS1_maint:_multiple_names:_authors_list "Category:CS1 maint: multiple names: authors list"))
-  9. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-9 "Jump up")** ["Internet Law, Ch. 06: Trespass to Chattels"](http://www.tomwbell.com/NetLaw/Ch06.html). www.tomwbell.com. 2007-08-20. Retrieved 2007-08-20.
-  10. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-10 "Jump up")** ["What are the "trespass to chattels" claims some companies or website owners have brought?"](https://web.archive.org/web/20020308222536/http://www.chillingeffects.org/linking/faq.cgi#QID460). www.chillingeffects.org. 2007-08-20. Archived from [the original](http://www.chillingeffects.org/linking/faq.cgi#QID460) on 2002-03-08. Retrieved 2007-08-20.
-  11. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-11 "Jump up")** ["Ticketmaster Corp. v. Tickets.com, Inc"](http://www.tomwbell.com/NetLaw/Ch07/Ticketmaster.html). 2007-08-20. Retrieved 2007-08-20.
-  12. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-12 "Jump up")** ["American Airlines v. FareChase"](https://web.archive.org/web/20110723131832/http://www.fornova.net/documents/AAFareChase.pdf) (PDF). 2007-08-20. Archived from [the original](http://www.fornova.net/documents/AAFareChase.pdf) (PDF) on 2011-07-23. Retrieved 2007-08-20.
-  13. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-13 "Jump up")** ["American Airlines, FareChase Settle Suit"](https://web.archive.org/web/20160305025808/http://www.thefreelibrary.com/American+Airlines,+FareChase+Settle+Suit.-a0103213546). The Free Library. 2003-06-13. Archived from [the original](http://www.thefreelibrary.com/American+Airlines,+FareChase+Settle+Suit.-a0103213546) on 2016-03-05. Retrieved 2012-02-26.
-  14. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-impervawp2011_14-0 "Jump up")** Imperva (2011). [Detecting and Blocking Site Scraping Attacks](http://www.imperva.com/docs/WP_Detecting_and_Blocking_Site_Scraping_Attacks.pdf). Imperva white paper.
-  15. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-15 "Jump up")** Adler, Kenneth A. (2003-07-29). ["Controversy Surrounds 'Screen Scrapers': Software Helps Users Access Web Sites But Activity by Competitors Comes Under Scrutiny"](https://web.archive.org/web/20110211123854/http://library.findlaw.com/2003/Jul/29/132944.html). Archived from [the original](http://library.findlaw.com/2003/Jul/29/132944.html) on 2011-02-11. Retrieved 2010-10-27.
-  16. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-16 "Jump up")** ["CVENT, Inc. v. Eventbrite, Inc.,et al"](https://web.archive.org/web/20130921054619/http://www.fornova.net/documents/Cvent.pdf) (PDF). 2014-11-24. Archived from [the original](http://www.fornova.net/documents/Cvent.pdf) (PDF) on 2013-09-21. Retrieved 2015-11-05.
-  17. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-17 "Jump up")** ["QVC Inc. v. Resultly LLC, No. 14-06714 (E.D. Pa. filed Nov. 24, 2014)"](https://www.scribd.com/doc/249068700/LinkedIn-v-Resultly-LLC-Complaint?secret_password=pEVKDbnvhQL52oKfdrmT). _United States District Court for the Eastern District of Pennsylvania_. Retrieved 5 November 2015.
-  18. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-18 "Jump up")** Neuburger, Jeffrey D (5 December 2014). ["QVC Sues Shopping App for Web Scraping That Allegedly Triggered Site Outage"](http://newmedialaw.proskauer.com/2014/12/05/qvc-sues-shopping-app-for-web-scraping-that-allegedly-triggered-site-outage/). _The National Law Review_. Proskauer Rose LLP. Retrieved 5 November 2015.
-  19. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-19 "Jump up")** ["Did Iqbal/Twombly Raise the Bar for Browsewrap Claims?"](https://web.archive.org/web/20110723132015/http://www.fornova.net/documents/pblog-bna-com.pdf) (PDF). 2010-09-17. Archived from [the original](http://www.fornova.net/documents/pblog-bna-com.pdf) (PDF) on 2011-07-23. Retrieved 2010-10-27.
-  20. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-20 "Jump up")** ["Can Scraping Non-Infringing Content Become Copyright Infringement... Because Of How Scrapers Work? | Techdirt"](https://www.techdirt.com/articles/20090605/2228205147.shtml). _Techdirt_. 2009-06-10. Retrieved 2016-05-24.
-  21. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-21 "Jump up")** ["Facebook v. Power Ventures"](https://www.eff.org/cases/facebook-v-power-ventures). _Electronic Frontier Foundation_. July 2011. Retrieved 2016-05-24.
-  22. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-22 "Jump up")** Chung, Andrew (June 14, 2021). ["U.S. Supreme Court revives LinkedIn bid to shield personal data"](https://www.reuters.com/technology/us-supreme-court-revives-linkedin-bid-shield-personal-data-2021-06-14/). [Reuters](https://en.wikipedia.org/wiki/Reuters "Reuters"). Retrieved June 14, 2021.
-  23. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-23 "Jump up")** Whittaker, Zack (18 April 2022). ["Web scraping is legal, US appeals court reaffirms"](https://techcrunch.com/2022/04/18/web-scraping-legal-court/). _TechCrunch_.
-  24. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-24 "Jump up")** ["UDSKRIFT AF SØ- & HANDELSRETTENS DOMBOG"](https://web.archive.org/web/20071012005033/http://www.bvhd.dk/uploads/tx_mocarticles/S_-_og_Handelsrettens_afg_relse_i_Ofir-sagen.pdf) (PDF) (in Danish). bvhd.dk. 2006-02-24. Archived from [the original](http://www.bvhd.dk/uploads/tx_mocarticles/S_-_og_Handelsrettens_afg_relse_i_Ofir-sagen.pdf) (PDF) on 2007-10-12. Retrieved 2007-05-30.
-  25. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-25 "Jump up")** ["AI Act | Shaping Europe's digital future"](https://digital-strategy.ec.europa.eu/en/policies/regulatory-framework-ai). _digital-strategy.ec.europa.eu_. 2025-09-16. Retrieved 2025-09-28.
-  26. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-26 "Jump up")** ["High Court of Ireland Decisions >> Ryanair Ltd -v- Billigfluege.de GMBH 2010 IEHC 47 (26 February 2010)"](http://www.bailii.org/ie/cases/IEHC/2010/H47.html). British and Irish Legal Information Institute. 2010-02-26. Retrieved 2012-04-19.
-  27. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-27 "Jump up")** Matthews, Áine (June 2010). ["Intellectual Property: Website Terms of Use"](https://web.archive.org/web/20120624103316/http://www.lkshields.ie/htmdocs/publications/newsletters/update26/update26_03.htm). _Issue 26: June 2010_. LK Shields Solicitors Update. p. 03. Archived from [the original](http://www.lkshields.ie/htmdocs/publications/newsletters/update26/update26_03.htm) on 2012-06-24. Retrieved 2012-04-19.
-  28. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-28 "Jump up")** ["La réutilisation des données publiquement accessibles en ligne à des fins de démarchage commercial | CNIL"](https://www.cnil.fr/fr/la-reutilisation-des-donnees-publiquement-accessibles-en-ligne-des-fins-de-demarchage-commercial). _www.cnil.fr_ (in French). Retrieved 2020-07-05.
-  29. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-29 "Jump up")** FindDataLab.com (2020-06-09). ["Can You Still Perform Web Scraping With The New CNIL Guidelines?"](https://medium.com/@finddatalab/can-you-still-perform-web-scraping-with-the-new-cnil-guidelines-bf3e20d0edc2). _Medium_. Retrieved 2020-07-05.
-  30. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-30 "Jump up")** National Office for the Information Economy (February 2004). ["Spam Act 2003: An overview for business"](https://web.archive.org/web/20191203113701/https://www.lloyds.com/~/media/5880dae185914b2487bed7bd63b96286.ashx). Australian Communications Authority. p. 6. Archived from [the original](https://www.lloyds.com/~/media/5880dae185914b2487bed7bd63b96286.ashx) on 2019-12-03. Retrieved 2017-12-07.
-  31. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-31 "Jump up")** National Office for the Information Economy (February 2004). ["Spam Act 2003: A practical guide for business"](http://www.webstartdesign.com.au/spam_business_practical_guide.pdf) (PDF). Australian Communications Authority. p. 20. Retrieved 2017-12-07.
-  32. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-32 "Jump up")** ["Web Scraping for Beginners: A Guide 2024"](https://proxyway.com/guides/what-is-web-scraping). _Proxyway_. 2023-08-31. Retrieved 2024-03-15.
-  33. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-33 "Jump up")** Mayank Dhiman [Breaking Fraud & Bot Detection Solutions](https://s3.us-west-2.amazonaws.com/research-papers-mynk/Breaking-Fraud-And-Bot-Detection-Solutions.pdf) _OWASP AppSec Cali' 2018_ Retrieved February 10, 2018.
-  34. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-34 "Jump up")** ["What is web scraping?"](https://datadome.co/guides/scraping/what-is-web-scraping-guide/). _DataDome_. 2022-03-06. Retrieved 2025-12-16.
-  35. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-35 "Jump up")** Belanger, Ashley (28 January 2025). ["AI haters build tarpits to trap and trick AI scrapers that ignore robots.txt"](https://arstechnica.com/tech-policy/2025/01/ai-haters-build-tarpits-to-trap-and-trick-ai-scrapers-that-ignore-robots-txt/). _Ars Technica_.
-  36. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-SalesforceJA3_36-0 "Jump up")** ["JA3 - A method for profiling SSL/TLS Clients"](https://github.com/salesforce/ja3). Salesforce Engineering. Retrieved 2026-01-27.
-  37. **[^](https://en.wikipedia.org/wiki/Web_scraping#cite_ref-HasDataTLS_37-0 "Jump up")** Ermakovich, Sergey. ["What Is Web Scraping?"](https://hasdata.com/blog/web-scraping#how-web-scraping-actually-works). _HasData_. Retrieved 2026-01-27.
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=11 "Edit section: References")]
+  1. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-1 "Jump up")** ["Key Concepts of MHTML"](https://learn.microsoft.com/nb-no/previous-versions/office/developer/exchange-server-2010/aa563378\(v=exchg.140\)). _Microsoft_. 9 November 2009. [Archived](http://web.archive.org/web/20260221072103/https://learn.microsoft.com/nb-no/previous-versions/office/developer/exchange-server-2010/aa563378\(v=exchg.140\)) from the original on 21 February 2026. Retrieved 21 February 2026.
+  2. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-2 "Jump up")** Holden, Amanda. ["Difference of HTML & MHTML"](https://web.archive.org/web/20171117122700/https://www.techwalla.com/articles/difference-of-html-mhtml). Archived from [the original](https://www.techwalla.com/articles/difference-of-html-mhtml) on 17 November 2017. Retrieved 17 November 2017.
+  3. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-3 "Jump up")** ["2. The MHTML File Format - Hunchly Knowledge Base"](https://support.hunch.ly/article/51-1-the-mhtml-file-format). _support.hunch.ly_. October 17, 2018. Retrieved 24 September 2022.
+  4. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-4 "Jump up")** Santambrogio, Claudio (10 March 2006). ["…and one more weekly!"](https://web.archive.org/web/20100115001636/http://my.opera.com/desktopteam/blog/show.dml/172375). [Opera Software](https://en.wikipedia.org/wiki/Opera_Software "Opera Software"). Archived from [the original](http://my.opera.com/desktopteam/blog/show.dml/172375) on 15 January 2010. Retrieved 2009-05-15.
+  5. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-5 "Jump up")** février 6, Publié sur; Tetzchner, 2019-Par Jon von (2019-02-06). ["Vivaldi Update | Auto-Stacking Tabs"](https://vivaldi.com/fr/blog/auto-stacking-tabs/). _Vivaldi_ (in French). Retrieved 2019-05-16.`{{cite web[](https://en.wikipedia.org/wiki/Template:Cite_web "Template:Cite web")}}`: CS1 maint: numeric names: authors list ([link](https://en.wikipedia.org/wiki/Category:CS1_maint:_numeric_names:_authors_list "Category:CS1 maint: numeric names: authors list"))
+  6. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-6 "Jump up")** ["Bug 40873 - Save as rfc 2557 MHTML; complete webpage in one file"](https://bugzilla.mozilla.org/show_bug.cgi?id=40873).
+  7. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-MozArchiver_7-0 "Jump up")** ["Pale Moon Add-ons - MozArchiver"](https://addons.palemoon.org/addon/mozarchiver/). _addons.palemoon.org_. Retrieved 3 December 2025.
+  8. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-8 "Jump up")** ["NEWS · master · GNOME / Epiphany"](https://gitlab.gnome.org/GNOME/epiphany/blob/master/NEWS#L1061). 28 July 2023.
+  9. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-9 "Jump up")** Kovacs, Eduard (May 11, 2015). ["Attackers Hide Malicious Macros in MHTML Documents"](https://www.securityweek.com/attackers-hide-malicious-macros-mhtml-documents). _SecurityWeek.Com_. Retrieved April 19, 2019.
+  10. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-10 "Jump up")** Mosuela, Lordian (July 10, 2015). ["New Tricks of Macro Malware"](https://web.archive.org/web/20240908105634/https://data443.com/blog/cyren/new-tricks-of-macro-malware/). _Cyren_. Archived from [the original](https://www.cyren.com/blog/articles/new-tricks-of-macro-malware) on September 8, 2024. Retrieved April 19, 2019.
+  11. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-11 "Jump up")** Cimpanu, Catalin (April 12, 2019). ["Internet Explorer zero-day lets hackers steal files from Windows PCs"](https://www.zdnet.com/article/internet-explorer-zero-day-lets-hackers-steal-files-from-windows-pcs/). _[ZDNet](https://en.wikipedia.org/wiki/ZDNet "ZDNet")_. Retrieved April 19, 2019.
+  12. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-12 "Jump up")** ["Data URLs - HTTP"](https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URLs#browser_compatibility). _MDN_. Retrieved April 2, 2023.
+  13. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-13 "Jump up")** Brinkmann, Martin (September 3, 2018). ["Save any webpage as a single file in Chrome or Firefox - gHacks Tech News"](https://www.ghacks.net/2018/09/03/save-any-webpage-as-a-single-file-in-chrome-or-firefox/). _ghacks.net_. Retrieved April 2, 2023.
+  14. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-14 "Jump up")** ["Mozilla Archive Format Add-on - File Format Overview"](https://www.amadzone.org/mozilla-archive-format/). _amadzone_. Retrieved April 2, 2023.
+  15. **[^](https://en.wikipedia.org/wiki/MHTML#cite_ref-15 "Jump up")** ["Firefox Addon: MAF - Mozilla Archive Format"](https://web.archive.org/web/20171102005204/https://addons.mozilla.org/en-US/firefox/addon/mozilla-archive-format/). Archived from [the original](https://addons.mozilla.org/en-US/firefox/addon/mozilla-archive-format/) on 2 November 2017. Retrieved 2 April 2023.
 
 
-Retrieved from "[https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840](https://en.wikipedia.org/w/index.php?title=Web_scraping&oldid=1355278840)"
-[Category](https://en.wikipedia.org/wiki/Help:Category "Help:Category"): 
-  * [Web scraping](https://en.wikipedia.org/wiki/Category:Web_scraping "Category:Web scraping")
+## External links
+[[edit](https://en.wikipedia.org/w/index.php?title=MHTML&action=edit&section=12 "Edit section: External links")]
+  * [MHTML standard explained](http://www.dsv.su.se/~jpalme/ietf/mhtml.html)
+  * [RFC 2557](https://datatracker.ietf.org/doc/rfc2557/) (1999)—MIME Encapsulation of Aggregate Documents, such as HTML (MHTML)
+  * [RFC 2110](https://datatracker.ietf.org/doc/rfc2110/) (1997, Obsolete)—MIME E-mail Encapsulation of Aggregate Documents, such as HTML (MHTML)
+
+
+  * [v](https://en.wikipedia.org/wiki/Template:Web_browsers "Template:Web browsers")
+  * [t](https://en.wikipedia.org/wiki/Template_talk:Web_browsers "Template talk:Web browsers")
+  * [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Web_browsers "Special:EditPage/Template:Web browsers")
+
+[Web browsers](https://en.wikipedia.org/wiki/Web_browser "Web browser")  
+---  
+| Features, standards & protocols  
+---  
+| Features | 
+  * [Bookmarks](https://en.wikipedia.org/wiki/Bookmark_\(digital\) "Bookmark \(digital\)")
+  * [Extensions](https://en.wikipedia.org/wiki/Browser_extension "Browser extension")
+  * [Privacy mode](https://en.wikipedia.org/wiki/Private_browsing "Private browsing")
+
+  
+---|---  
+[Web standards](https://en.wikipedia.org/wiki/Web_standards "Web standards") | 
+  * [HTML](https://en.wikipedia.org/wiki/HTML "HTML")
+    * [v5](https://en.wikipedia.org/wiki/HTML5 "HTML5")
+  * [CSS](https://en.wikipedia.org/wiki/CSS "CSS")
+  * [DOM](https://en.wikipedia.org/wiki/Document_Object_Model "Document Object Model")
+  * [JavaScript](https://en.wikipedia.org/wiki/JavaScript "JavaScript")
+    * [WebAssembly](https://en.wikipedia.org/wiki/WebAssembly "WebAssembly")
+    * [Web storage](https://en.wikipedia.org/wiki/Web_storage "Web storage")
+    * [IndexedDB](https://en.wikipedia.org/wiki/IndexedDB "IndexedDB")
+    * [WebGL](https://en.wikipedia.org/wiki/WebGL "WebGL")
+    * [WebGPU](https://en.wikipedia.org/wiki/WebGPU "WebGPU")
+
+  
+Protocols | 
+  * [HTTP](https://en.wikipedia.org/wiki/HTTP "HTTP")
+    * [Encryption](https://en.wikipedia.org/wiki/HTTPS "HTTPS")
+    * [Cookies](https://en.wikipedia.org/wiki/HTTP_cookie "HTTP cookie")
+      * [third-party](https://en.wikipedia.org/wiki/Third-party_cookies "Third-party cookies")
+  * [OCSP](https://en.wikipedia.org/wiki/Online_Certificate_Status_Protocol "Online Certificate Status Protocol")
+  * [WebRTC](https://en.wikipedia.org/wiki/WebRTC "WebRTC")
+  * [WebSocket](https://en.wikipedia.org/wiki/WebSocket "WebSocket")
+
+  
+| Active  
+---  
+|  [Blink](https://en.wikipedia.org/wiki/Blink_\(browser_engine\) "Blink \(browser engine\)")-based |  | [Proprietary](https://en.wikipedia.org/wiki/Proprietary_software "Proprietary software") | 
+  * [Google Chrome](https://en.wikipedia.org/wiki/Google_Chrome "Google Chrome")
+  * [Arc](https://en.wikipedia.org/wiki/Arc_\(web_browser\) "Arc \(web browser\)")
+  * [Atlas](https://en.wikipedia.org/wiki/ChatGPT_Atlas "ChatGPT Atlas")
+  * [Avast](https://en.wikipedia.org/wiki/Avast_Secure_Browser "Avast Secure Browser")
+  * [Cốc Cốc](https://en.wikipedia.org/wiki/C%E1%BB%91c_C%E1%BB%91c "Cốc Cốc")
+  * [Comet](https://en.wikipedia.org/wiki/Perplexity_AI#Comet "Perplexity AI")
+  * [Comodo](https://en.wikipedia.org/wiki/Comodo_Dragon "Comodo Dragon")
+  * [Ecosia](https://en.wikipedia.org/wiki/Ecosia#Ecosia_Browser "Ecosia")
+  * [Epic](https://en.wikipedia.org/wiki/Epic_\(web_browser\) "Epic \(web browser\)")
+  * [Huawei](https://en.wikipedia.org/wiki/Huawei_Mobile_Services "Huawei Mobile Services")
+  * [Maxthon](https://en.wikipedia.org/wiki/Maxthon "Maxthon")
+  * [Microsoft Edge](https://en.wikipedia.org/wiki/Microsoft_Edge "Microsoft Edge")
+  * [Opera](https://en.wikipedia.org/wiki/Opera_\(web_browser\) "Opera \(web browser\)") ([Mobile](https://en.wikipedia.org/wiki/Opera_Mobile "Opera Mobile"))
+  * [Puffin](https://en.wikipedia.org/wiki/Puffin_Browser "Puffin Browser")
+  * [QQ](https://en.wikipedia.org/wiki/QQ_Browser "QQ Browser")
+  * [Samsung](https://en.wikipedia.org/wiki/Samsung_Browser "Samsung Browser")
+  * [Silk](https://en.wikipedia.org/wiki/Amazon_Silk "Amazon Silk")
+  * [Sleipnir](https://en.wikipedia.org/wiki/Sleipnir_\(web_browser\) "Sleipnir \(web browser\)")
+  * [SRWare](https://en.wikipedia.org/wiki/SRWare_Iron "SRWare Iron")
+  * [UC](https://en.wikipedia.org/wiki/UC_Browser "UC Browser")
+  * [Vivaldi](https://en.wikipedia.org/wiki/Vivaldi_\(web_browser\) "Vivaldi \(web browser\)")
+  * [Whale](https://en.wikipedia.org/wiki/Naver_Whale "Naver Whale")
+  * [Yandex](https://en.wikipedia.org/wiki/Yandex_Browser "Yandex Browser")
+
+  
+---|---  
+[FOSS](https://en.wikipedia.org/wiki/Free_and_open-source_software "Free and open-source software") | 
+  * [Chromium](https://en.wikipedia.org/wiki/Chromium_\(web_browser\) "Chromium \(web browser\)")
+  * [Brave](https://en.wikipedia.org/wiki/Brave_\(web_browser\) "Brave \(web browser\)")
+  * [Dooble](https://en.wikipedia.org/wiki/Dooble "Dooble")
+  * [Falkon](https://en.wikipedia.org/wiki/Falkon "Falkon")
+  * [Otter](https://en.wikipedia.org/wiki/Otter_Browser "Otter Browser")
+  * [Supermium](https://en.wikipedia.org/wiki/Supermium "Supermium")
+  * [ungoogled](https://en.wikipedia.org/wiki/Ungoogled-chromium "Ungoogled-chromium")
+
+  
+[Gecko](https://en.wikipedia.org/wiki/Gecko_\(software\) "Gecko \(software\)")-based | 
+  * [Firefox](https://en.wikipedia.org/wiki/Firefox "Firefox")
+  * [Floorp](https://en.wikipedia.org/wiki/Floorp "Floorp")
+  * [GNU IceCat](https://en.wikipedia.org/wiki/GNU_IceCat "GNU IceCat")
+  * [LibreWolf](https://en.wikipedia.org/wiki/LibreWolf "LibreWolf")
+  * [Midori](https://en.wikipedia.org/wiki/Midori_\(web_browser\) "Midori \(web browser\)")
+  * [Mullvad](https://en.wikipedia.org/wiki/Mullvad_Browser "Mullvad Browser")
+  * [SlimBrowser](https://en.wikipedia.org/wiki/SlimBrowser "SlimBrowser")
+  * [SeaMonkey](https://en.wikipedia.org/wiki/SeaMonkey "SeaMonkey") (uses unnamed Gecko [fork](https://en.wikipedia.org/wiki/Fork_\(software_development\) "Fork \(software development\)"))
+  * [Tor](https://en.wikipedia.org/wiki/Tor_Browser "Tor Browser")
+  * [Waterfox](https://en.wikipedia.org/wiki/Waterfox "Waterfox")
+  * [Zen](https://en.wikipedia.org/wiki/Zen_Browser "Zen Browser")
+
+  
+[Goanna](https://en.wikipedia.org/wiki/Goanna_\(software\) "Goanna \(software\)")-based | 
+  * [Basilisk](https://en.wikipedia.org/wiki/Basilisk_\(web_browser\) "Basilisk \(web browser\)")
+  * [K-Meleon](https://en.wikipedia.org/wiki/K-Meleon "K-Meleon")
+  * [Pale Moon](https://en.wikipedia.org/wiki/Pale_Moon "Pale Moon")
+
+  
+[WebKit](https://en.wikipedia.org/wiki/WebKit "WebKit")-based | 
+  * [Safari](https://en.wikipedia.org/wiki/Safari_\(web_browser\) "Safari \(web browser\)")
+  * [GNOME Web](https://en.wikipedia.org/wiki/GNOME_Web "GNOME Web")
+  * [iCab](https://en.wikipedia.org/wiki/ICab "ICab")
+  * [Orion](https://en.wikipedia.org/wiki/Kagi_\(search_engine\)#Orion_Browser "Kagi \(search engine\)")
+
+  
+Multi-[engine](https://en.wikipedia.org/wiki/Browser_engine "Browser engine") | 
+  * [360](https://en.wikipedia.org/wiki/360_Secure_Browser "360 Secure Browser")
+  * [DuckDuckGo](https://en.wikipedia.org/wiki/DuckDuckGo_Private_Browser "DuckDuckGo Private Browser")
+  * [Konqueror](https://en.wikipedia.org/wiki/Konqueror "Konqueror")
+  * [Lunascape](https://en.wikipedia.org/wiki/Lunascape "Lunascape")
+  * [NetFront](https://en.wikipedia.org/wiki/NetFront "NetFront")
+  * [qutebrowser](https://en.wikipedia.org/wiki/Qutebrowser "Qutebrowser")
+
+  
+Other | 
+  * [Dillo](https://en.wikipedia.org/wiki/Dillo "Dillo")
+  * [eww](https://en.wikipedia.org/wiki/Eww_\(web_browser\) "Eww \(web browser\)")
+  * [Flow](https://en.wikipedia.org/wiki/Flow_\(web_browser\) "Flow \(web browser\)")
+  * [Ladybird](https://en.wikipedia.org/wiki/Ladybird_\(web_browser\) "Ladybird \(web browser\)")
+  * [Links](https://en.wikipedia.org/wiki/Links_\(web_browser\) "Links \(web browser\)")
+  * [Lynx](https://en.wikipedia.org/wiki/Lynx_\(web_browser\) "Lynx \(web browser\)")
+  * [NetSurf](https://en.wikipedia.org/wiki/NetSurf "NetSurf")
+  * [Opera Mini](https://en.wikipedia.org/wiki/Opera_Mini "Opera Mini")
+  * [w3m](https://en.wikipedia.org/wiki/W3m "W3m")
+
+  
+| Discontinued  
+---  
+|  [Blink](https://en.wikipedia.org/wiki/Blink_\(browser_engine\) "Blink \(browser engine\)")-based | 
+  * [Beaker](https://en.wikipedia.org/wiki/Beaker_\(web_browser\) "Beaker \(web browser\)")
+  * [Citrio](https://en.wikipedia.org/wiki/Citrio "Citrio")
+  * [Flock](https://en.wikipedia.org/wiki/Flock_\(web_browser\) "Flock \(web browser\)")
+  * [Redcore](https://en.wikipedia.org/wiki/Redcore "Redcore")
+  * [Rockmelt](https://en.wikipedia.org/wiki/Rockmelt "Rockmelt")
+  * [SalamWeb](https://en.wikipedia.org/wiki/SalamWeb "SalamWeb")
+  * [Sputnik](https://en.wikipedia.org/wiki/Sputnik_\(search_engine\)#Browser "Sputnik \(search engine\)")
+  * [Torch](https://en.wikipedia.org/wiki/Torch_\(web_browser\) "Torch \(web browser\)")
+
+  
+---|---  
+[Gecko](https://en.wikipedia.org/wiki/Gecko_\(software\) "Gecko \(software\)")-based | 
+  * [Beonex](https://en.wikipedia.org/wiki/Beonex_Communicator "Beonex Communicator")
+  * [Camino](https://en.wikipedia.org/wiki/Camino_\(web_browser\) "Camino \(web browser\)")
+  * [Classilla](https://en.wikipedia.org/wiki/Classilla "Classilla")
+  * [Conkeror](https://en.wikipedia.org/wiki/Conkeror "Conkeror")
+  * [Firefox Lite](https://en.wikipedia.org/wiki/Firefox_Lite "Firefox Lite")
+  * [Galeon](https://en.wikipedia.org/wiki/Galeon "Galeon")
+  * [Ghostzilla](https://en.wikipedia.org/wiki/Ghostzilla "Ghostzilla")
+  * [IceDragon](https://en.wikipedia.org/wiki/Comodo_IceDragon "Comodo IceDragon")
+  * [Kazehakase](https://en.wikipedia.org/wiki/Kazehakase "Kazehakase")
+  * [Kylo](https://en.wikipedia.org/wiki/Kylo_\(web_browser\) "Kylo \(web browser\)")
+  * [Lotus](https://en.wikipedia.org/wiki/IBM_Lotus_Symphony "IBM Lotus Symphony")
+  * [MicroB](https://en.wikipedia.org/wiki/MicroB "MicroB")
+  * [Minimo](https://en.wikipedia.org/wiki/Minimo "Minimo")
+  * [Mozilla suite](https://en.wikipedia.org/wiki/Mozilla_Application_Suite "Mozilla Application Suite")
+  * [PirateBrowser](https://en.wikipedia.org/wiki/PirateBrowser "PirateBrowser")
+  * [Pogo](https://en.wikipedia.org/wiki/AT%26T_Pogo "AT&T Pogo")
+  * [Strata](https://en.wikipedia.org/wiki/Kirix_Strata "Kirix Strata")
+  * [Swiftfox](https://en.wikipedia.org/wiki/Swiftfox "Swiftfox")
+  * [TenFourFox](https://en.wikipedia.org/wiki/TenFourFox "TenFourFox")
+  * [Timberwolf](https://en.wikipedia.org/wiki/Timberwolf_\(web_browser\) "Timberwolf \(web browser\)")
+  * [Waterfox Classic](https://en.wikipedia.org/wiki/Waterfox_Classic "Waterfox Classic")
+  * [xB](https://en.wikipedia.org/wiki/XB_Browser "XB Browser")
+
+  
+[MSHTML](https://en.wikipedia.org/wiki/Trident_\(software\) "Trident \(software\)")-based | 
+  * [Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer "Internet Explorer")
+  * [AOL](https://en.wikipedia.org/wiki/AOL_Explorer "AOL Explorer")
+  * [Deepnet](https://en.wikipedia.org/wiki/Deepnet_Explorer "Deepnet Explorer")
+  * [GreenBrowser](https://en.wikipedia.org/wiki/GreenBrowser "GreenBrowser")
+  * [MediaBrowser](https://en.wikipedia.org/wiki/MediaBrowser "MediaBrowser")
+  * [MSN Explorer](https://en.wikipedia.org/wiki/MSN_Dial-Up_Internet_Access#MSN_Explorer "MSN Dial-Up Internet Access")
+  * [MSN Program Viewer](https://en.wikipedia.org/wiki/MSN_Dial-Up_Internet_Access#MSN_2.0 "MSN Dial-Up Internet Access")
+  * [NeoPlanet](https://en.wikipedia.org/wiki/NeoPlanet "NeoPlanet")
+  * [NetCaptor](https://en.wikipedia.org/wiki/NetCaptor "NetCaptor")
+  * [SpaceTime](https://en.wikipedia.org/wiki/SpaceTime_\(software\) "SpaceTime \(software\)")
+  * [ZAC](https://en.wikipedia.org/wiki/ZAC_Browser "ZAC Browser")
+
+  
+[WebKit](https://en.wikipedia.org/wiki/WebKit "WebKit")-based | 
+  * [Arora](https://en.wikipedia.org/wiki/Arora_\(web_browser\) "Arora \(web browser\)")
+  * [BOLT](https://en.wikipedia.org/wiki/Bolt_\(web_browser\) "Bolt \(web browser\)")
+  * [Dolphin](https://en.wikipedia.org/wiki/Dolphin_Browser "Dolphin Browser")
+  * [Fluid](https://en.wikipedia.org/wiki/Fluid_\(web_browser\) "Fluid \(web browser\)")
+  * [Google TV](https://en.wikipedia.org/wiki/Google_TV_\(2010%E2%80%932014\) "Google TV \(2010–2014\)")
+  * [Iris](https://en.wikipedia.org/wiki/Iris_Browser "Iris Browser")
+  * [Mercury](https://en.wikipedia.org/wiki/Mercury_Browser "Mercury Browser")
+  * [Nokia Symbian](https://en.wikipedia.org/wiki/Nokia_Browser_for_Symbian "Nokia Browser for Symbian")
+  * [OmniWeb](https://en.wikipedia.org/wiki/OmniWeb "OmniWeb")
+  * [Opera Coast](https://en.wikipedia.org/wiki/Opera_Coast "Opera Coast")
+  * [Origyn](https://en.wikipedia.org/wiki/Origyn_Web_Browser "Origyn Web Browser")
+  * [QtWeb](https://en.wikipedia.org/wiki/QtWeb "QtWeb")
+  * [Shiira](https://en.wikipedia.org/wiki/Shiira "Shiira")
+  * [Steel](https://en.wikipedia.org/wiki/Steel_\(web_browser\) "Steel \(web browser\)")
+  * [surf](https://en.wikipedia.org/wiki/Surf_\(web_browser\) "Surf \(web browser\)")
+  * [Uzbl](https://en.wikipedia.org/wiki/Uzbl "Uzbl")
+  * [WebPositive](https://en.wikipedia.org/wiki/WebPositive "WebPositive")
+  * [xombrero](https://en.wikipedia.org/wiki/Xombrero "Xombrero")
+
+  
+Other | 
+  * [abaco](https://en.wikipedia.org/wiki/Abaco_\(web_browser\) "Abaco \(web browser\)")
+  * [Amaya](https://en.wikipedia.org/wiki/Amaya_\(web_editor\) "Amaya \(web editor\)")
+  * [Arachne](https://en.wikipedia.org/wiki/Arachne_\(web_browser\) "Arachne \(web browser\)")
+  * [Arena](https://en.wikipedia.org/wiki/Arena_\(web_browser\) "Arena \(web browser\)")
+  * [Blazer](https://en.wikipedia.org/wiki/Blazer_\(web_browser\) "Blazer \(web browser\)")
+  * [Cake](https://en.wikipedia.org/wiki/Cake_Browser "Cake Browser")
+  * [CM](https://en.wikipedia.org/wiki/CM_Browser "CM Browser")
+  * [Deepfish](https://en.wikipedia.org/wiki/Microsoft_Live_Labs_Deepfish "Microsoft Live Labs Deepfish")
+  * [Edge Legacy](https://en.wikipedia.org/wiki/Microsoft_Edge_Legacy "Microsoft Edge Legacy")
+  * [ELinks](https://en.wikipedia.org/wiki/ELinks "ELinks")
+  * [Gazelle](https://en.wikipedia.org/wiki/Gazelle_\(web_browser\) "Gazelle \(web browser\)")
+  * [HotJava](https://en.wikipedia.org/wiki/HotJava "HotJava")
+  * [IBM Home Page Reader](https://en.wikipedia.org/wiki/IBM_Home_Page_Reader "IBM Home Page Reader")
+  * [IBM WebExplorer](https://en.wikipedia.org/wiki/IBM_WebExplorer "IBM WebExplorer")
+  * [IBrowse](https://en.wikipedia.org/wiki/IBrowse "IBrowse")
+  * [Internet Explorer for Mac](https://en.wikipedia.org/wiki/Internet_Explorer_for_Mac "Internet Explorer for Mac")
+  * [KidZui](https://en.wikipedia.org/wiki/KidZui "KidZui")
+  * [Line Mode](https://en.wikipedia.org/wiki/Line_Mode_Browser "Line Mode Browser")
+  * [Mosaic](https://en.wikipedia.org/wiki/Mosaic_\(web_browser\) "Mosaic \(web browser\)")
+  * [MSN TV](https://en.wikipedia.org/wiki/MSN_TV "MSN TV")
+  * [NetPositive](https://en.wikipedia.org/wiki/NetPositive "NetPositive")
+  * [Netscape](https://en.wikipedia.org/wiki/Netscape_\(web_browser\) "Netscape \(web browser\)")
+  * [Skweezer](https://en.wikipedia.org/wiki/Skweezer "Skweezer")
+  * [Skyfire](https://en.wikipedia.org/wiki/Skyfire_\(company\) "Skyfire \(company\)")
+  * [ThunderHawk](https://en.wikipedia.org/wiki/ThunderHawk "ThunderHawk")
+  * [Vision](https://en.wikipedia.org/wiki/Vision_Mobile_Browser "Vision Mobile Browser")
+  * [WinWAP](https://en.wikipedia.org/wiki/WinWAP "WinWAP")
+  * [WorldWideWeb](https://en.wikipedia.org/wiki/WorldWideWeb "WorldWideWeb")
+
+  
+  * [List](https://en.wikipedia.org/wiki/List_of_web_browsers "List of web browsers")
+  * [Comparison](https://en.wikipedia.org/wiki/Comparison_of_web_browsers "Comparison of web browsers")
+  * [Category](https://en.wikipedia.org/wiki/Category:Web_browsers "Category:Web browsers")
+
+  
+  * [v](https://en.wikipedia.org/wiki/Template:Internet_Explorer "Template:Internet Explorer")
+  * [t](https://en.wikipedia.org/wiki/Template_talk:Internet_Explorer "Template talk:Internet Explorer")
+  * [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Internet_Explorer "Special:EditPage/Template:Internet Explorer")
+
+[Internet Explorer](https://en.wikipedia.org/wiki/Internet_Explorer "Internet Explorer")  
+---  
+[Versions](https://en.wikipedia.org/wiki/Internet_Explorer_version_history "Internet Explorer version history") |  | Main | 
+  * [1](https://en.wikipedia.org/wiki/Internet_Explorer_1 "Internet Explorer 1")
+  * [2](https://en.wikipedia.org/wiki/Internet_Explorer_2 "Internet Explorer 2")
+  * [3](https://en.wikipedia.org/wiki/Internet_Explorer_3 "Internet Explorer 3")
+  * [4](https://en.wikipedia.org/wiki/Internet_Explorer_4 "Internet Explorer 4")
+  * [5](https://en.wikipedia.org/wiki/Internet_Explorer_5 "Internet Explorer 5")
+  * [6](https://en.wikipedia.org/wiki/Internet_Explorer_6 "Internet Explorer 6")
+  * [7](https://en.wikipedia.org/wiki/Internet_Explorer_7 "Internet Explorer 7")
+  * [8](https://en.wikipedia.org/wiki/Internet_Explorer_8 "Internet Explorer 8")
+  * [9](https://en.wikipedia.org/wiki/Internet_Explorer_9 "Internet Explorer 9")
+  * [10](https://en.wikipedia.org/wiki/Internet_Explorer_10 "Internet Explorer 10")
+  * [11](https://en.wikipedia.org/wiki/Internet_Explorer_11 "Internet Explorer 11")
+
+  
+---|---  
+Other | 
+  * _[Mobile](https://en.wikipedia.org/wiki/Internet_Explorer_Mobile "Internet Explorer Mobile")_
+  * _[for Mac](https://en.wikipedia.org/wiki/Internet_Explorer_for_Mac "Internet Explorer for Mac")_
+  * _[for UNIX](https://en.wikipedia.org/wiki/Internet_Explorer_for_UNIX "Internet Explorer for UNIX")_
+  * [IEs4Linux](https://en.wikipedia.org/wiki/IEs4Linux "IEs4Linux")
+
+  
+Overview | 
+  * [History](https://en.wikipedia.org/wiki/History_of_Internet_Explorer "History of Internet Explorer")
+  * [Add-ons](https://en.wikipedia.org/wiki/List_of_Internet_Explorer_add-ons "List of Internet Explorer add-ons")
+  * [Box model](https://en.wikipedia.org/wiki/CSS_box_model "CSS box model")
+  * [Browser Helper Object (BHO)](https://en.wikipedia.org/wiki/Browser_Helper_Object "Browser Helper Object")
+  * [Extensions](https://en.wikipedia.org/wiki/List_of_Internet_Explorer_extensions "List of Internet Explorer extensions")
+  * [Removal](https://en.wikipedia.org/wiki/Removal_of_Internet_Explorer "Removal of Internet Explorer")
+  * [Shells](https://en.wikipedia.org/wiki/Internet_Explorer_shell "Internet Explorer shell")
+
+  
+Technologies | 
+  * [Accelerator](https://en.wikipedia.org/wiki/Accelerator_\(Internet_Explorer\) "Accelerator \(Internet Explorer\)")
+  * [ActiveX](https://en.wikipedia.org/wiki/ActiveX "ActiveX")
+  * [HTML](https://en.wikipedia.org/wiki/HTML "HTML")
+    * [HTA](https://en.wikipedia.org/wiki/HTML_Application "HTML Application")
+    * [HTML Components](https://en.wikipedia.org/wiki/HTML_Components "HTML Components")
+  * [favicon.ico](https://en.wikipedia.org/wiki/Favicon "Favicon")
+  * [HTML+TIME](https://en.wikipedia.org/wiki/HTML%2BTIME "HTML+TIME")
+  * [Index.dat](https://en.wikipedia.org/wiki/Index.dat "Index.dat")
+  * [JScript](https://en.wikipedia.org/wiki/JScript "JScript")
+  * MHTML
+  * [MSXML](https://en.wikipedia.org/wiki/MSXML "MSXML")
+  * [Smart tags](https://en.wikipedia.org/wiki/Smart_tag_\(Microsoft\) "Smart tag \(Microsoft\)")
+  * [Temporary Internet Files](https://en.wikipedia.org/wiki/Temporary_Internet_Files "Temporary Internet Files")
+  * [Vector Markup Language](https://en.wikipedia.org/wiki/Vector_Markup_Language "Vector Markup Language")
+  * [Web Slice](https://en.wikipedia.org/wiki/Web_Slice "Web Slice")
+  * [WPAD](https://en.wikipedia.org/wiki/Web_Proxy_Autodiscovery_Protocol "Web Proxy Autodiscovery Protocol")
+  * [XHR/XDomainRequest](https://en.wikipedia.org/wiki/XMLHttpRequest "XMLHttpRequest")
+
+  
+Software and engines | 
+  * [Administration Kit](https://en.wikipedia.org/wiki/Internet_Explorer_Administration_Kit "Internet Explorer Administration Kit")
+  * [Developer Tools](https://en.wikipedia.org/wiki/Internet_Explorer_Developer_Tools "Internet Explorer Developer Tools")
+  * [Integrated Windows Authentication](https://en.wikipedia.org/wiki/Integrated_Windows_Authentication "Integrated Windows Authentication")
+  * [Tasman](https://en.wikipedia.org/wiki/Tasman_\(browser_engine\) "Tasman \(browser engine\)")
+  * [MSHTML](https://en.wikipedia.org/wiki/Trident_\(software\) "Trident \(software\)")
+    * [Chakra](https://en.wikipedia.org/wiki/Chakra_\(JScript_engine\) "Chakra \(JScript engine\)")
+
+  
+Implementations | 
+  * [Active Channel](https://en.wikipedia.org/wiki/Active_Channel "Active Channel")
+  * [Active Desktop](https://en.wikipedia.org/wiki/Active_Desktop "Active Desktop")
+  * [ActiveMovie](https://en.wikipedia.org/wiki/ActiveMovie "ActiveMovie")
+  * [Channel Definition Format (.cdf)](https://en.wikipedia.org/wiki/Channel_Definition_Format "Channel Definition Format")
+  * [Comic Chat/Chat 2.0](https://en.wikipedia.org/wiki/Microsoft_Comic_Chat "Microsoft Comic Chat")
+  * [DirectX Media](https://en.wikipedia.org/wiki/DirectX_Media "DirectX Media")
+  * [Internet Mail and News](https://en.wikipedia.org/wiki/Microsoft_Internet_Mail_and_News "Microsoft Internet Mail and News")
+  * [Microsoft Java Virtual Machine (MSJVM)](https://en.wikipedia.org/wiki/Microsoft_Java_Virtual_Machine "Microsoft Java Virtual Machine")
+  * [MSN Explorer](https://en.wikipedia.org/wiki/MSN_Dial-Up_Internet_Access#MSN_Explorer "MSN Dial-Up Internet Access")
+  * [MSN for Mac OS X](https://en.wikipedia.org/wiki/MSN_Dial-Up_Internet_Access#MSN_for_Mac_OS_X "MSN Dial-Up Internet Access")
+  * [MSN Program Viewer](https://en.wikipedia.org/wiki/MSN_Dial-Up_Internet_Access#MSN_2.0 "MSN Dial-Up Internet Access")
+  * [NetMeeting](https://en.wikipedia.org/wiki/Microsoft_NetMeeting "Microsoft NetMeeting")
+  * [NetShow](https://en.wikipedia.org/wiki/NetShow "NetShow")
+  * [Outlook Express](https://en.wikipedia.org/wiki/Outlook_Express "Outlook Express")
+  * [Server Gated Cryptography (SGC)](https://en.wikipedia.org/wiki/Server_gated_cryptography "Server gated cryptography")
+  * [Spyglass](https://en.wikipedia.org/wiki/Spyglass,_Inc. "Spyglass, Inc.")
+  * [Windows Address Book](https://en.wikipedia.org/wiki/Windows_Address_Book "Windows Address Book")
+  * [Windows Desktop Update](https://en.wikipedia.org/wiki/Windows_Desktop_Update "Windows Desktop Update")
+
+  
+Events | 
+  * [First Browser War](https://en.wikipedia.org/wiki/Browser_wars#First_Browser_War "Browser wars")
+  * [Second Browser War](https://en.wikipedia.org/wiki/Browser_wars#Second_Browser_War "Browser wars")
+  * [Download.ject](https://en.wikipedia.org/wiki/Download.ject "Download.ject")
+  * [_Eolas v. Microsoft_](https://en.wikipedia.org/wiki/Eolas#Patents "Eolas")
+  * [_Sun v. Microsoft_](https://en.wikipedia.org/wiki/Microsoft_Java_Virtual_Machine#Sun_vs._Microsoft "Microsoft Java Virtual Machine")
+  * _[United States v. Microsoft Corp.](https://en.wikipedia.org/wiki/United_States_v._Microsoft_Corp. "United States v. Microsoft Corp.")_
+
+  
+People | 
+  * [Tantek Çelik](https://en.wikipedia.org/wiki/Tantek_%C3%87elik "Tantek Çelik")
+  * [Thomas Reardon](https://en.wikipedia.org/wiki/Thomas_Reardon "Thomas Reardon")
+  * [Dean Hachamovitch](https://en.wikipedia.org/wiki/Dean_Hachamovitch "Dean Hachamovitch")
+  * Scott Isaacs
+  * [Inori Aizawa](https://en.wikipedia.org/wiki/Inori_Aizawa "Inori Aizawa")
+
+  
+  * ![](https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/20px-Symbol_category_class.svg.png) [Category](https://en.wikipedia.org/wiki/Category:Internet_Explorer "Category:Internet Explorer")
+
+  
+  * [v](https://en.wikipedia.org/wiki/Template:Microsoft_365 "Template:Microsoft 365")
+  * [t](https://en.wikipedia.org/wiki/Template_talk:Microsoft_365 "Template talk:Microsoft 365")
+  * [e](https://en.wikipedia.org/wiki/Special:EditPage/Template:Microsoft_365 "Special:EditPage/Template:Microsoft 365")
+
+[Microsoft 365](https://en.wikipedia.org/wiki/Microsoft_365 "Microsoft 365")  
+---  
+  * [History](https://en.wikipedia.org/wiki/History_of_Microsoft_Office "History of Microsoft Office")
+  * A product of [Microsoft](https://en.wikipedia.org/wiki/Microsoft "Microsoft")
+
+  
+[Microsoft Office](https://en.wikipedia.org/wiki/Microsoft_Office "Microsoft Office") | 
+  * [3.0](https://en.wikipedia.org/wiki/Microsoft_Office_3.0 "Microsoft Office 3.0")
+  * [4.x](https://en.wikipedia.org/wiki/Microsoft_Office_4.x "Microsoft Office 4.x")
+  * [95](https://en.wikipedia.org/wiki/Microsoft_Office_95 "Microsoft Office 95")
+  * [97](https://en.wikipedia.org/wiki/Microsoft_Office_97 "Microsoft Office 97")
+  * [98 Macintosh Edition](https://en.wikipedia.org/wiki/Microsoft_Office_98_Macintosh_Edition "Microsoft Office 98 Macintosh Edition")
+  * [2000](https://en.wikipedia.org/wiki/Microsoft_Office_2000 "Microsoft Office 2000")
+  * [2001 for Mac](https://en.wikipedia.org/wiki/Microsoft_Office_2001 "Microsoft Office 2001")
+  * [XP](https://en.wikipedia.org/wiki/Microsoft_Office_XP "Microsoft Office XP")
+  * [v. X for Mac](https://en.wikipedia.org/wiki/Microsoft_Office_v._X "Microsoft Office v. X")
+  * [2003](https://en.wikipedia.org/wiki/Microsoft_Office_2003 "Microsoft Office 2003")
+  * [2004 for Mac](https://en.wikipedia.org/wiki/Microsoft_Office_2004_for_Mac "Microsoft Office 2004 for Mac")
+  * [2007](https://en.wikipedia.org/wiki/Microsoft_Office_2007 "Microsoft Office 2007")
+  * [2008 for Mac](https://en.wikipedia.org/wiki/Microsoft_Office_2008_for_Mac "Microsoft Office 2008 for Mac")
+  * [2010](https://en.wikipedia.org/wiki/Microsoft_Office_2010 "Microsoft Office 2010")
+  * [2011 for Mac](https://en.wikipedia.org/wiki/Microsoft_Office_for_Mac_2011 "Microsoft Office for Mac 2011")
+  * [2013](https://en.wikipedia.org/wiki/Microsoft_Office_2013 "Microsoft Office 2013")
+  * [2016](https://en.wikipedia.org/wiki/Microsoft_Office_2016 "Microsoft Office 2016")
+  * [2019](https://en.wikipedia.org/wiki/Microsoft_Office_2019 "Microsoft Office 2019")
+  * [2021](https://en.wikipedia.org/wiki/Microsoft_Office_2021 "Microsoft Office 2021")
+  * [2024](https://en.wikipedia.org/wiki/Microsoft_Office_2024 "Microsoft Office 2024")
+
+  
+Applications  
+([list](https://en.wikipedia.org/wiki/List_of_Microsoft_365_applications_and_services "List of Microsoft 365 applications and services")) |  | Desktop | 
+  * [Access](https://en.wikipedia.org/wiki/Microsoft_Access "Microsoft Access")
+  * [Excel](https://en.wikipedia.org/wiki/Microsoft_Excel "Microsoft Excel")
+  * [OneNote](https://en.wikipedia.org/wiki/Microsoft_OneNote "Microsoft OneNote")
+  * [Outlook](https://en.wikipedia.org/wiki/Microsoft_Outlook "Microsoft Outlook")
+  * [PowerPoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint "Microsoft PowerPoint")
+  * [Project](https://en.wikipedia.org/wiki/Microsoft_Project "Microsoft Project")
+  * [Publisher](https://en.wikipedia.org/wiki/Microsoft_Publisher "Microsoft Publisher")
+  * [Teams](https://en.wikipedia.org/wiki/Microsoft_Teams "Microsoft Teams")
+  * [Visio](https://en.wikipedia.org/wiki/Microsoft_Visio "Microsoft Visio")
+  * [Word](https://en.wikipedia.org/wiki/Microsoft_Word "Microsoft Word")
+
+  
+---|---  
+Server | 
+  * [SharePoint](https://en.wikipedia.org/wiki/SharePoint "SharePoint")
+    * [Excel Services](https://en.wikipedia.org/wiki/Excel_Services "Excel Services")
+    * [Project Server](https://en.wikipedia.org/wiki/Microsoft_Project_Server "Microsoft Project Server")
+    * [Search Server](https://en.wikipedia.org/wiki/Microsoft_Search_Server "Microsoft Search Server")
+  * [Skype for Business Server](https://en.wikipedia.org/wiki/Skype_for_Business_Server "Skype for Business Server")
+
+  
+Mobile | 
+  * [Excel](https://en.wikipedia.org/wiki/Microsoft_Excel "Microsoft Excel")
+  * [Lens](https://en.wikipedia.org/wiki/Office_Lens "Office Lens")
+  * [OneDrive](https://en.wikipedia.org/wiki/OneDrive "OneDrive")
+  * [OneNote](https://en.wikipedia.org/wiki/Microsoft_OneNote "Microsoft OneNote")
+  * [Outlook](https://en.wikipedia.org/wiki/Microsoft_Outlook "Microsoft Outlook")
+  * [PowerPoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint "Microsoft PowerPoint")
+  * [Remote](https://en.wikipedia.org/wiki/Office_Remote "Office Remote")
+  * [Sway](https://en.wikipedia.org/wiki/Microsoft_Sway "Microsoft Sway")
+  * [Teams](https://en.wikipedia.org/wiki/Microsoft_Teams "Microsoft Teams")
+  * [Word](https://en.wikipedia.org/wiki/Microsoft_Word "Microsoft Word")
+  * [Planner](https://en.wikipedia.org/wiki/Microsoft_Planner "Microsoft Planner")
+
+  
+Web | 
+  * [Bookings](https://en.wikipedia.org/wiki/Microsoft_Bookings "Microsoft Bookings")
+  * [Copilot](https://en.wikipedia.org/wiki/Microsoft_Copilot "Microsoft Copilot")
+  * [Delve](https://en.wikipedia.org/wiki/Office_Delve "Office Delve")
+  * [Designer](https://en.wikipedia.org/wiki/Microsoft_Designer "Microsoft Designer")
+  * [Excel](https://en.wikipedia.org/wiki/Microsoft_Excel "Microsoft Excel")
+  * [Forms](https://en.wikipedia.org/wiki/Microsoft_Forms "Microsoft Forms")
+  * [Loop](https://en.wikipedia.org/wiki/Microsoft_Loop "Microsoft Loop")
+  * [OneDrive](https://en.wikipedia.org/wiki/OneDrive "OneDrive")
+  * [OneNote](https://en.wikipedia.org/wiki/Microsoft_OneNote "Microsoft OneNote")
+  * [Outlook on the web](https://en.wikipedia.org/wiki/Outlook_on_the_web "Outlook on the web")
+  * [Outlook.com](https://en.wikipedia.org/wiki/Outlook.com "Outlook.com")
+  * [Planner](https://en.wikipedia.org/wiki/Microsoft_Planner "Microsoft Planner")
+  * [PowerPoint](https://en.wikipedia.org/wiki/Microsoft_PowerPoint "Microsoft PowerPoint")
+  * [Project](https://en.wikipedia.org/wiki/Microsoft_Project "Microsoft Project")
+  * [SharePoint](https://en.wikipedia.org/wiki/SharePoint "SharePoint")
+  * [Stream](https://en.wikipedia.org/wiki/Microsoft_Stream "Microsoft Stream")
+  * [Sway](https://en.wikipedia.org/wiki/Microsoft_Sway "Microsoft Sway")
+  * [Teams](https://en.wikipedia.org/wiki/Microsoft_Teams "Microsoft Teams")
+  * [To Do](https://en.wikipedia.org/wiki/Microsoft_To_Do "Microsoft To Do")
+  * [Video](https://en.wikipedia.org/wiki/Office_365_Video "Office 365 Video")
+  * [Viva Engage](https://en.wikipedia.org/wiki/Viva_Engage "Viva Engage")
+  * [Word](https://en.wikipedia.org/wiki/Microsoft_Word "Microsoft Word")
+
+  
+Discontinued | 
+  * [Discontinued shared tools](https://en.wikipedia.org/wiki/Microsoft_Office_shared_tools#Discontinued "Microsoft Office shared tools")
+  * [Accounting](https://en.wikipedia.org/wiki/Microsoft_Office_Accounting "Microsoft Office Accounting")
+  * [Classroom](https://en.wikipedia.org/wiki/Microsoft_Classroom "Microsoft Classroom")
+  * [Docs.com](https://en.wikipedia.org/wiki/Docs.com "Docs.com")
+  * [Entourage](https://en.wikipedia.org/wiki/Microsoft_Entourage "Microsoft Entourage")
+  * [FrontPage](https://en.wikipedia.org/wiki/Microsoft_FrontPage "Microsoft FrontPage")
+  * [InfoPath](https://en.wikipedia.org/wiki/Microsoft_InfoPath "Microsoft InfoPath")
+  * [InterConnect](https://en.wikipedia.org/wiki/Microsoft_InterConnect "Microsoft InterConnect")
+  * [Kaizala](https://en.wikipedia.org/wiki/Microsoft_Kaizala "Microsoft Kaizala")
+  * [Liquid Motion](https://en.wikipedia.org/wiki/Microsoft_Liquid_Motion "Microsoft Liquid Motion")
+  * [Live Meeting](https://en.wikipedia.org/wiki/Microsoft_Office_Live_Meeting "Microsoft Office Live Meeting")
+  * [Lync](https://en.wikipedia.org/wiki/Microsoft_Lync "Microsoft Lync")
+  * [Mail](https://en.wikipedia.org/wiki/Microsoft_Mail "Microsoft Mail")
+  * [Office Assistant](https://en.wikipedia.org/wiki/Office_Assistant "Office Assistant")
+  * [Office Live](https://en.wikipedia.org/wiki/Microsoft_Office_Live "Microsoft Office Live")
+  * [OneDrive Groups](https://en.wikipedia.org/wiki/OneDrive_Groups "OneDrive Groups")
+  * [PerformancePoint Server](https://en.wikipedia.org/wiki/Microsoft_Office_PerformancePoint_Server "Microsoft Office PerformancePoint Server")
+  * [Photo Editor](https://en.wikipedia.org/wiki/Microsoft_Photo_Editor "Microsoft Photo Editor")
+  * [PhotoDraw](https://en.wikipedia.org/wiki/Microsoft_PhotoDraw "Microsoft PhotoDraw")
+  * [Picture Manager](https://en.wikipedia.org/wiki/Microsoft_Office_Picture_Manager "Microsoft Office Picture Manager")
+  * _[Ribbon Hero](https://en.wikipedia.org/wiki/Ribbon_Hero "Ribbon Hero")_
+  * [SharePoint Designer](https://en.wikipedia.org/wiki/Microsoft_SharePoint_Designer "Microsoft SharePoint Designer")
+  * [SharePoint Workspace](https://en.wikipedia.org/wiki/Microsoft_SharePoint_Workspace "Microsoft SharePoint Workspace")
+  * [Skype for Business](https://en.wikipedia.org/wiki/Skype_for_Business "Skype for Business")
+  * [Snapshot Viewer for Access](https://en.wikipedia.org/wiki/SNP_file_format "SNP file format")
+  * [Vizact](https://en.wikipedia.org/wiki/Microsoft_Vizact "Microsoft Vizact")
+  * [Word Viewer](https://en.wikipedia.org/wiki/Microsoft_Word_Viewer "Microsoft Word Viewer")
+
+  
+Technologies | 
+  * [Information Bridge Framework](https://en.wikipedia.org/wiki/Information_Bridge_Framework "Information Bridge Framework")
+  * [Object Linking and Embedding](https://en.wikipedia.org/wiki/Object_Linking_and_Embedding "Object Linking and Embedding")
+  * [Office Open XML](https://en.wikipedia.org/wiki/Office_Open_XML "Office Open XML")
+  * [Office XML formats](https://en.wikipedia.org/wiki/Microsoft_Office_XML_formats "Microsoft Office XML formats")
+  * [Power Pivot](https://en.wikipedia.org/wiki/Power_Pivot "Power Pivot")
+  * [Smart tags](https://en.wikipedia.org/wiki/Smart_tag_\(Microsoft\) "Smart tag \(Microsoft\)")
+  * [Visual Basic for Applications](https://en.wikipedia.org/wiki/Visual_Basic_for_Applications "Visual Basic for Applications")
+
+  
+Related | 
+  * [Microsoft Office filename extensions](https://en.wikipedia.org/wiki/List_of_Microsoft_Office_filename_extensions "List of Microsoft Office filename extensions")
+  * [Microsoft Office password protection](https://en.wikipedia.org/wiki/Microsoft_Office_password_protection "Microsoft Office password protection")
+  * [Microsoft Power Platform](https://en.wikipedia.org/wiki/Microsoft_Power_Platform "Microsoft Power Platform")
+  * [Microsoft Product Activation](https://en.wikipedia.org/wiki/Microsoft_Product_Activation "Microsoft Product Activation")
+  * [Office Genuine Advantage](https://en.wikipedia.org/wiki/Office_Genuine_Advantage "Office Genuine Advantage")
+
+  
+  * ![](https://upload.wikimedia.org/wikipedia/en/thumb/9/96/Symbol_category_class.svg/20px-Symbol_category_class.svg.png) [Category](https://en.wikipedia.org/wiki/Category:Microsoft_Office "Category:Microsoft Office")
+
+  
+Retrieved from "[https://en.wikipedia.org/w/index.php?title=MHTML&oldid=1346556407](https://en.wikipedia.org/w/index.php?title=MHTML&oldid=1346556407)"
+[Categories](https://en.wikipedia.org/wiki/Help:Category "Help:Category"): 
+  * [Archive formats](https://en.wikipedia.org/wiki/Category:Archive_formats "Category:Archive formats")
+  * [Internet Explorer](https://en.wikipedia.org/wiki/Category:Internet_Explorer "Category:Internet Explorer")
+  * [HTML](https://en.wikipedia.org/wiki/Category:HTML "Category:HTML")
+  * [MIME](https://en.wikipedia.org/wiki/Category:MIME "Category:MIME")
+  * [Web archives](https://en.wikipedia.org/wiki/Category:Web_archives "Category:Web archives")
+  * [Computer-related introductions in 1999](https://en.wikipedia.org/wiki/Category:Computer-related_introductions_in_1999 "Category:Computer-related introductions in 1999")
+  * [Request for Comments](https://en.wikipedia.org/wiki/Category:Request_for_Comments "Category:Request for Comments")
 
 
 Hidden categories: 
-  * [CS1 maint: multiple names: authors list](https://en.wikipedia.org/wiki/Category:CS1_maint:_multiple_names:_authors_list "Category:CS1 maint: multiple names: authors list")
-  * [CS1 Danish-language sources (da)](https://en.wikipedia.org/wiki/Category:CS1_Danish-language_sources_\(da\) "Category:CS1 Danish-language sources \(da\)")
+  * [CS1 maint: numeric names: authors list](https://en.wikipedia.org/wiki/Category:CS1_maint:_numeric_names:_authors_list "Category:CS1 maint: numeric names: authors list")
   * [CS1 French-language sources (fr)](https://en.wikipedia.org/wiki/Category:CS1_French-language_sources_\(fr\) "Category:CS1 French-language sources \(fr\)")
   * [Articles with short description](https://en.wikipedia.org/wiki/Category:Articles_with_short_description "Category:Articles with short description")
   * [Short description is different from Wikidata](https://en.wikipedia.org/wiki/Category:Short_description_is_different_from_Wikidata "Category:Short description is different from Wikidata")
-  * [Articles needing additional references from April 2023](https://en.wikipedia.org/wiki/Category:Articles_needing_additional_references_from_April_2023 "Category:Articles needing additional references from April 2023")
+  * [Articles needing additional references from April 2014](https://en.wikipedia.org/wiki/Category:Articles_needing_additional_references_from_April_2014 "Category:Articles needing additional references from April 2014")
   * [All articles needing additional references](https://en.wikipedia.org/wiki/Category:All_articles_needing_additional_references "Category:All articles needing additional references")
-  * [All articles with unsourced statements](https://en.wikipedia.org/wiki/Category:All_articles_with_unsourced_statements "Category:All articles with unsourced statements")
-  * [Articles with unsourced statements from January 2026](https://en.wikipedia.org/wiki/Category:Articles_with_unsourced_statements_from_January_2026 "Category:Articles with unsourced statements from January 2026")
-  * [Articles needing cleanup from October 2025](https://en.wikipedia.org/wiki/Category:Articles_needing_cleanup_from_October_2025 "Category:Articles needing cleanup from October 2025")
-  * [All pages needing cleanup](https://en.wikipedia.org/wiki/Category:All_pages_needing_cleanup "Category:All pages needing cleanup")
-  * [Articles containing how-to sections](https://en.wikipedia.org/wiki/Category:Articles_containing_how-to_sections "Category:Articles containing how-to sections")
-  * [Articles with limited geographic scope from October 2015](https://en.wikipedia.org/wiki/Category:Articles_with_limited_geographic_scope_from_October_2015 "Category:Articles with limited geographic scope from October 2015")
-  * [United States-centric](https://en.wikipedia.org/wiki/Category:United_States-centric "Category:United States-centric")
-  * [Articles with unsourced statements from April 2023](https://en.wikipedia.org/wiki/Category:Articles_with_unsourced_statements_from_April_2023 "Category:Articles with unsourced statements from April 2023")
 
 
-  * This page was last edited on 20 May 2026, at 23:28 (UTC).
+  * This page was last edited on 1 April 2026, at 14:59 (UTC).
   * Text is available under the [Creative Commons Attribution-ShareAlike 4.0 License](https://en.wikipedia.org/wiki/Wikipedia:Text_of_the_Creative_Commons_Attribution-ShareAlike_4.0_International_License "Wikipedia:Text of the Creative Commons Attribution-ShareAlike 4.0 International License"); additional terms may apply. By using this site, you agree to the [Terms of Use](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Terms_of_Use "foundation:Special:MyLanguage/Policy:Terms of Use") and [Privacy Policy](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Privacy_policy "foundation:Special:MyLanguage/Policy:Privacy policy"). Wikipedia® is a registered trademark of the [Wikimedia Foundation, Inc.](https://wikimediafoundation.org/), a non-profit organization.
 
 
@@ -325,7 +765,7 @@ Hidden categories:
   * [Developers](https://developer.wikimedia.org)
   * [Statistics](https://stats.wikimedia.org/#/en.wikipedia.org)
   * [Cookie statement](https://foundation.wikimedia.org/wiki/Special:MyLanguage/Policy:Cookie_statement)
-  * [Mobile view](https://en.wikipedia.org/w/index.php?title=Web_scraping&mobileaction=toggle_view_mobile)
+  * [Mobile view](https://en.wikipedia.org/w/index.php?title=MHTML&mobileaction=toggle_view_mobile)
 
 
   * [![Wikimedia Foundation](https://en.wikipedia.org/static/images/footer/wikimedia.svg)](https://www.wikimedia.org/)
@@ -335,6 +775,9 @@ Hidden categories:
 Search
 Search
 Toggle the table of contents
-Web scraping
-[](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping) [](https://en.wikipedia.org/wiki/Web_scraping)
-22 languages [Add topic ](https://en.wikipedia.org/wiki/Web_scraping)
+MHTML
+[](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML) [](https://en.wikipedia.org/wiki/MHTML)
+13 languages [Add topic ](https://en.wikipedia.org/wiki/MHTML)
+  *[v]: View this template
+  *[t]: Discuss this template
+  *[e]: Edit this template

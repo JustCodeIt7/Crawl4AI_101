@@ -6,18 +6,13 @@ from rich import print
 
 # Target URL to crawl — Wikipedia page rich in links and media for comparison
 URL = "https://meta.wikimedia.org/wiki/VideoWiki"
+URL = "https://docs.crawl4ai.com/"
 # Alternate URL with more media (YouTube) for testing filter effects:
-URL = "https://www.youtube.com/watch?v=fzld3WjvBSk"
+# URL = "https://www.youtube.com/watch?v=fzld3WjvBSk"
 
 ############################ Helper: Summarize ###############################
-
-
 def summarize(label: str, result) -> None:
     """Print a one-line summary of link and image counts from a crawl result.
-
-    result.links: dict with "internal" (same domain) and "external" (other domains) lists.
-    result.media: dict keyed by media type; "images" is the most common.
-    Both default to None when extraction is skipped, so guard with `or {}`.
 
     Args:
         label:  Short identifier printed at line start (e.g. "base", "trimmed").
@@ -51,8 +46,6 @@ def summarize(label: str, result) -> None:
 
 
 ############################ Main Crawl Routine ##############################
-
-
 async def main() -> None:
     """Run two crawls of the same URL and compare link/media counts.
 
@@ -84,9 +77,9 @@ async def main() -> None:
 
     # Only summarize successful crawls to avoid AttributeErrors on failure
     if base.success:
-        summarize("base", base)
+        summarize("\nBase:\n", base)
     if trimmed.success:
-        summarize("trimmed", trimmed)
+        summarize("\nTrimmed:\n", trimmed)
 
 
 ################################# Entry Point ################################
