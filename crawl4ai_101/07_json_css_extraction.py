@@ -26,11 +26,14 @@ from crawl4ai import (
     JsonCssExtractionStrategy,
 )
 from rich import print
-# ── Demo URLs / raw HTML ─────────────────────────────────────────────────────
 
+################################ Demo URLs & Raw HTML ################################
+
+# Live sites used to demonstrate extraction against real pages
 DOCS_URL = "https://docs.crawl4ai.com/"
 HN_URL = "https://news.ycombinator.com/"
 
+# Inline HTML fixture for the nested-extraction demo (no network call needed)
 RAW_CATALOG_HTML = """
 <section class="catalog">
   <div class="product" data-sku="kb-001">
@@ -52,22 +55,15 @@ RAW_CATALOG_HTML = """
 """
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Demo 1 — Basic CSS extraction (text + attribute)
-# ═══════════════════════════════════════════════════════════════════════════════
+################################ Demo 1 — Basic CSS Extraction ################################
 
 
 async def demo_basic_extraction() -> None:
-    """Extract navigation link text and href attributes from docs.crawl4ai.com.
-
-    Schema keys:
-        name          — human-readable label
-        baseSelector  — CSS selector identifying each repeating record
-        fields        — list of field descriptors (name, type, selector, etc.)
-    """
+    """Extract navigation link text and href attributes from the docs site."""
+    # Define the extraction schema: one record per matched nav link
     schema = {
         "name": "Docs navigation links",
-        "baseSelector": "nav a",
+        "baseSelector": "nav a",  # Each matched element becomes one record
         "fields": [
             # type="text" + transform="strip" → clean visible text
             {"name": "text", "type": "text", "transform": "strip"},
@@ -77,25 +73,24 @@ async def demo_basic_extraction() -> None:
                 "selector": "a",
                 "type": "attribute",
                 "attribute": "href",
-                "default": "",
+                "default": "",  # Fall back to empty string when missing
             },
         ],
     }
 
+    # Wire the schema into the strategy and crawler run configuration
     strategy = JsonCssExtractionStrategy(schema, verbose=False)
     config = CrawlerRunConfig(
-        cache_mode=CacheMode.BYPASS,
+        cache_mode=CacheMode.BYPASS,  # Always fetch fresh for demo accuracy
         extraction_strategy=strategy,
         verbose=False,
     )
 
+    # Run the crawl with the configured extraction strategy
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=DOCS_URL, config=config)
 
-    if not result.success:
-        print(f"Demo 1 failed: {result.error_message}")
-        return
-
+    # Parse the JSON string into Python objects (empty list if nothing extracted)
     rows = json.loads(result.extracted_content or "[]")
     print(f"Demo 1 — Basic (docs nav links): {len(rows)} items")
     if rows:
@@ -104,18 +99,12 @@ async def demo_basic_extraction() -> None:
     print()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Demo 2 — baseFields + live site (Hacker News)
-# ═══════════════════════════════════════════════════════════════════════════════
+################################ Demo 2 — baseFields + Live Site ################################
 
 
 async def demo_hn_extraction() -> None:
-    """Extract Hacker News stories with baseFields for element attributes.
-
-    baseFields extracts attributes from the *baseSelector* element itself
-    (here: the id on each <tr>), while fields extracts from child elements
-    relative to the base.
-    """
+    """Extract Hacker News stories using baseFields for row-level attributes."""
+    # Define schema; baseFields read attributes from the matched <tr> itself
     schema = {
         "name": "Hacker News Stories",
         "baseSelector": "tr.athing",
@@ -140,16 +129,13 @@ async def demo_hn_extraction() -> None:
 
     config = CrawlerRunConfig(
         extraction_strategy=JsonCssExtractionStrategy(schema, verbose=False),
-        css_selector="tr.athing",  # only render story rows
+        css_selector="tr.athing",  # Limit rendering to just the story rows
         verbose=False,
     )
 
+    # Crawl Hacker News and extract structured story data
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(HN_URL, config=config)
-
-    if not result.success:
-        print(f"Demo 2 failed: {result.error_message}")
-        return
 
     items = json.loads(result.extracted_content or "[]")
     print(f"Demo 2 — HN stories: {len(items)} items")
@@ -159,17 +145,12 @@ async def demo_hn_extraction() -> None:
     print()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Demo 3 — Nested extraction (type="nested_list")
-# ═══════════════════════════════════════════════════════════════════════════════
+################################ Demo 3 — Nested Extraction ################################
 
 
 async def demo_nested_extraction() -> None:
-    """Extract product cards with nested reviews from raw HTML.
-
-    type="nested_list" tells the extractor that the matched selector
-    produces a list of sub-objects, each with their own fields.
-    """
+    """Extract product cards with nested reviews from raw HTML."""
+    # Schema uses nested_list to capture child review objects per product
     schema = {
         "name": "Catalog",
         "baseSelector": "div.product",
@@ -180,7 +161,7 @@ async def demo_nested_extraction() -> None:
             {
                 "name": "reviews",
                 "selector": "div.review",
-                "type": "nested_list",
+                "type": "nested_list",  # Produce a list of sub-objects per match
                 "fields": [
                     {"name": "author", "selector": "span.author", "type": "text"},
                     {"name": "rating", "selector": "span.rating", "type": "text"},
@@ -194,6 +175,7 @@ async def demo_nested_extraction() -> None:
         verbose=False,
     )
 
+    # Use the raw:// scheme to parse inline HTML without a network request
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(f"raw://{RAW_CATALOG_HTML}", config=config)
 
@@ -205,16 +187,16 @@ async def demo_nested_extraction() -> None:
     print()
 
 
-# ═══════════════════════════════════════════════════════════════════════════════
-# Entry point
-# ═══════════════════════════════════════════════════════════════════════════════
+################################ Entry Point ################################
 
 
 async def main() -> None:
+    """Run all three extraction demos in sequence."""
     await demo_basic_extraction()
     await demo_hn_extraction()
     await demo_nested_extraction()
 
 
+# Launch the async event loop only when run as a script
 if __name__ == "__main__":
     asyncio.run(main())
