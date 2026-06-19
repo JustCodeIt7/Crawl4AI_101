@@ -1,7 +1,5 @@
 import asyncio
 import json
-import sys
-from pathlib import Path
 from crawl4ai import (
     AsyncWebCrawler,
     CacheMode,
@@ -75,14 +73,14 @@ async def main() -> None:
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
     config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
 
+    strategy_2 = JsonCssExtractionStrategy(SCHEMA_2, verbose=False)
+    config_2 = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy_2, verbose=False)
     # Launch an async crawler session using a context manager, which handles
     # browser startup and teardown (Crawl4AI uses a headless browser under the hood)
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=URL, config=config)
 
         # Let's also demonstrate SCHEMA_2
-        strategy_2 = JsonCssExtractionStrategy(SCHEMA_2, verbose=False)
-        config_2 = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy_2, verbose=False)
         result_2 = await crawler.arun(url=URL, config=config_2)
 
     # result.extracted_content is a JSON string. Parse it to a Python list.
@@ -97,7 +95,7 @@ async def main() -> None:
     print("\n--- SCHEMA 2 (Headings) ---")
     print("items:", len(headings))
     if headings:
-        print("first:", headings[0])
+        print("first:", headings[0]["title"])
         print("all:\n", json.dumps(headings, indent=4))
 
 
