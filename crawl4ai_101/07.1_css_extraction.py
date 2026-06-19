@@ -8,8 +8,9 @@ from crawl4ai import (
     CrawlerRunConfig,
     JsonCssExtractionStrategy,
 )
+from rich import print
 
-# Define the target URL to crawl — the official Crawl4AI documentation site
+
 URL = "https://docs.crawl4ai.com/"
 
 ############################ Extraction Schema ###############################
@@ -38,9 +39,9 @@ SCHEMA = {
         # type="attribute"   — extract an attribute rather than text content
         # attribute="href"   — the specific attribute to read
         # default=""         — fall back to an empty string if the attribute is absent
+        # extract the link from the anchor tag inside the nav item, defaulting to empty string when missing
         {
             "name": "href",
-            "selector": "a",
             "type": "attribute",
             "attribute": "href",
             "default": "",
@@ -63,35 +64,20 @@ async def main() -> None:
     # Attach the extraction strategy to a CrawlerRunConfig so it runs
     # automatically after the page is fetched and rendered
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
-    config = CrawlerRunConfig(
-        cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False
-    )
+    config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
 
     # Launch an async crawler session using a context manager, which handles
     # browser startup and teardown (Crawl4AI uses a headless browser under the hood)
     async with AsyncWebCrawler() as crawler:
-        # arun() fetches and renders the page, then applies the extraction
-        # strategy — the structured output lands in result.extracted_content
         result = await crawler.arun(url=URL, config=config)
 
-    # Guard against crawl failures (e.g., network errors, timeouts) before
-    # attempting to access the result payload
-    if not result.success:
-        print("extraction failed:", result.error_message)
-        return
-
-    # extracted_content is a raw JSON string (or None if nothing was extracted).
-    # Parse it into a Python list; fall back to an empty list if it is absent.
-    rows = json.loads(result.extracted_content or "[]")
+    print(result.extracted_content[:400])
 
     # Print a quick summary so we can verify the extraction worked as expected
-    print("items:", len(rows))
-    print("first:", rows[0] if rows else None)
+    print("items:", len(result.extracted_content))
+    print("first:", result.extracted_content[0])
 
 
 ################################# Entry Point ################################
-
-# Standard Python entry-point guard — use asyncio.run() to execute the
-# async main() coroutine from a synchronous context
 if __name__ == "__main__":
     asyncio.run(main())

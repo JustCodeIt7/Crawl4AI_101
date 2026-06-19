@@ -8,9 +8,6 @@ Demonstrates:
 - Nested extraction for hierarchical data
 - Result handling with result.success and json.loads()
 
-Prerequisites:
-- `pip install crawl4ai playwright`
-- `playwright install`
 
 Run:
 - `python crawl4ai_101/07_json_css_extraction.py`
