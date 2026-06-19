@@ -14,7 +14,6 @@ from rich import print
 URL = "https://docs.crawl4ai.com/"
 
 ############################ Extraction Schema ###############################
-
 # JsonCssExtractionStrategy uses a declarative schema to map CSS selectors
 # directly onto structured JSON output — no custom parsing code required.
 #
@@ -49,18 +48,28 @@ SCHEMA = {
     ],
 }
 
+# A secondary schema illustrating how to extract other types of elements.
+# Here we extract headings (<h2>) from the page to get their titles and ID anchors.
+SCHEMA_2 = {
+    "name": "Content Headings",
+    # Scope the extraction to <h2> elements, so each heading becomes one record in the output list
+    "baseSelector": "h2",
+    # Extract the visible text of the heading as the "title" field, trimming whitespace
+    "fields": [
+        {"name": "title", "type": "text", "transform": "strip"},  # Extract the heading text, stripping whitespace
+        {  # Extract the "id" attribute from the <h2> as "anchor_id", defaulting to "no-id" when missing
+            "name": "anchor_id",
+            "type": "attribute",
+            "attribute": "id",
+            "default": "no-id",
+        },
+    ],
+}
+
 
 ############################ Main Crawl Routine ##############################
-
-
 async def main() -> None:
-    """Crawl a single URL and extract structured data using CSS selectors.
-
-    This demonstrates JsonCssExtractionStrategy: define a schema that maps
-    CSS selectors to field names and Crawl4AI will return a JSON array of
-    records — one per element matched by baseSelector — stored in
-    result.extracted_content.
-    """
+    """Crawl a single URL and extract structured data using CSS selectors."""
     # Attach the extraction strategy to a CrawlerRunConfig so it runs
     # automatically after the page is fetched and rendered
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
@@ -71,11 +80,25 @@ async def main() -> None:
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=URL, config=config)
 
-    print(result.extracted_content[:400])
+        # Let's also demonstrate SCHEMA_2
+        strategy_2 = JsonCssExtractionStrategy(SCHEMA_2, verbose=False)
+        config_2 = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy_2, verbose=False)
+        result_2 = await crawler.arun(url=URL, config=config_2)
 
-    # Print a quick summary so we can verify the extraction worked as expected
-    print("items:", len(result.extracted_content))
-    print("first:", result.extracted_content[0])
+    # result.extracted_content is a JSON string. Parse it to a Python list.
+    nav_links = json.loads(result.extracted_content)
+    print("--- SCHEMA 1 (Nav Links) ---")
+    print(json.dumps(nav_links[:5], indent=4))
+    print("items:", len(nav_links))
+    if nav_links:
+        print("first:", nav_links[0])
+
+    headings = json.loads(result_2.extracted_content)
+    print("\n--- SCHEMA 2 (Headings) ---")
+    print("items:", len(headings))
+    if headings:
+        print("first:", headings[0])
+        print("all:\n", json.dumps(headings, indent=4))
 
 
 ################################# Entry Point ################################
