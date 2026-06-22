@@ -1,9 +1,7 @@
 import asyncio
 import json
-import sys
-from pathlib import Path
-
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig, JsonCssExtractionStrategy
+from rich import print
 
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
@@ -49,17 +47,19 @@ SCHEMA = {
     "fields": [
         {
             # nested_list: each <h2> or <h3> becomes a dict with both its
-            # visible text AND the href of its anchor link — two sub-fields
-            # per matched element, so we need the richer nested_list type
+            # visible text AND the href of its anchor link — two sub-fields per matched element
             "name": "sections",
             "type": "nested_list",
             "selector": "h2, h3",
             "fields": [
                 # The visible heading text, whitespace-normalised
                 {"name": "heading", "type": "text", "transform": "strip", "default": ""},
-                # The fragment href from the anchor tag inside the heading
-                # (e.g., "#installation") — extracted as an attribute value
-                {"name": "anchor", "selector": "a", "type": "attribute", "attribute": "href", "default": ""},
+                {  # Extract the "id" attribute from the <h2> as "anchor_id", defaulting to "no-id" when missing
+                    "name": "anchor_id",
+                    "type": "attribute",
+                    "attribute": "id",
+                    "default": "no-id",
+                },
             ],
         },
         {
@@ -69,60 +69,94 @@ SCHEMA = {
             "type": "list",
             "selector": "pre",
             "fields": [
-                # Full text content of the code block, stripped of leading/
-                # trailing whitespace
+                # Full text content of the code block, stripped of leading/trailing whitespace
                 {"name": "snippet", "type": "text", "transform": "strip", "default": ""},
             ],
         },
     ],
 }
 
+# SCHEMA_2 demonstrates additional advanced features:
+#   1. extract raw HTML using type: "html"
+#   2. multiple attributes from the same element
+#   3. apply string transformations (e.g. uppercase)
+SCHEMA_2 = {
+    "name": "Advanced Extractions",
+    "baseSelector": "main",
+    "fields": [
+        {
+            # nested_list: extract links, apply uppercase transform to the text
+            # and pull both href and class attributes
+            "name": "links",
+            "type": "nested_list",
+            "selector": "a",
+            "fields": [
+                {"name": "text", "type": "text", "transform": "uppercase"},
+                {"name": "href", "type": "attribute", "attribute": "href"},
+                {"name": "css_class", "type": "attribute", "attribute": "class", "default": ""},
+            ],
+        },
+        {
+            # nested_list: extract both the clean text and the raw HTML of paragraphs
+            "name": "paragraphs",
+            "type": "nested_list",
+            "selector": "p",
+            "fields": [
+                {"name": "text", "type": "text"},
+                {"name": "raw_html", "type": "html"},
+            ],
+        },
+    ],
+}
+
+
 ############################ Main Crawl Routine ##############################
-
-
 async def main() -> None:
-    """Crawl the Crawl4AI quickstart page and extract a structured outline.
-
-    Demonstrates the power-move features of JsonCssExtractionStrategy:
-    - baseSelector to scope extraction to <main>
-    - baseFields for one-shot page-level metadata (page title)
-    - nested_list to capture per-heading dicts with both text and anchor href
-    - list to collect all code block snippets as a flat array
-
-    Prints the page title, total section count, and total code block count.
-    """
-    # Wire up the extraction strategy with our schema — verbose=False keeps
-    # the console output focused on our own print statements
+    """Crawl the Crawl4AI quickstart page and extract a structured outline."""
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
 
     # Build the crawler run config:
-    # - BYPASS cache to always fetch the live page
-    # - Pass the extraction strategy so Crawl4AI runs it automatically after
-    #   rendering the page
     config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
 
-    # Launch the headless browser session, crawl the page, and let the
-    # extraction strategy parse the DOM before returning the result
+    # Launch the headless browser session, crawl the page
     async with AsyncWebCrawler() as crawler:
         result = await crawler.arun(url=URL, config=config)
 
-    # Guard against network errors, timeouts, or selector mismatches before
-    # attempting to parse the extracted payload
-    if not result.success:
-        print("schema extraction failed:", result.error_message)
-        return
+    # Guard against network errors, timeouts, or selector mismatches
+    if result.success:
+        # extracted_content is a JSON string containing a list of records — one
+        # record per baseSelector match (here, one record for the single <main>)
+        rows = json.loads(result.extracted_content or "[]")
+        record = rows[0] if rows else {}
+        print("\n######## Page Title ########")
+        print(record["page_title"])  # print the full extracted record for reference
+        # Report the page-level title captured via baseFields
+        print("title:", record.get("page_title"))
+        # Report how many headings were captured by the nested_list "sections" field
+        print("\n###### sections ######")
+        print(record["sections"][:3])  # print the first section dict for reference
+        print("section_count:", len(record.get("sections", [])))
+        # Report how many code blocks were captured by the list "code_blocks" field
+        print("\n###### code blocks ######")
+        print(record["code_blocks"][:3])  # print the first code block snippet for reference
+        print("code_block_count:", len(record.get("code_blocks", [])))
 
-    # extracted_content is a JSON string containing a list of records — one
-    # record per baseSelector match (here, one record for the single <main>)
-    rows = json.loads(result.extracted_content or "[]")
-    record = rows[0] if rows else {}
+    # --- Run SCHEMA_2 to see advanced extractions in action ---
+    strategy_2 = JsonCssExtractionStrategy(SCHEMA_2, verbose=False)
+    config_2 = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy_2, verbose=False)
 
-    # Report the page-level title captured via baseFields
-    print("title:", record.get("page_title"))
-    # Report how many headings were captured by the nested_list "sections" field
-    print("section_count:", len(record.get("sections", [])))
-    # Report how many code blocks were captured by the list "code_blocks" field
-    print("code_block_count:", len(record.get("code_blocks", [])))
+    async with AsyncWebCrawler() as crawler:
+        result_2 = await crawler.arun(url=URL, config=config_2)
+
+    if result_2.success:
+        rows_2 = json.loads(result_2.extracted_content or "[]")
+        record_2 = rows_2[0] if rows_2 else {}
+        print("\n######## SCHEMA_2: Advanced Extractions ########")
+        print("First 2 links (uppercase text & multiple attrs):")
+        print(record_2.get("links", [])[:5])
+
+        print("\nFirst paragraph (text vs raw_html):")
+        print(record_2.get("paragraphs", [])[:3])
 
 
 ################################# Entry Point ################################
