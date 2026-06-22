@@ -1,11 +1,20 @@
+"""Video: Advanced JsonCssExtractionStrategy schemas.
+
+Demonstrates:
+- baseSelector, baseFields, and nested_list vs list field types
+- extracting attributes, raw HTML, and applying text transforms
+- running two schemas against the same page
+"""
+
 import asyncio
 import json
 from crawl4ai import AsyncWebCrawler, CacheMode, CrawlerRunConfig, JsonCssExtractionStrategy
 from rich import print
 
+# Target documentation page used for all extractions in this demo
 URL = "https://docs.crawl4ai.com/core/quickstart/"
 
-################################ Schema Definition ###########################
+################################ Schema Definition ################################
 
 # JsonCssExtractionStrategy accepts a schema dict that describes *what* to
 # extract and *how* to structure the output.  This schema demonstrates three
@@ -110,12 +119,13 @@ SCHEMA_2 = {
 }
 
 
-############################ Main Crawl Routine ##############################
+################################ Main Crawl Routine ################################
 async def main() -> None:
-    """Crawl the Crawl4AI quickstart page and extract a structured outline."""
+    """Crawl the quickstart page and run both schemas to extract structured data."""
+    # Bind the primary schema to a CSS extraction strategy
     strategy = JsonCssExtractionStrategy(SCHEMA, verbose=False)
 
-    # Build the crawler run config:
+    # Build the crawler run config: bypass cache so we always fetch fresh HTML
     config = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy, verbose=False)
 
     # Launch the headless browser session, crawl the page
@@ -145,20 +155,25 @@ async def main() -> None:
     strategy_2 = JsonCssExtractionStrategy(SCHEMA_2, verbose=False)
     config_2 = CrawlerRunConfig(cache_mode=CacheMode.BYPASS, extraction_strategy=strategy_2, verbose=False)
 
+    # Crawl the same URL again, this time applying the advanced schema
     async with AsyncWebCrawler() as crawler:
         result_2 = await crawler.arun(url=URL, config=config_2)
 
+    # Display advanced results only when the second crawl succeeds
     if result_2.success:
         rows_2 = json.loads(result_2.extracted_content or "[]")
         record_2 = rows_2[0] if rows_2 else {}
         print("\n######## SCHEMA_2: Advanced Extractions ########")
+        # Show uppercase-transformed link text alongside multiple captured attributes
         print("First 2 links (uppercase text & multiple attrs):")
         print(record_2.get("links", [])[:5])
 
+        # Contrast clean text extraction against the raw HTML of the same elements
         print("\nFirst paragraph (text vs raw_html):")
         print(record_2.get("paragraphs", [])[:3])
 
 
-################################# Entry Point ################################
+################################ Entry Point ################################
 if __name__ == "__main__":
+    # Run the async crawl routine inside an event loop
     asyncio.run(main())
