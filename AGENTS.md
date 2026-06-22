@@ -2,63 +2,68 @@
 
 ## Project Overview
 
-This repository is an educational resource for [Crawl4AI](https://github.com/unclecode/crawl4ai), an AI-powered web crawling library. It accompanies a YouTube tutorial series and contains runnable examples, quickstart scripts, and Jupyter notebooks.
+Educational resource for [Crawl4AI](https://github.com/unclecode/crawl4ai), accompanying a YouTube tutorial series. Runnable Python examples and Jupyter notebooks, no library/package being published.
+
+`README.md` is partially stale (references a nonexistent `src/c4_series/videos/`, says Python 3.8+, suggests `conda activate py312`). Trust `pyproject.toml` and `.python-version` (Python 3.13) over the README.
 
 ## Project Structure
 
-- **`crawl4ai_101/`** — Core tutorial scripts. Numbered files follow a progressive path from basic crawling to advanced topics like LLM extraction and deep crawling.
-- **`crawl4ai_quickstart.py` / `.ipynb`** — Starter examples for new users.
-- **`crawl_sitmap.py`** — Sitemap-based site crawler example.
-- **`web_scraper_comparison.ipynb`** — Notebook comparing Crawl4AI against BeautifulSoup, Scrapy, Selenium, and Playwright.
-- **`archive/`** — Deprecated notebooks and scripts. Not actively maintained.
-- **`Crawl4AI_Outline.md`** — Full video tutorial outline with cross-references to runnable scripts.
+- **`crawl4ai_101/`** — Core tutorial scripts, zero-padded numbered in lesson order (see `crawl4ai_101/README.md` for the full sequence). Run from repo root.
+- **`crawl4ai_101/common/io.py`** — Shared helpers used by LLM/schema episodes: `load_env()` (custom, no python-dotenv), `SCHEMA_CACHE_DIR`, `episode_dir()`, `write_json()`. Creates `crawl4ai_101/runs/`, `schema_cache/`, `pattern_cache/` at runtime.
+- **`crawl4ai_quickstart.py` / `.ipynb`** — Starter examples.
+- **`crawl_sitmap.py`** — Sitemap crawler example (note the typo in filename, preserve it).
+- **`web_scraper_comparison.ipynb`** — Cross-library comparison.
+- **`archive/`** — Deprecated. Not maintained; don't edit.
+- **`Crawl4AI_Outline.md`** — Full video outline with script cross-references.
 
 ## Setup & Running
 
-This project requires **Python 3.13+**.
+Requires **Python 3.13** (`pyproject.toml` `requires-python = ">=3.13"`, `.python-version` = 3.13).
 
-1. Create and activate a virtual environment:
-   ```bash
-   python -m venv .venv && source .venv/bin/activate
-   ```
-2. Install dependencies:
-   ```bash
-   pip install -e "."
-   playwright install
-   ```
-3. Run a tutorial script:
-   ```bash
-   python crawl4ai_101/01.1_first_crawl.py
-   ```
+```bash
+python -m venv .venv && source .venv/bin/activate
+pip install -e "."
+playwright install
+```
+
+Run scripts from the **repo root** so `from crawl4ai_101.common.io import ...` resolves:
+
+```bash
+python crawl4ai_101/01.1_first_crawl.py
+```
+
+### Dependency gotcha
+
+`pyproject.toml` only declares `crawl4ai` and `rich`. The comparison/quickstart scripts also import `beautifulsoup4`, `requests`, `scrapy`, `selenium`, and Jupyter — these are **not** in `pyproject`. Install manually when running those files:
+
+```bash
+pip install beautifulsoup4 requests scrapy selenium jupyter
+```
+
+Do not add them to `pyproject.toml` unless asked — the tutorial intentionally keeps core deps minimal.
 
 ## LLM Features
 
-Scripts using LLM extraction (e.g., `10.1_llm_extraction.py`, `10.3_knowledge_graph.py`) read `OPENAI_API_KEY` from `.env`. Populate `.env` before running these examples.
+LLM/schema episodes (`08.3_generate_schema_tokenusage.py`, `10.1_llm_extraction.py`, `10.2_llm_extraction_chunking.py`, `10.3_knowledge_graph.py`, `21.2_production_self_hosting.py`) call `load_env()` from `crawl4ai_101.common.io`, which reads `OPENAI_API_KEY` from `.env` at the repo root. `.env` is git-ignored.
+
+`08.2_schema_generation.py` and `08.3` cache generated schemas under `crawl4ai_101/schema_cache/`; clear that dir to force regeneration.
 
 ## Coding Style
 
-- **Language:** Python 3.13
-- **Formatting:** PEP 8, 4-space indentation.
-- **Naming:** `snake_case` for modules. Zero-padded numbers for tutorial ordering (e.g., `05_markdown_generation_filters.py`).
-- **Comments:** Descriptive docstrings for new functions; comments should explain *why*, not *what*.
+- Python 3.13, PEP 8, 4-space indent.
+- `snake_case` modules; zero-padded lesson numbers (`05.2_markdown_filters.py`). Preserve dotted-number filenames.
+- Docstrings on new functions; comments explain *why*, not *what*.
+- No comments unless explaining a non-obvious decision.
 
 ## Testing
 
-No formal test suite — this is an educational project. Validate new examples by running them end-to-end and confirming expected output.
+No formal test suite, no lint/typecheck configured. Validate changes by running the affected script end-to-end and confirming expected output.
 
 ## Commit & PR Guidelines
 
-**Commit messages** follow conventional style:
-- `feat: <description>` — new scripts or features
-- `refactor: <description>` — structural changes
-- `docs: <description>` — documentation updates
-
-**Pull requests** should include:
-- A brief description of what changed and why.
-- Confirmation that relevant script(s) run successfully.
-- Screenshots or output snippets for visual changes.
+Conventional commits: `feat:`, `refactor:`, `docs:`. PRs should confirm the relevant script(s) run successfully.
 
 ## Security & Configuration
 
-- Never commit secrets (API keys, tokens). Use `.env` for credentials — it is git-ignored.
-- Respect `robots.txt` and website terms of service when running scraping examples.
+- Never commit secrets. Use `.env` (git-ignored) for `OPENAI_API_KEY`.
+- Respect `robots.txt` and site ToS when running scraping examples.
