@@ -8,39 +8,30 @@ Demonstrates:
 
 import asyncio
 import json
-import os
 from pathlib import Path
 
 from crawl4ai import (
     AsyncWebCrawler,
+    CacheMode,
     CrawlerRunConfig,
     JsonCssExtractionStrategy,
     LLMConfig,
 )
 from rich import print
-
+import os
 ############################### Configuration & Constants ################################
-# Load API key from environment to authenticate the LLM-based schema generation
-API_KEY = os.getenv("OPENAI_API_KEY")
+# Ollama runs locally and needs no API key — the provider string follows
+# LiteLLM's "<provider>/<model>" convention.  Make sure the model is pulled
+# first with `ollama pull qwen3.5:9b` and the Ollama service is running.
+OLLAMA_MODEL = "gemma4:12b"
+# OLLAMA_BASE_URL from environment variable or default to localhost
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
 
 # Resolve output directory relative to this script so results land consistently
 OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "video_08"
 
-# Provide representative markup so the LLM can infer a reusable CSS schema
-SAMPLE_HTML = """
-<section class="products">
-  <article class="product-card">
-    <h2>Starter Drone</h2>
-    <p class="price">$249.00</p>
-    <p class="rating">4.7 stars</p>
-  </article>
-  <article class="product-card">
-    <h2>Studio Microphone</h2>
-    <p class="price">$189.00</p>
-    <p class="rating">4.9 stars</p>
-  </article>
-</section>
-"""
+URL = "https://docs.crawl4ai.com/core/quickstart/"
+# URL = "https://en.wikipedia.org/wiki/Computer_programming"
 
 
 ################################ Helper Functions ################################
@@ -56,28 +47,49 @@ async def main() -> None:
     """Generate a schema via LLM, persist it, then reuse it for extraction without a second LLM call."""
     output_dir = ensure_output_dir()
 
-    # Ask the LLM once to infer a CSS extraction schema from the sample markup
-    schema = JsonCssExtractionStrategy.generate_schema(
-        SAMPLE_HTML,
-        query="Extract each product name, price, and rating as a flat record.",
-        llm_config=LLMConfig(
-            provider="openai/gpt-4o-mini", api_token=API_KEY, max_tokens=500, temperature=0
-        ),  # deterministic output for demo purposes
-    )
+    # Step 1: Crawl the target page to get its HTML and learn its structure
+    print(f"Crawling {URL} to get sample HTML...")
+    async with AsyncWebCrawler() as crawler:
+        initial_result = await crawler.arun(URL, config=CrawlerRunConfig(cache_mode=CacheMode.BYPASS, verbose=False))
+        if not initial_result.success:
+            print(f"Initial crawl failed: {initial_result.error_message}")
+            return
+
+        # Prefer cleaned_html (boilerplate stripped) over raw html so the local
+        # model sees a compact, signal-rich view. Truncate to 12 000 chars to stay
+        # within the model's context window — sending the full raw HTML to a
+        # locally-hosted model often truncates the JSON response mid-schema.
+        sample_html = (initial_result.cleaned_html or initial_result.html or "")[:12000]
+
+    # Query of what you want to extract
+    QUERY = "Extract the main documentation page title, and a list of all the code blocks."
+
+    provider = f"ollama/{OLLAMA_MODEL}"
+
+    # Ollama serves models locally, so no api_token is required — only the
+    # provider/model name and the base URL where the Ollama API is listening.
+    # max_tokens must be large enough for the model to emit a complete JSON
+    # schema; too small a budget causes truncated output and JSON parse errors.
+    llm_config = LLMConfig(provider=provider, base_url=OLLAMA_BASE_URL, temperature=0, max_tokens=8192)
+
+    print("Generating schema via LLM...")
+    schema = JsonCssExtractionStrategy.generate_schema(sample_html, query=QUERY, llm_config=llm_config)
 
     # Persist the generated schema so future runs can skip the LLM entirely
-    schema_path = output_dir / "product_schema.json"
+    schema_path = output_dir / "08.2-schema_generation.json"
     schema_path.write_text(json.dumps(schema, indent=2), encoding="utf-8")
 
-    # Configure the crawler to apply the generated schema purely via CSS rules
+    # Step 3: Configure the crawler to apply the generated schema purely via CSS rules
+    print("Re-crawling with the generated, LLM-free schema...")
     config = CrawlerRunConfig(
         extraction_strategy=JsonCssExtractionStrategy(schema),
+        cache_mode=CacheMode.BYPASS,
         verbose=False,
     )
 
-    # Run the crawler against the raw HTML using the reusable, LLM-free schema
+    # Run the crawler against the original URL using the reusable, LLM-free schema
     async with AsyncWebCrawler() as crawler:
-        result = await crawler.arun(f"raw://{SAMPLE_HTML}", config=config)  # raw:// feeds HTML directly
+        result = await crawler.arun(URL, config=config)
 
     # Bail out early if the crawl did not succeed
     if not result.success:
@@ -86,12 +98,12 @@ async def main() -> None:
 
     # Parse the extracted JSON, defaulting to an empty list when nothing was returned
     items = json.loads(result.extracted_content or "[]")
-    print(f"Generated schema saved to: {schema_path}")
-    print(f"Reusable extraction rows: {len(items)}")
+    print(f"Reusable extraction records: {len(items)}")
 
-    # Preview the first record to confirm the schema captured the expected fields
+    # Preview the records to confirm the schema captured the expected fields
     if items:
-        print(f"First row: {items[0]}")
+        print("\nFirst record extracted:")
+        print(items[0])
 
 
 ################################ Entry Point ################################

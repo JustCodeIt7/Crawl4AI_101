@@ -1,27 +1,51 @@
 {
-  "name": "Quick Start Article Sections",
-  "baseSelector": "body > div > div > div > nav > ul > li",
+  "name": "Documentation Page Content",
+  "baseSelector": "section#mkdocs-terminal-content",
   "fields": [
     {
-      "name": "title",
-      "selector": "head > title",
+      "name": "page_title",
+      "selector": "h1#getting-started-with-crawl4ai",
       "type": "text"
     },
     {
-      "name": "quickstart_sections",
+      "name": "sections",
       "type": "list",
-      "selector": "body > div > div > div > nav > ul > li",
+      "selector": "h2[id]",
       "fields": [
         {
-          "name": "section_name",
-          "selector": "span",
+          "name": "heading",
+          "selector": ":scope",
           "type": "text"
         },
         {
-          "name": "section_link",
-          "selector": "a",
+          "name": "id",
+          "selector": ":scope",
           "type": "attribute",
-          "attribute": "href"
+          "attribute": "id"
+        }
+      ]
+    },
+    {
+      "name": "code_blocks",
+      "type": "list",
+      "selector": "div.highlight pre code",
+      "fields": [
+        {
+          "name": "code",
+          "selector": ":scope",
+          "type": "text"
+        },
+        {
+          "name": "language",
+          "selector": ":scope",
+          "type": "attribute",
+          "attribute": "class"
+        },
+        {
+          "name": "highlighted",
+          "selector": ":scope",
+          "type": "attribute",
+          "attribute": "data-highlighted"
         }
       ]
     }

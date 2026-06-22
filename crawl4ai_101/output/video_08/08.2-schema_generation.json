@@ -1,0 +1,23 @@
+{
+  "name": "Documentation Page Content",
+  "baseSelector": "body",
+  "fields": [
+    {
+      "name": "page_title",
+      "selector": "title",
+      "type": "text"
+    },
+    {
+      "name": "code_blocks",
+      "type": "list",
+      "selector": "pre, code",
+      "fields": [
+        {
+          "name": "content",
+          "selector": "",
+          "type": "text"
+        }
+      ]
+    }
+  ]
+}

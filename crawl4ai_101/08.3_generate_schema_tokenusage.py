@@ -31,8 +31,6 @@ URL = "https://docs.crawl4ai.com/core/quickstart/"
 SCHEMA_FILE = SCHEMA_CACHE_DIR / "v11_quickstart_schema.json"
 
 ############################ HTML Sampling Helper ############################
-
-
 async def fetch_sample_html() -> str:
     """Fetch a truncated HTML snippet from the target URL for schema generation.
 
@@ -57,8 +55,6 @@ async def fetch_sample_html() -> str:
 
 
 ################################ Main Routine ################################
-
-
 async def main() -> None:
     """Generate a CSS extraction schema via an LLM, then use it to scrape the page.
 
