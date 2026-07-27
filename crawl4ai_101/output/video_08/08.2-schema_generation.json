@@ -1,6 +1,6 @@
 {
-  "name": "Wikipedia Article Content",
-  "baseSelector": "main",
+  "name": "Wikipedia Article Contents",
+  "baseSelector": "main h1",
   "fields": [
     {
       "name": "page_title",
@@ -8,32 +8,20 @@
       "type": "text"
     },
     {
-      "name": "table_of_contents",
-      "selector": "nav[role='navigation'] ul li a",
+      "exports": "list of the main pages content for each section header",
+      "selector": "nav[class*='Table of Contents'] ul li a",
       "type": "list",
       "fields": [
         {
-          "name": "toc_item",
-          "selector": "span",
-          "type": "text"
-        }
-      ]
-    },
-    {
-      "name": "sections",
-      "selector": "div[id]",
-      "divs_containing_content": "h2, h3",
-      "type": "list",
-      "fields": [
-        {
-          "name": "section_header",
-          "selector": "h2, h3",
+          "name": "section_title",
+          "selector": "div",
           "type": "text"
         },
         {
-          "name": "section_content",
-          "section_content": "p, ul, table, references",
-          "type": "text"
+          "name": "section_link",
+          "selector": "a",
+          "type": "attribute",
+          "attribute": "href"
         }
       ]
     }

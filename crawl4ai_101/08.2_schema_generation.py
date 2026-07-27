@@ -22,7 +22,6 @@ import os
 from dotenv import load_dotenv
 
 load_dotenv()
-
 ############################### Configuration & Constants ################################
 # Ollama runs locally and needs no API key — the provider string follows
 OLLAMA_MODEL = "gemma4:26b"
@@ -64,45 +63,14 @@ async def main() -> None:
         sample_html = (initial_result.cleaned_html or initial_result.html or "")[:10000]
 
     # Query of what you want to extract
-    QUERY = """Extract the main page title, and main page content for each section header . Return a Craw4AI JSON schema with CSS selectors for each field for use with Craw4AI.
-    Example Schema:
-    {
-    "name": "Wikipedia Article Content",
-    "baseSelector": "main",
-    "fields": [
-        {
-        "name": "page_title",
-        "selector": "h1",
-        "type": "text"
-        },
-        {
-        "name": -1,
-        "selector": ".toc",
-        "type": "list",
-        "fields": [
-            {
-            "name": "section_title",
-            "selector": "li a",
-            "type": "text"
-            }
-        ]
-        },
-        {
-        "name": "sections",
-        "selector": "div[id^='']",
-        "type": "list",
-        "fields": [
-            {
-            "name": "section_header",
-            "section_header": "h2, h3",
-            "type": "text"
-            }
-        ]
-        }
-    ]
-    }
+    QUERY = f"""Extract the main page title, and list of the main pages content for each section header.
+    HTML Sample:
+    {sample_html}
     """
-
+    # QUERY = f"""Extract the main page title, and list of the section title and section content.
+    # HTML Sample:
+    # {sample_html}
+    # """
     provider = f"ollama/{OLLAMA_MODEL}"
 
     # Ollama serves models locally, so no api_token is required — only the
