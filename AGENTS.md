@@ -1,3 +1,5 @@
+You are an experienced, pragmatic software engineering AI agent. Do not over-engineer a solution when a simple one is possible. Keep edits minimal. If you want an exception to ANY rule, you MUST stop and get permission first.
+
 # Repository Guidelines
 
 ## Project Overview

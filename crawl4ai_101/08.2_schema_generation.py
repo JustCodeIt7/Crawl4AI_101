@@ -19,19 +19,21 @@ from crawl4ai import (
 )
 from rich import print
 import os
+from dotenv import load_dotenv
+
+load_dotenv()
+
 ############################### Configuration & Constants ################################
 # Ollama runs locally and needs no API key — the provider string follows
-# LiteLLM's "<provider>/<model>" convention.  Make sure the model is pulled
-# first with `ollama pull qwen3.5:9b` and the Ollama service is running.
-OLLAMA_MODEL = "gemma4:12b"
+OLLAMA_MODEL = "gemma4:26b"
 # OLLAMA_BASE_URL from environment variable or default to localhost
-OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://localhost:11434")
+OLLAMA_BASE_URL = os.getenv("OLLAMA_BASE_URL", "http://eos.local:11434")
 
 # Resolve output directory relative to this script so results land consistently
 OUTPUT_DIR = Path(__file__).resolve().parent / "output" / "video_08"
 
-URL = "https://docs.crawl4ai.com/core/quickstart/"
-# URL = "https://en.wikipedia.org/wiki/Computer_programming"
+# URL = "https://docs.crawl4ai.com/"
+URL = "https://en.wikipedia.org/wiki/Computer_programming"
 
 
 ################################ Helper Functions ################################
@@ -59,10 +61,47 @@ async def main() -> None:
         # model sees a compact, signal-rich view. Truncate to 12 000 chars to stay
         # within the model's context window — sending the full raw HTML to a
         # locally-hosted model often truncates the JSON response mid-schema.
-        sample_html = (initial_result.cleaned_html or initial_result.html or "")[:12000]
+        sample_html = (initial_result.cleaned_html or initial_result.html or "")[:10000]
 
     # Query of what you want to extract
-    QUERY = "Extract the main documentation page title, and a list of all the code blocks."
+    QUERY = """Extract the main page title, and main page content for each section header . Return a Craw4AI JSON schema with CSS selectors for each field for use with Craw4AI.
+    Example Schema:
+    {
+    "name": "Wikipedia Article Content",
+    "baseSelector": "main",
+    "fields": [
+        {
+        "name": "page_title",
+        "selector": "h1",
+        "type": "text"
+        },
+        {
+        "name": -1,
+        "selector": ".toc",
+        "type": "list",
+        "fields": [
+            {
+            "name": "section_title",
+            "selector": "li a",
+            "type": "text"
+            }
+        ]
+        },
+        {
+        "name": "sections",
+        "selector": "div[id^='']",
+        "type": "list",
+        "fields": [
+            {
+            "name": "section_header",
+            "section_header": "h2, h3",
+            "type": "text"
+            }
+        ]
+        }
+    ]
+    }
+    """
 
     provider = f"ollama/{OLLAMA_MODEL}"
 
@@ -70,10 +109,12 @@ async def main() -> None:
     # provider/model name and the base URL where the Ollama API is listening.
     # max_tokens must be large enough for the model to emit a complete JSON
     # schema; too small a budget causes truncated output and JSON parse errors.
-    llm_config = LLMConfig(provider=provider, base_url=OLLAMA_BASE_URL, temperature=0, max_tokens=8192)
+    llm_config = LLMConfig(provider=provider, base_url=OLLAMA_BASE_URL, temperature=0)
 
     print("Generating schema via LLM...")
     schema = JsonCssExtractionStrategy.generate_schema(sample_html, query=QUERY, llm_config=llm_config)
+    print("Generated schema:")
+    print(json.dumps(schema, indent=2))
 
     # Persist the generated schema so future runs can skip the LLM entirely
     schema_path = output_dir / "08.2-schema_generation.json"
@@ -101,9 +142,7 @@ async def main() -> None:
     print(f"Reusable extraction records: {len(items)}")
 
     # Preview the records to confirm the schema captured the expected fields
-    if items:
-        print("\nFirst record extracted:")
-        print(items[0])
+    print(items)
 
 
 ################################ Entry Point ################################

@@ -8,31 +8,25 @@
       "type": "text"
     },
     {
-      "name": "table_of_contents",
-      "selector": "nav[role='navigation'] ul li a",
+      "name": -1,
+      "selector": ".toc",
       "type": "list",
       "fields": [
         {
-          "name": "toc_item",
-          "selector": "span",
+          "name": "section_title",
+          "selector": "li a",
           "type": "text"
         }
       ]
     },
     {
       "name": "sections",
-      "selector": "div[id]",
-      "divs_containing_content": "h2, h3",
+      "selector": "div[id^='']",
       "type": "list",
       "fields": [
         {
           "name": "section_header",
-          "selector": "h2, h3",
-          "type": "text"
-        },
-        {
-          "name": "section_content",
-          "section_content": "p, ul, table, references",
+          "section_header": "h2, h3",
           "type": "text"
         }
       ]

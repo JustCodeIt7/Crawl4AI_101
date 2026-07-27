@@ -47,9 +47,9 @@ URL = "https://docs.crawl4ai.com/core/quickstart/"
 #                       flat and concise.
 SCHEMA = {
     "name": "Docs article outline",
-    # Scope the entire extraction to the <main> element so we skip chrome (nav, sidebar, footer) and focus on the article body
+    # Scope the entire extraction to the <main> element so we skip chrome
     "baseSelector": "main",
-    # baseFields are extracted once from the root element — perfect for page-level data like the primary <h1> heading
+    # baseFields are extracted once from the root element
     "baseFields": [
         {"name": "page_title", "selector": "h1", "type": "text", "transform": "strip", "default": "Untitled"},
     ],
@@ -148,7 +148,7 @@ async def main() -> None:
         print("section_count:", len(record.get("sections", [])))
         # Report how many code blocks were captured by the list "code_blocks" field
         print("\n###### code blocks ######")
-        print(record["code_blocks"][:3])  # print the first code block snippet for reference
+        print(record["code_blocks"][:3])
         print("code_block_count:", len(record.get("code_blocks", [])))
 
     # --- Run SCHEMA_2 to see advanced extractions in action ---
@@ -177,3 +177,4 @@ async def main() -> None:
 if __name__ == "__main__":
     # Run the async crawl routine inside an event loop
     asyncio.run(main())
+
